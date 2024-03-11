@@ -225,8 +225,9 @@ shape = SubResource("CircleShape2D_llf6c")
 
 [node name="Scripts" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="Scripts"]
-script = ExtResource("2_oq0kp")
+[node name="Movement" type="Node" parent="Scripts" node_paths=PackedStringArray("target")]
+script = ExtResource("2_03yui")
+target = NodePath("../..")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
