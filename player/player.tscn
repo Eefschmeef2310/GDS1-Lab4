@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
-[ext_resource type="Script" path="res://movement_bases/movement_base.gd" id="2_03yui"]
+[ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
 
