@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Boxing"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
 [display]
 
@@ -22,8 +26,11 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://assets/": "yellow",
+"res://defaults/": "pink",
 "res://movement_bases/": "blue",
-"res://player/": "green"
+"res://player/": "green",
+"res://scenes/": "orange"
 }
 
 [input]

@@ -7,6 +7,7 @@ extends Control
 	#Enums
 
 	#Constants
+const OPTIONS = preload("res://scenes/menus/options.tscn")
 
 	#Exported Variables
 	#@export_group("Group")
@@ -29,7 +30,9 @@ func _process(_delta):
 #endregion
 
 #region Signal methods
-
+func _on_options_pressed():
+	get_tree().root.add_child(OPTIONS.instantiate())
+	
 func _on_exit_pressed():
 	get_tree().quit()
 #endregion
