@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhltmqvlc20k7"]
+
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_0r4i7"]
+[ext_resource type="Script" path="res://movement_bases/movement_base.gd" id="2_03yui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llf6c"]
+radius = 64.0078
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_0r4i7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_llf6c")
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="Scripts" node_paths=PackedStringArray("target")]
+script = ExtResource("2_03yui")
+target = NodePath("../..")
+
+[node name="Animation Players" type="Node" parent="."]
+
+[node name="Left Arm" type="AnimationPlayer" parent="Animation Players"]
+
+[node name="Right Arm" type="AnimationPlayer" parent="Animation Players"]
