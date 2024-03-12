@@ -71,5 +71,6 @@ position = Vector2(818, 398)
 scale = Vector2(4.4375, 3.20313)
 texture = ExtResource("2_61emo")
 
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
