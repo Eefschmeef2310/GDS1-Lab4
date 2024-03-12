@@ -1,6 +1,6 @@
 extends Node
 #class_name
-#Authored by [Name]. Please consult for any modifications or major feature requests.
+#Authored by Alex. Please consult for any modifications or major feature requests.
 
 #region Variables
 #Signals
@@ -19,6 +19,8 @@ extends Node
 #Other Variables (please try to separate and organise!)
 var can_punch: bool = true
 var can_retract: bool = false
+var is_right_arm: bool = true
+var current_arm_anim: AnimationPlayer
 #endregion
 
 #region Godot methods
@@ -29,10 +31,10 @@ func _ready():
 func _process(delta):
 	#Runs per frame
 	if can_punch && Input.is_action_pressed("Punch"):
-		punch()
+		punch(is_right_arm)
 	
 	if(can_retract && !Input.is_action_pressed("Punch")):
-		retract_r()
+		retract()
 		
 #endregion
 
@@ -41,8 +43,9 @@ func _process(delta):
 #endregion
 
 #region Other methods (please try to separate and organise!)
-func punch():
-	$"../../AnimationPlayers/RightArm".play("punch")
+func punch(right: bool):
+	current_arm_anim = $"../../AnimationPlayers/RightArm" if right else $"../../AnimationPlayers/LeftArm"
+	current_arm_anim.play("punch")
 	can_punch = false
 	
 func finished_r_punch():
@@ -51,13 +54,20 @@ func finished_r_punch():
 	right_hitbox.disabled = true
 	can_retract = true
 
-	
-func retract_r():
-	$"../../AnimationPlayers/RightArm".play("retract")
+func finished_l_punch():
+	left_hitbox.disabled = false
+	await get_tree().create_timer(0.1).timeout
+	left_hitbox.disabled = true
+	can_retract = true
+
+func retract():
+	current_arm_anim.play("retract")
 	right_hitbox.disabled = true
+	left_hitbox.disabled = true
 	can_retract = false
 	
 func finished_retract():
+	is_right_arm = !is_right_arm
 	can_punch = true
 #endregion
 
