@@ -4,6 +4,10 @@
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
+[ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="5_ae7lc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrnbx"]
+size = Vector2(89, 123)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llf6c"]
 radius = 64.0078
@@ -62,6 +66,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [2.00713, 0.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_l_punch"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eyw0p"]
 resource_name = "retract"
@@ -89,6 +107,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.00713]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_retract"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_tvlc0"]
@@ -210,6 +242,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [-2.00713, 0.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_r_punch"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_bblkd"]
 resource_name = "retract"
@@ -237,6 +283,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.5708, 3.14159]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_retract"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_180vh"]
@@ -304,7 +364,7 @@ _data = {
 "retract_head": SubResource("Animation_228e0")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwu7d")
@@ -321,6 +381,14 @@ rotation = 1.5708
 texture = ExtResource("3_gsiok")
 offset = Vector2(2.705, -73.27)
 
+[node name="LeftHitbox" type="Area2D" parent="Body/LArm/LHand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/LArm/LHand/LeftHitbox"]
+position = Vector2(1.4996, -133.5)
+shape = SubResource("RectangleShape2D_mrnbx")
+disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
+
 [node name="RArm" type="Sprite2D" parent="Body"]
 z_index = -1
 position = Vector2(1, 70)
@@ -336,6 +404,14 @@ texture = ExtResource("3_gsiok")
 offset = Vector2(2.705, -73.27)
 flip_h = true
 
+[node name="RightHitbox" type="Area2D" parent="Body/RArm/RHand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/RArm/RHand/RightHitbox"]
+position = Vector2(1.4996, -133.5)
+shape = SubResource("RectangleShape2D_mrnbx")
+disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
+
 [node name="HeadCollision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.84, 0.84)
 shape = SubResource("CircleShape2D_llf6c")
@@ -344,6 +420,10 @@ shape = SubResource("CircleShape2D_llf6c")
 
 [node name="Movement" type="Node" parent="Scripts"]
 script = ExtResource("2_oq0kp")
+speed = 500.0
+
+[node name="Punches" type="Node" parent="Scripts"]
+script = ExtResource("5_ae7lc")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
@@ -356,3 +436,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
+
+[connection signal="body_entered" from="Body/LArm/LHand/LeftHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]
+[connection signal="body_entered" from="Body/RArm/RHand/RightHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]
