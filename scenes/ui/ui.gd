@@ -26,9 +26,9 @@ func _ready():
 	pass
 
 #func _process(delta):
-	## Update timer
-	#$MarginContainer/HBoxContainer/Timer.text = get_timer_string_from_seconds(match_timer.time_left)
-	#
+	# Update timer
+	$MarginContainer/HBoxContainer/Timer.text = get_timer_string_from_seconds(match_timer.time_left)
+	
 #endregion
 
 #region Signal methods
