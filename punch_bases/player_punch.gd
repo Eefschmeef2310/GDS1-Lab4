@@ -22,7 +22,7 @@ extends PunchScript
 #region Godot methods
 func _ready():
 	#Runs when all children have entered the tree
-	pass
+	super()
 
 func _process(delta):
 	input_punch = true if Input.is_action_pressed("Punch") else false

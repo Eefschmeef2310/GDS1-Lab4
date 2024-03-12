@@ -4,8 +4,7 @@ class_name PunchScript
 
 #region Variables
 #Signals
-signal enemy_punched
-signal player_punched
+
 #Enums
 
 #Constants
@@ -28,6 +27,11 @@ var input_punch: bool = false #This variable determines the "input" from charact
 #endregion
 
 #region Godot methods
+
+func _ready():
+	$"../../AnimationPlayers/RightArm".play("retract")
+	$"../../AnimationPlayers/LeftArm".play("retract")
+
 func _physics_process(delta):
 	#Runs per frame
 	if can_punch && input_punch:
@@ -39,10 +43,6 @@ func _physics_process(delta):
 #endregion
 
 #region Signal methods
-func _on_punch_hitbox_body_entered(body):
-	#Functionality not added yet in other classes
-	#Should add score and knockback
-	owner.hit.emit()
 
 #endregion
 

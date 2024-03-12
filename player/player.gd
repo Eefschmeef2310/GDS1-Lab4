@@ -32,6 +32,10 @@ func _process(delta):
 
 #region Signal methods
 
+func _on_head_hurtbox_area_entered(area):
+	print("Punchout!!!")
+	hit.emit()
+
 #endregion
 
 #region Other methods (please try to separate and organise!)
