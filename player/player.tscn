@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=23 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
+[ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
 size = Vector2(184, 400)
@@ -368,7 +369,7 @@ _data = {
 "retract_head": SubResource("Animation_228e0")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_w5c5t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -438,6 +439,9 @@ script = ExtResource("2_oq0kp")
 
 [node name="Punches" type="Node" parent="Scripts"]
 script = ExtResource("6_sfrpy")
+
+[node name="Auto-Rotation" type="Node" parent="Scripts"]
+script = ExtResource("7_qfqi1")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
