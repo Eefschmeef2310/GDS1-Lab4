@@ -1,23 +1,86 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=4 format=3 uid="uid://dhltmqvlc20k7"]
-=======
 [gd_scene load_steps=20 format=3 uid="uid://dhltmqvlc20k7"]
->>>>>>> Stashed changes
 
-[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_0r4i7"]
+[ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
+[ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
+[ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
+[ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="5_ae7lc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrnbx"]
+size = Vector2(89, 123)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llf6c"]
 radius = 64.0078
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_4cao8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/LArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
 
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_0r4i7")
+[sub_resource type="Animation" id="Animation_2puw0"]
+resource_name = "punch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/LArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.00713, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_l_punch"
+}]
+}
 
-<<<<<<< Updated upstream
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-=======
 [sub_resource type="Animation" id="Animation_tvlc0"]
 resource_name = "punch_head"
 length = 0.2
@@ -351,16 +414,28 @@ debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
 [node name="HeadCollision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.84, 0.84)
->>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_llf6c")
 
 [node name="Scripts" type="Node" parent="."]
 
 [node name="Movement" type="Node" parent="Scripts"]
 script = ExtResource("2_oq0kp")
+speed = 500.0
 
-[node name="Animation Players" type="Node" parent="."]
+[node name="Punches" type="Node" parent="Scripts"]
+script = ExtResource("5_ae7lc")
 
-[node name="Left Arm" type="AnimationPlayer" parent="Animation Players"]
+[node name="AnimationPlayers" type="Node" parent="."]
 
-[node name="Right Arm" type="AnimationPlayer" parent="Animation Players"]
+[node name="LeftArm" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"": SubResource("AnimationLibrary_n77si")
+}
+
+[node name="RightArm" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"": SubResource("AnimationLibrary_22anh")
+}
+
+[connection signal="body_entered" from="Body/LArm/LHand/LeftHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]
+[connection signal="body_entered" from="Body/RArm/RHand/RightHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]

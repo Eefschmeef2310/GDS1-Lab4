@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=3 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="2_m781p"]
-[ext_resource type="Script" path="res://movement_bases/movement_base.gd" id="3_s66dp"]
 
 [node name="BaseLevel" type="Node2D"]
 
@@ -21,20 +20,3 @@ texture = ExtResource("1_sdqqs")
 [node name="Player" parent="." instance=ExtResource("2_m781p")]
 z_index = 1
 position = Vector2(-162, 34)
-scale = Vector2(0.5, 0.5)
-
-[node name="Movement" parent="Player/Scripts" index="0"]
-speed = 100.0
-
-[node name="Player2" parent="." instance=ExtResource("2_m781p")]
-z_index = 1
-position = Vector2(105, 34)
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-
-[node name="Movement" parent="Player2/Scripts" index="0"]
-script = ExtResource("3_s66dp")
-speed = 100.0
-
-[editable path="Player"]
-[editable path="Player2"]
