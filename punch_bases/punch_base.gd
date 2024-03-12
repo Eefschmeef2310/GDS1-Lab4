@@ -74,7 +74,7 @@ func retract():
 	can_retract = false
 	
 func finished_retract():
-	is_right_arm = !is_right_arm
+	is_right_arm = !is_right_arm #For now used to alternate between left and right punches
 	can_punch = true
 
 #endregion
