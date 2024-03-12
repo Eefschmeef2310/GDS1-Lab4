@@ -1,6 +1,6 @@
-extends PunchScript
+extends Node2D
 #class_name
-#Authored by [Name]. Please consult for any modifications or major feature requests.
+#Authored by Xander. Please consult for any modifications or major feature requests.
 
 #region Variables
 #Signals
@@ -22,18 +22,18 @@ extends PunchScript
 #region Godot methods
 func _ready():
 	#Runs when all children have entered the tree
-	super()
+	pass
 
 func _process(delta):
-	input_punch = true if Input.is_action_pressed("Punch") else false
+	#Runs per frame
 	pass
 #endregion
 
 #region Signal methods
-
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
-

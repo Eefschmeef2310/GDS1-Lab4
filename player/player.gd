@@ -1,9 +1,10 @@
-extends PunchScript
+extends CharacterBody2D
 #class_name
-#Authored by [Name]. Please consult for any modifications or major feature requests.
+#Authored by Xander. Please consult for any modifications or major feature requests.
 
 #region Variables
 #Signals
+signal hit()
 
 #Enums
 
@@ -22,18 +23,21 @@ extends PunchScript
 #region Godot methods
 func _ready():
 	#Runs when all children have entered the tree
-	super()
+	pass
 
 func _process(delta):
-	input_punch = true if Input.is_action_pressed("Punch") else false
+	#Runs per frame
 	pass
 #endregion
 
 #region Signal methods
+
+func _on_head_hurtbox_area_entered(area):
+	print("Punchout!!!")
+	hit.emit()
 
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
-
