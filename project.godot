@@ -18,7 +18,13 @@ config/icon="res://icon.svg"
 
 folder_colors={
 "res://movement_bases/": "blue",
+<<<<<<< Updated upstream
 "res://player/": "green"
+=======
+"res://player/": "green",
+"res://punch_bases/": "blue",
+"res://scenes/": "orange"
+>>>>>>> Stashed changes
 }
 
 [input]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn5ca3ycbsm2p"]
+
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
+[ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="2_m781p"]
+[ext_resource type="Script" path="res://movement_bases/movement_base.gd" id="3_s66dp"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-260, 262, -260, -266, -314, -267, -311, 283, 288, 281, 281, -321, -258, -318, -260, -268, 261, -265, 263, 265)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.921569, 0.4, 0.4, 1)
+scale = Vector2(4.09375, 4.09375)
+texture = ExtResource("1_sdqqs")
+
+[node name="Player" parent="." instance=ExtResource("2_m781p")]
+z_index = 1
+position = Vector2(-162, 34)
+scale = Vector2(0.5, 0.5)
+
+[node name="Movement" parent="Player/Scripts" index="0"]
+speed = 100.0
+
+[node name="Player2" parent="." instance=ExtResource("2_m781p")]
+z_index = 1
+position = Vector2(105, 34)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Movement" parent="Player2/Scripts" index="0"]
+script = ExtResource("3_s66dp")
+speed = 100.0
+
+[editable path="Player"]
+[editable path="Player2"]

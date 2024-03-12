@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://dhltmqvlc20k7"]
+=======
+[gd_scene load_steps=20 format=3 uid="uid://dhltmqvlc20k7"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_0r4i7"]
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
@@ -11,7 +15,343 @@ radius = 64.0078
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("1_0r4i7")
 
+<<<<<<< Updated upstream
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+=======
+[sub_resource type="Animation" id="Animation_tvlc0"]
+resource_name = "punch_head"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/LArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.65806]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.00713, 0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_eyw0p"]
+resource_name = "retract"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/LArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.00713]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_retract"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xgnk2"]
+resource_name = "retract_head"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/LArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.65806, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0872665, 2.00713]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n77si"]
+_data = {
+"RESET": SubResource("Animation_4cao8"),
+"punch": SubResource("Animation_2puw0"),
+"punch_head": SubResource("Animation_tvlc0"),
+"retract": SubResource("Animation_eyw0p"),
+"retract_head": SubResource("Animation_xgnk2")
+}
+
+[sub_resource type="Animation" id="Animation_ien1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/RArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/RArm/RHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_0agmt"]
+resource_name = "punch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/RArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/RArm/RHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.00713, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_r_punch"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_180vh"]
+resource_name = "punch_head"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/RArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 1.48353]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/RArm/RHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.00713, -0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_bblkd"]
+resource_name = "retract"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/RArm/RHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.00713]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/RArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 3.14159]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scripts/Punches")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_retract"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_228e0"]
+resource_name = "retract_head"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/RArm/RHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0872665, -2.00713]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/RArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.48353, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22anh"]
+_data = {
+"RESET": SubResource("Animation_ien1i"),
+"punch": SubResource("Animation_0agmt"),
+"punch_head": SubResource("Animation_180vh"),
+"retract": SubResource("Animation_bblkd"),
+"retract_head": SubResource("Animation_228e0")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_wwu7d")
+
+[node name="LArm" type="Sprite2D" parent="Body"]
+z_index = -1
+position = Vector2(1, -70)
+texture = ExtResource("2_sngc8")
+offset = Vector2(0, -51.24)
+
+[node name="LHand" type="Sprite2D" parent="Body/LArm"]
+position = Vector2(0, -93)
+rotation = 1.5708
+texture = ExtResource("3_gsiok")
+offset = Vector2(2.705, -73.27)
+
+[node name="LeftHitbox" type="Area2D" parent="Body/LArm/LHand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/LArm/LHand/LeftHitbox"]
+position = Vector2(1.4996, -133.5)
+shape = SubResource("RectangleShape2D_mrnbx")
+disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
+
+[node name="RArm" type="Sprite2D" parent="Body"]
+z_index = -1
+position = Vector2(1, 70)
+rotation = 3.14159
+texture = ExtResource("2_sngc8")
+offset = Vector2(0, -51.24)
+flip_h = true
+
+[node name="RHand" type="Sprite2D" parent="Body/RArm"]
+position = Vector2(0, -93)
+rotation = -1.5708
+texture = ExtResource("3_gsiok")
+offset = Vector2(2.705, -73.27)
+flip_h = true
+
+[node name="RightHitbox" type="Area2D" parent="Body/RArm/RHand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/RArm/RHand/RightHitbox"]
+position = Vector2(1.4996, -133.5)
+shape = SubResource("RectangleShape2D_mrnbx")
+disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
+
+[node name="HeadCollision" type="CollisionShape2D" parent="."]
+scale = Vector2(0.84, 0.84)
+>>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_llf6c")
 
 [node name="Scripts" type="Node" parent="."]
