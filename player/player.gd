@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 #region Variables
 #Signals
-signal hit(value: int)
+signal hit()
 
 #Enums
 

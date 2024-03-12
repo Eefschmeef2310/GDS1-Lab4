@@ -42,10 +42,7 @@ func _physics_process(delta):
 func _on_punch_hitbox_body_entered(body):
 	#Functionality not added yet in other classes
 	#Should add score and knockback
-	if(body.is_in_group("Enemy")):
-		enemy_punched.emit()
-	if(body.is_in_group("Player")):
-		player_punched.emit()
+	owner.hit.emit()
 
 #endregion
 
