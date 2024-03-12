@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
-[ext_resource type="Script" path="res://punch_bases/punch_base.gd" id="5_pwf3y"]
+[ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="5_ae7lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mrnbx"]
 size = Vector2(89, 123)
@@ -271,6 +271,7 @@ offset = Vector2(2.705, -73.27)
 position = Vector2(1.4996, -133.5)
 shape = SubResource("RectangleShape2D_mrnbx")
 disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
 [node name="RArm" type="Sprite2D" parent="Body"]
 z_index = -1
@@ -292,6 +293,7 @@ flip_h = true
 position = Vector2(1.4996, -133.5)
 shape = SubResource("RectangleShape2D_mrnbx")
 disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
 [node name="HeadCollision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.84, 0.84)
@@ -304,7 +306,7 @@ script = ExtResource("2_oq0kp")
 speed = 500.0
 
 [node name="Punches" type="Node" parent="Scripts"]
-script = ExtResource("5_pwf3y")
+script = ExtResource("5_ae7lc")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
@@ -318,4 +320,5 @@ libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
 
-[connection signal="body_entered" from="Body/LArm/LHand/LeftHitbox" to="Scripts/Punches" method="_on_left_hitbox_body_entered"]
+[connection signal="body_entered" from="Body/LArm/LHand/LeftHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]
+[connection signal="body_entered" from="Body/RArm/RHand/RightHitbox" to="Scripts/Punches" method="_on_punch_hitbox_body_entered"]
