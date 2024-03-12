@@ -12,6 +12,7 @@ extends PunchScript
 #Exported Variables
 #@export_group("Group")
 #@export_subgroup("Subgroup")
+@export var input_prefix: String = "p1_"
 
 #Onready Variables
 
@@ -25,7 +26,7 @@ func _ready():
 	super()
 
 func _process(delta):
-	input_punch = true if Input.is_action_pressed("Punch") else false
+	input_punch = true if Input.is_action_pressed(input_prefix+"punch") else false
 	pass
 #endregion
 

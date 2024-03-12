@@ -31,6 +31,8 @@ var input_punch: bool = false #This variable determines the "input" from charact
 func _ready():
 	$"../../AnimationPlayers/RightArm".play("retract")
 	$"../../AnimationPlayers/LeftArm".play("retract")
+	left_hitbox.disabled = true
+	right_hitbox.disabled = true
 
 func _physics_process(delta):
 	#Runs per frame
@@ -50,19 +52,16 @@ func _physics_process(delta):
 func punch(right: bool):
 	current_arm_anim = $"../../AnimationPlayers/RightArm" if right else $"../../AnimationPlayers/LeftArm"
 	current_arm_anim.play("punch")
+	
+	left_hitbox.disabled = false
+	right_hitbox.disabled = false
+	
 	can_punch = false
 	
-func finished_r_punch():
-	right_hitbox.disabled = false
-	await get_tree().create_timer(0.1).timeout
-	right_hitbox.disabled = true
+func finished_punch():
 	can_retract = true
-
-func finished_l_punch():
-	left_hitbox.disabled = false
-	await get_tree().create_timer(0.1).timeout
 	left_hitbox.disabled = true
-	can_retract = true
+	right_hitbox.disabled = true
 
 func retract():
 	current_arm_anim.play("retract")
