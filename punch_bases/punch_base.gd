@@ -4,7 +4,8 @@ extends Node
 
 #region Variables
 #Signals
-
+signal enemy_punched
+signal player_punched
 #Enums
 
 #Constants
@@ -39,7 +40,14 @@ func _process(delta):
 #endregion
 
 #region Signal methods
-
+func _on_left_hitbox_body_entered(body):
+	if(body.is_in_group("Enemy")):
+		#Functionality not added yet in other classes
+		enemy_punched.emit()
+	if(body.is_in_group("Player")):
+		#Functionality not added yet in other classes
+		player_punched.emit()
+	pass # Replace with function body.
 #endregion
 
 #region Other methods (please try to separate and organise!)
@@ -70,4 +78,5 @@ func finished_retract():
 	is_right_arm = !is_right_arm
 	can_punch = true
 #endregion
+
 

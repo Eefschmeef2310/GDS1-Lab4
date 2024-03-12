@@ -248,7 +248,7 @@ _data = {
 "retract": SubResource("Animation_bblkd")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwu7d")
@@ -265,9 +265,9 @@ rotation = 1.5708
 texture = ExtResource("3_gsiok")
 offset = Vector2(2.705, -73.27)
 
-[node name="LHitbox" type="Area2D" parent="Body/LArm/LHand"]
+[node name="LeftHitbox" type="Area2D" parent="Body/LArm/LHand"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/LArm/LHand/LHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/LArm/LHand/LeftHitbox"]
 position = Vector2(1.4996, -133.5)
 shape = SubResource("RectangleShape2D_mrnbx")
 disabled = true
@@ -286,9 +286,9 @@ texture = ExtResource("3_gsiok")
 offset = Vector2(2.705, -73.27)
 flip_h = true
 
-[node name="RHitbox" type="Area2D" parent="Body/RArm/RHand"]
+[node name="RightHitbox" type="Area2D" parent="Body/RArm/RHand"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/RArm/RHand/RHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/RArm/RHand/RightHitbox"]
 position = Vector2(1.4996, -133.5)
 shape = SubResource("RectangleShape2D_mrnbx")
 disabled = true
@@ -317,3 +317,5 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
+
+[connection signal="body_entered" from="Body/LArm/LHand/LeftHitbox" to="Scripts/Punches" method="_on_left_hitbox_body_entered"]
