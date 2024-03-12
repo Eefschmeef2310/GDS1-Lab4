@@ -30,8 +30,13 @@ folder_colors={
 "res://defaults/": "pink",
 "res://movement_bases/": "blue",
 "res://player/": "green",
+"res://punch_bases/": "blue",
 "res://scenes/": "orange"
 }
+
+[gui]
+
+theme/custom="res://defaults/default_ui_theme.tres"
 
 [input]
 
