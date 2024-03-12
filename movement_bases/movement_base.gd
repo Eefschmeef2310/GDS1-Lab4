@@ -18,7 +18,11 @@ var can_input: bool = true
 
 #region Godot methods
 func _physics_process(_delta):
-	owner.velocity = direction * speed if can_input else Vector2(owner.up_direction.y, 0) * knockback_speed
+	if(can_input):
+		owner.velocity = direction * speed
+	else:
+		var ko_direction = -1 if owner.rotation == 0 else 1
+		owner.velocity = Vector2(ko_direction, 0) * knockback_speed
 	owner.move_and_slide()
 
 func _on_character_hit():

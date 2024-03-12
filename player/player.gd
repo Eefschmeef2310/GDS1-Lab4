@@ -27,8 +27,8 @@ func _ready():
 
 func _process(delta):
 	#Debug for knockback
-	#if(Input.is_action_just_pressed("p2_down")): 
-		#hit.emit()
+	if(Input.is_action_just_pressed("p2_down")): 
+		hit.emit()
 	pass
 #endregion
 

@@ -25,10 +25,10 @@ func _ready():
 	#Runs when all children have entered the tree
 	pass
 
-func _process(delta):
-	# Update timer
-	$MarginContainer/HBoxContainer/Timer.text = get_timer_string_from_seconds(match_timer.time_left)
-	
+#func _process(delta):
+	## Update timer
+	#$MarginContainer/HBoxContainer/Timer.text = get_timer_string_from_seconds(match_timer.time_left)
+	#
 #endregion
 
 #region Signal methods
