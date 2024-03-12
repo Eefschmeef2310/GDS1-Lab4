@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 #region Variables
 #Signals
-signal hit(value: int)
+signal hit()
 
 #Enums
 
@@ -31,6 +31,10 @@ func _process(delta):
 #endregion
 
 #region Signal methods
+
+func _on_head_hurtbox_area_entered(area):
+	print("Punchout!!!")
+	hit.emit()
 
 #endregion
 
