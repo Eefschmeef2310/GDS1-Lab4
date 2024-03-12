@@ -30,6 +30,9 @@ func _process(_delta):
 #endregion
 
 #region Signal methods
+func _on_versus_pressed():
+	get_tree().change_scene_to_file("res://scenes/gamemodes/versus.tscn")
+
 func _on_training_pressed():
 	get_tree().change_scene_to_file("res://scenes/gamemodes/training.tscn")
 

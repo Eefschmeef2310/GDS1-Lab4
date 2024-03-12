@@ -81,7 +81,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_l_punch"
+"method": &"finished_punch"
 }]
 }
 
@@ -257,7 +257,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_r_punch"
+"method": &"finished_punch"
 }]
 }
 
