@@ -455,4 +455,5 @@ libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
 
+[connection signal="hit" from="." to="Scripts/Movement" method="_on_character_hit"]
 [connection signal="area_entered" from="HeadHurtbox" to="." method="_on_head_hurtbox_area_entered"]

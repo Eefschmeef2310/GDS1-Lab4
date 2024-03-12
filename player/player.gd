@@ -26,7 +26,9 @@ func _ready():
 	pass
 
 func _process(delta):
-	#Runs per frame
+	#Debug for knockback
+	#if(Input.is_action_just_pressed("p2_down")): 
+		#hit.emit()
 	pass
 #endregion
 
