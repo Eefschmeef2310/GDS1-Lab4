@@ -5,6 +5,7 @@ extends Node2D
 #region Variables
 #Signals
 signal score_changed(blue_score: int, red_score: int)
+signal timer_changed(seconds: float)
 
 #Enums
 
@@ -15,6 +16,7 @@ signal score_changed(blue_score: int, red_score: int)
 #@export_subgroup("Subgroup")
 
 #Onready Variables
+@onready var match_timer = $MatchTimer
 
 #Other Variables (please try to separate and organise!)
 var blue_score: int = 0
@@ -29,7 +31,7 @@ func _ready():
 
 func _process(delta):
 	#Runs per frame
-	pass
+	timer_changed.emit(match_timer.time_left)
 #endregion
 
 #region Signal methods

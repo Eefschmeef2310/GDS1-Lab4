@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=2 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
-[ext_resource type="PackedScene" uid="uid://8lasdew10kc0" path="res://scenes/ui/ui.tscn" id="2_pc2sx"]
 
 [node name="BaseLevel" type="Node2D"]
 
@@ -18,5 +17,3 @@ polygon = PackedVector2Array(-260, 262, -260, -266, -314, -267, -311, 283, 288, 
 modulate = Color(0.921569, 0.4, 0.4, 1)
 scale = Vector2(4.09375, 4.09375)
 texture = ExtResource("1_sdqqs")
-
-[node name="Ui" parent="." instance=ExtResource("2_pc2sx")]

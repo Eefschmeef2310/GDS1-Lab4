@@ -9,16 +9,15 @@
 script = ExtResource("1_7lt8v")
 
 [node name="BaseLevel" parent="." instance=ExtResource("2_pjs5m")]
-position = Vector2(576, 324)
 
 [node name="Blue Player" parent="BaseLevel" instance=ExtResource("3_d8f1j")]
 z_index = 1
-position = Vector2(-147, 3)
+position = Vector2(426, 360)
 scale = Vector2(0.5, 0.5)
 
 [node name="Red Player" parent="BaseLevel" instance=ExtResource("3_d8f1j")]
 z_index = 1
-position = Vector2(138, 3)
+position = Vector2(711, 360)
 rotation = 3.14159
 scale = Vector2(0.5, -0.5)
 
@@ -42,7 +41,8 @@ wait_time = 120.0
 one_shot = true
 autostart = true
 
-[connection signal="score_changed" from="." to="Ui" method="_on_versus_score_changed"]
+[connection signal="score_changed" from="." to="Ui" method="_on_gamemode_score_changed"]
+[connection signal="timer_changed" from="." to="Ui" method="_on_gamemode_timer_changed"]
 [connection signal="hit" from="BaseLevel/Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="BaseLevel/Red Player" to="." method="_on_red_player_hit"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
