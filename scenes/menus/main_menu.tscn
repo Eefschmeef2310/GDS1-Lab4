@@ -48,7 +48,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Training"
 
-[node name="Training2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Leaderboard" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Leaderboard"
@@ -82,6 +82,5 @@ expand_mode = 3
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training2" to="." method="_on_training_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
