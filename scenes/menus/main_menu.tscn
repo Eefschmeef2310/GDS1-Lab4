@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=6 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
+
+[sub_resource type="FontVariation" id="FontVariation_6jksb"]
+variation_embolden = 0.52
+
+[sub_resource type="LabelSettings" id="LabelSettings_lybsi"]
+font = SubResource("FontVariation_6jksb")
+font_size = 21
 
 [sub_resource type="LabelSettings" id="LabelSettings_743dm"]
 font_size = 140
@@ -48,15 +55,37 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Training"
 
-[node name="Leaderboard" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Leaderboard"
-
 [node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options"
+
+[node name="OnlinePanel" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
+layout_mode = 2
+text = "Online Account"
+label_settings = SubResource("LabelSettings_lybsi")
+horizontal_alignment = 1
+
+[node name="Leaderboard" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Leaderboard"
+
+[node name="Change Username" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Change Username: NyaNya!"
+
+[node name="Logout" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Logout"
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

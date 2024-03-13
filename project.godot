@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
+[autoload]
+
+AirtableManager="*res://online/AirtableManager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
