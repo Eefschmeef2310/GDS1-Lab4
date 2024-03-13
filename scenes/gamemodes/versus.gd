@@ -55,7 +55,7 @@ func _on_button_pressed():
 
 #region Other methods (please try to separate and organise!)
 func check_game_end():
-	if(blue_score == 100 || red_score == 100 || match_timer.time_left == 0):
+	if(blue_score == 1 || red_score == 100 || match_timer.time_left == 0):
 		hide_ui.emit()
 		game_ended.emit(blue_score, red_score, match_timer.time_left)
 #endregion
