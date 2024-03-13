@@ -4,7 +4,7 @@ extends CanvasLayer
 
 #region Variables
 	#Signals
-
+	
 	#Enums
 
 	#Constants
@@ -16,7 +16,7 @@ extends CanvasLayer
 	#Onready Variables
 
 	#Other Variables (please try to separate and organise!)
-
+	
 #endregion
 
 #region Godot methods
@@ -35,6 +35,9 @@ func _on_gamemode_score_changed(blue_score, red_score):
 
 func _on_gamemode_timer_changed(seconds):
 	$MarginContainer/HBoxContainer/Timer.text = get_timer_string_from_seconds(seconds)
+	
+func _on_game_end():
+	visible = false
 
 #region Other methods (please try to separate and organise!)
 
