@@ -29,7 +29,7 @@ func _ready():
 	#Runs when all children have entered the tree
 	pass
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	timer_changed.emit(match_timer.time_left)
 #endregion

@@ -17,5 +17,5 @@ func _ready():
 
 func _process(_delta):
 	if other_player:
-		owner.rotation = deg_to_rad(180) if other_player.global_position.x < owner.global_position.x else 0
+		owner.rotation = deg_to_rad(180) if other_player.global_position.x < owner.global_position.x else deg_to_rad(0)
 #endregion

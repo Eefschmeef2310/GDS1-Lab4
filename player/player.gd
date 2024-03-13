@@ -25,7 +25,7 @@ func _ready():
 	#Runs when all children have entered the tree
 	pass
 
-func _process(delta):
+func _process(_delta):
 	#Debug for knockback
 	#if(Input.is_action_just_pressed("p2_down")): 
 		#hit.emit()
@@ -34,7 +34,7 @@ func _process(delta):
 
 #region Signal methods
 
-func _on_head_hurtbox_area_entered(area):
+func _on_head_hurtbox_area_entered(_area):
 	print("Punchout!!!")
 	hit.emit()
 
