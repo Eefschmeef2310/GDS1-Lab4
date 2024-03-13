@@ -8,10 +8,11 @@ class_name MovementScript
 	#Exported Variables
 @export_group("Parameters")
 @export var speed: float = 100
-@export var knockback_speed: float = 200
+@export var knockback_speed: float = 300
 
 	#Other Variables (please try to separate and organise!)
-var direction:Vector2
+var direction: Vector2
+var knockback_velocity: float
 
 var can_input: bool = true
 #endregion
@@ -22,11 +23,13 @@ func _physics_process(_delta):
 		owner.velocity = direction * speed
 	else:
 		var ko_direction = -1 if owner.rotation == 0 else 1
-		owner.velocity = Vector2(ko_direction, 0) * knockback_speed
+		owner.velocity = Vector2(ko_direction, 0) * knockback_velocity
+		knockback_velocity = lerp(knockback_velocity, 0.0, 0.2)
 	owner.move_and_slide()
 
 func _on_character_hit():
 	can_input = false
+	knockback_velocity = knockback_speed
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 #endregion
