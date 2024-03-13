@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=24 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
+[ext_resource type="Texture2D" uid="uid://gx4yv7ylj7ue" path="res://assets/glove.png" id="5_b2583"]
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
 
@@ -389,7 +390,12 @@ offset = Vector2(0, -51.24)
 position = Vector2(0, -93)
 rotation = 1.5708
 texture = ExtResource("3_gsiok")
-offset = Vector2(2.705, -73.27)
+offset = Vector2(2.705, -40)
+
+[node name="Glove" type="Sprite2D" parent="Body/LArm/LHand"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+position = Vector2(1.99955, -122)
+texture = ExtResource("5_b2583")
 
 [node name="LeftHitbox" type="Area2D" parent="Body/LArm/LHand"]
 position = Vector2(-0.000452499, -125)
@@ -412,7 +418,13 @@ flip_h = true
 position = Vector2(0, -93)
 rotation = -1.5708
 texture = ExtResource("3_gsiok")
-offset = Vector2(2.705, -73.27)
+offset = Vector2(2.705, -40)
+flip_h = true
+
+[node name="Glove" type="Sprite2D" parent="Body/RArm/RHand"]
+self_modulate = Color(0.235294, 0.368627, 0.545098, 1)
+position = Vector2(1.99957, -122)
+texture = ExtResource("5_b2583")
 flip_h = true
 
 [node name="RightHitbox" type="Area2D" parent="Body/RArm/RHand"]
