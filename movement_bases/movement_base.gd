@@ -7,8 +7,8 @@ class_name MovementScript
 #region Variables
 	#Exported Variables
 @export_group("Parameters")
-@export var speed: float = 100
-@export var knockback_speed: float = 300
+@export var speed: float = 200
+@export var knockback_speed: float = 1000
 
 	#Other Variables (please try to separate and organise!)
 var direction: Vector2
