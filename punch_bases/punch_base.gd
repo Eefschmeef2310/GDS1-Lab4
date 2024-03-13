@@ -34,7 +34,7 @@ func _ready():
 	left_hitbox.disabled = true
 	right_hitbox.disabled = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#Runs per frame
 	if can_punch && input_punch:
 		punch(is_right_arm)

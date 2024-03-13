@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
-[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="2_61emo"]
+[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_743dm"]
-font_size = 150
+font_size = 140
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -35,41 +35,50 @@ alignment = 1
 
 [node name="Championship" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Championship"
 
 [node name="Versus" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Versus"
 
 [node name="Training" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Training"
+
+[node name="Leaderboard" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Leaderboard"
 
 [node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Options"
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Exit
 "
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "BOXING"
 label_settings = SubResource("LabelSettings_743dm")
 horizontal_alignment = 2
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(818, 398)
-scale = Vector2(4.4375, 3.20313)
-texture = ExtResource("2_61emo")
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 450.55)
+layout_mode = 2
+texture = ExtResource("2_5f6gd")
+expand_mode = 3
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
