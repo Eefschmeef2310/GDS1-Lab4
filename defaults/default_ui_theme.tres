@@ -44,14 +44,14 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [resource]
-Label/constants/shadow_offset_x = 0
-Label/constants/shadow_offset_y = 0
-Label/constants/shadow_outline_size = 7
 Button/font_sizes/font_size = 32
 Button/styles/focus = null
 Button/styles/hover = SubResource("StyleBoxFlat_xfy4i")
 Button/styles/normal = SubResource("StyleBoxFlat_8oe8t")
 Button/styles/pressed = SubResource("StyleBoxFlat_tgjd7")
 HSlider/styles/slider = SubResource("StyleBoxFlat_f6eh1")
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 7
 Label/font_sizes/font_size = 50
 Label/fonts/font = null
