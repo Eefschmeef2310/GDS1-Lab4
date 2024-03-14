@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=25 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gx4yv7ylj7ue" path="res://assets/glove.png" id="5_b2583"]
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
+[ext_resource type="Script" path="res://autoloads/pause_manager.gd" id="9_gekwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
 size = Vector2(184, 400)
@@ -454,6 +455,9 @@ script = ExtResource("6_sfrpy")
 
 [node name="Auto-Rotation" type="Node" parent="Scripts"]
 script = ExtResource("7_qfqi1")
+
+[node name="Pause" type="Node" parent="Scripts"]
+script = ExtResource("9_gekwv")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 

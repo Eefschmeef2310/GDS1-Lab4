@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
-[autoload]
-
-PauseManager="*res://autoloads/pause_manager.gd"
-
 [display]
 
 window/stretch/mode="canvas_items"
