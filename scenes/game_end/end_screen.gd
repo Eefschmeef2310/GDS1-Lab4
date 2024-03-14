@@ -67,6 +67,7 @@ func get_timer_string_from_seconds(time_elapsed := 0.0):
 
 
 func _on_continue_button_pressed():
+	get_tree().paused = false
 	continue_pressed.emit()
 
 func set_championship():

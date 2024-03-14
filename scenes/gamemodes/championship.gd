@@ -29,6 +29,7 @@ const BattleScene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
 
 #Onready Variables
 @onready var prematch_screen = $PrematchScreen
+@onready var championship_win = $ChampionshipWin
 
 #Other Variables (please try to separate and organise!)
 var current_round: int = -1
@@ -56,6 +57,9 @@ func _on_battle_continue_championship(new_score: int):
 	total_score = new_score
 	start_next_round()
 
+func _on_finish_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
+
 #endregion
 
 #region Other methods (please try to separate and organise!)
@@ -76,7 +80,6 @@ func start_battle():
 func start_next_round():
 	current_round += 1
 	if battle:
-		print("Battle freed.")
 		battle.queue_free()
 		
 	if current_round < Opponents.size():
@@ -87,6 +90,6 @@ func start_next_round():
 		prematch_screen.round_subtitle.text = "Current Score: " + str(total_score)
 	
 	else:
-		get_tree().quit()
+		championship_win.show()
 
 #endregion

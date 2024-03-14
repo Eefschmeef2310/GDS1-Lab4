@@ -20,6 +20,7 @@ signal continue_pressed()
 @onready var blue_details = $BlueDetails/Details
 @onready var red_name = $RedDetails/Name
 @onready var red_details = $RedDetails/Details
+@onready var play_button = $PlayButton
 
 
 #Exported Variables
@@ -37,7 +38,7 @@ func _ready():
 	set_blue_data(load("res://fighters/dummy.tres"))
 	set_red_data(load("res://fighters/todd.tres"))
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	pass
 #endregion

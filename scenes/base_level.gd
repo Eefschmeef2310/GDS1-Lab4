@@ -10,7 +10,7 @@ signal red_player_hit
 @onready var blue_player := $"Blue Player"
 @onready var red_player := $"Red Player"
 @onready var countdown_label = $CountdownUI/Label
-
+@onready var camera = $Camera
 
 #region Godot methods
 func _ready():
@@ -25,9 +25,11 @@ func _process(_delta):
 #region Signal methods
 
 func _on_blue_player_hit(_knockback_power):
+	camera.add_trauma(1)
 	blue_player_hit.emit()
 
 func _on_red_player_hit(_knockback_power):
+	camera.add_trauma(1)
 	red_player_hit.emit()
 	
 #endregion

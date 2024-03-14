@@ -1,12 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=12 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
 [ext_resource type="Script" path="res://scenes/base_level.gd" id="1_sdqvl"]
 [ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_8ptoh"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_hc60e"]
+[ext_resource type="Script" path="res://scenes/battle_camera.gd" id="3_nngem"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x7ktp"]
+noise_type = 3
+seed = 5589
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
 size = Vector2(630, 45)
@@ -19,13 +24,22 @@ outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_sdqvl")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -440.0
+offset_top = -640.0
+offset_right = 1560.0
+offset_bottom = 1360.0
+color = Color(0.0823529, 0.113725, 0.156863, 1)
+
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.0823529, 0.113725, 0.156863, 1)
 texture = ExtResource("1_pf8nb")
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
+script = ExtResource("3_nngem")
+noise = SubResource("FastNoiseLite_x7ktp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 355)

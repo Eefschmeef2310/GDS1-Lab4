@@ -27,6 +27,8 @@ signal continue_championship(new_score: int)
 var blue_score: int = 0
 var red_score: int = 0
 
+var game_over := false
+
 var championship_score: int = 0
 
 #endregion
@@ -45,14 +47,16 @@ func _process(_delta):
 #region Signal methods
 
 func _on_base_level_blue_player_hit():
-	red_score += 1
-	score_changed.emit(blue_score, red_score)
-	check_game_end()
+	if !game_over:
+		red_score += 1
+		score_changed.emit(blue_score, red_score)
+		check_game_end()
 
 func _on_base_level_red_player_hit():
-	blue_score += 1
-	score_changed.emit(blue_score, red_score)
-	check_game_end()
+	if !game_over:
+		blue_score += 1
+		score_changed.emit(blue_score, red_score)
+		check_game_end()
 
 func _on_end_screen_continue_pressed():
 	continue_championship.emit(championship_score)
@@ -71,6 +75,7 @@ func check_game_end():
 			var addition = max(0, blue_score - red_score) + floor(match_timer.time_left)
 			championship_score += (addition * 100)
 		
+		game_over = true
 		base_level.start_slowmo()
 		await base_level.slowmo_complete
 		hide_ui.emit()
