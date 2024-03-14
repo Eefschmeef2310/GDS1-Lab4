@@ -28,13 +28,6 @@ input_prefix = "p2_"
 [node name="Punches" parent="BaseLevel/Red Player/Scripts" index="1"]
 input_prefix = "p2_"
 
-[node name="Button" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 585.0
-offset_right = 146.0
-offset_bottom = 616.0
-text = "Back to Menu"
-
 [node name="Ui" parent="." instance=ExtResource("5_2xha0")]
 
 [node name="MatchTimer" type="Timer" parent="."]
@@ -50,7 +43,6 @@ autostart = true
 [connection signal="timer_changed" from="." to="Ui" method="_on_gamemode_timer_changed"]
 [connection signal="hit" from="BaseLevel/Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="BaseLevel/Red Player" to="." method="_on_red_player_hit"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="MatchTimer" to="." method="check_game_end"]
 
 [editable path="BaseLevel/Blue Player"]

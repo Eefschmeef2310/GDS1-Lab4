@@ -11,6 +11,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_constants/margin_top = 12
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -22,7 +23,7 @@ theme_override_colors/font_color = Color(0, 0.00784314, 0.8, 1)
 theme_override_fonts/font = ExtResource("2_og1h8")
 theme_override_font_sizes/font_size = 70
 text = "0"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="Timer" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -39,4 +40,3 @@ theme_override_colors/font_color = Color(0.8, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_og1h8")
 theme_override_font_sizes/font_size = 70
 text = "0"
-horizontal_alignment = 1

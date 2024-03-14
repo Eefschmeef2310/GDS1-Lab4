@@ -28,14 +28,17 @@ script = ExtResource("4_j6en5")
 [node name="Punches" parent="BaseLevel/Dummy/Scripts" index="1"]
 script = ExtResource("5_mynrd")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 585.0
-offset_right = 146.0
-offset_bottom = 616.0
-text = "Back to Menu"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 456.0
+offset_top = 24.0
+offset_right = 692.0
+offset_bottom = 74.0
+grow_horizontal = 2
+text = "PAUSE TO EXIT"
+horizontal_alignment = 1
 
 [editable path="BaseLevel/Player"]
 [editable path="BaseLevel/Dummy"]
