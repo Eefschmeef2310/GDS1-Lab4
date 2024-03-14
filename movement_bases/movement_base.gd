@@ -23,7 +23,7 @@ func _physics_process(_delta):
 	else:
 		var ko_direction = -1 if owner.rotation == 0 else 1
 		owner.velocity = Vector2(ko_direction, 0) * knockback_velocity
-		knockback_velocity = lerp(knockback_velocity, 0.0, 0.2)
+		knockback_velocity = lerp(knockback_velocity, 0.0, 0.2*Engine.time_scale)
 	owner.move_and_slide()
 
 func _on_character_hit(knockback_power):

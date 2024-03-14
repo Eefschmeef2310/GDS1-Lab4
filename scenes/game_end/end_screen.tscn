@@ -25,7 +25,9 @@ offset_top = -245.0
 offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
@@ -41,39 +43,97 @@ text = "Blue Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FinalScore" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="HBoxScore" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("2_7sblk")
-text = "Final Score: X-X"
-horizontal_alignment = 1
+alignment = 1
 
-[node name="TimeTaken" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxScore"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_7sblk")
-text = "Time Taken XX:XX"
-horizontal_alignment = 1
+text = "Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_7sblk")
+text = "XX-XX"
+vertical_alignment = 1
+
+[node name="HBoxTime" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_7sblk")
+text = "Time Left:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_7sblk")
+text = "XX:XX"
+vertical_alignment = 1
+
+[node name="HBoxChamp" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxChamp"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_7sblk")
+text = "Total Points:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HBoxChamp"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_7sblk")
+text = "XXXXX"
+vertical_alignment = 1
 
 [node name="ButtonContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
+theme_override_constants/separation = 32
+alignment = 1
 
-[node name="MenuBtn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer"]
+[node name="ContinueButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Back to Menu"
+theme_override_font_sizes/font_size = 38
+text = "Continue"
 
 [node name="OtherBtn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 38
 text = "Replay"
 
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[node name="MenuBtn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "Back to Menu"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/OtherBtn" to="." method="_on_versus_btn_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]

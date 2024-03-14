@@ -4,6 +4,7 @@ extends CanvasLayer
 
 #region Variables
 	#Signals
+signal continue_pressed
 
 	#Enums
 
@@ -16,7 +17,9 @@ extends CanvasLayer
 	#Onready Variables
 
 	#Other Variables (please try to separate and organise!)
-
+var is_championship := false
+	
+	
 #endregion
 
 #region Godot methods
@@ -25,15 +28,22 @@ func _ready():
 #endregion
 
 #region Signal methods
-func _on_game_end(b_score:int, r_score:int, time:int):
+func _on_game_end(b_score:int, r_score:int, time:int, c_score:int):
 	if b_score > r_score:
 		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Blue wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0, 0.251, 0.863))
-	else:
+	elif r_score > b_score:
 		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0.8, 0, 0))
-	$ColorRect/MarginContainer/VBoxContainer/FinalScore.text = "Final Score     " + str(b_score) + " - " + str(r_score)
-	$ColorRect/MarginContainer/VBoxContainer/TimeTaken.text = "Time Taken     " + get_timer_string_from_seconds(120 - time)
+		$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton.hide()
+	else:
+		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Draw!"
+		$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton.hide()
+
+	$ColorRect/MarginContainer/VBoxContainer/HBoxScore/Value.text = str(b_score) + " - " + str(r_score)
+	$ColorRect/MarginContainer/VBoxContainer/HBoxTime/Value.text = get_timer_string_from_seconds(time)
+	$ColorRect/MarginContainer/VBoxContainer/HBoxChamp/Value.text = str(c_score)
+	
 	visible = true
 	get_tree().paused = true
 
@@ -54,3 +64,13 @@ func get_timer_string_from_seconds(time_elapsed := 0.0):
 	var time_string := "%02d:%02d" % [minutes, seconds]
 	return time_string
 #endregion
+
+
+func _on_continue_button_pressed():
+	continue_pressed.emit()
+
+func set_championship():
+	is_championship = true
+	$ColorRect/MarginContainer/VBoxContainer/HBoxChamp.show()
+	$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton.show()
+	$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/OtherBtn.hide()

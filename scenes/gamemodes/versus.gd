@@ -4,10 +4,6 @@ extends Node2D
 
 #region Variables
 #Signals
-signal score_changed(blue_score: int, red_score: int)
-signal timer_changed(seconds: float)
-signal game_ended(blue_score: int, red_score: int, timer:int)
-signal hide_ui()
 
 #Enums
 
@@ -18,22 +14,20 @@ signal hide_ui()
 #@export_subgroup("Subgroup")
 
 #Onready Variables
-@onready var match_timer = $MatchTimer
+@onready var battle = $Battle
 
 #Other Variables (please try to separate and organise!)
-var blue_score: int = 0
-var red_score: int = 0
 
 #endregion
 
 #region Godot methods
 func _ready():
-	#Runs when all children have entered the tree
-	pass
+	battle.base_level.get_blue_player().set_as_player("p1_")
+	battle.base_level.get_red_player().set_as_player("p2_")
 
-func _process(_delta):
+func _process(delta):
 	#Runs per frame
-	timer_changed.emit(match_timer.time_left)
+	pass
 #endregion
 
 #region Signal methods
@@ -54,11 +48,5 @@ func _on_button_pressed():
 #endregion
 
 #region Other methods (please try to separate and organise!)
-func check_game_end():
-	if(blue_score == 1 || red_score == 1 || match_timer.time_left == 0):
-		hide_ui.emit()
-		game_ended.emit(blue_score, red_score, match_timer.time_left)
+
 #endregion
-
-
-

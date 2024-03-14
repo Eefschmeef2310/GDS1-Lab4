@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=9 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
+[ext_resource type="Script" path="res://scenes/base_level.gd" id="1_sdqvl"]
 [ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_8ptoh"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_hc60e"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
+[ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw0m2"]
+font_size = 128
+outline_size = 18
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 
 [node name="BaseLevel" type="Node2D"]
+script = ExtResource("1_sdqvl")
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.0823529, 0.113725, 0.156863, 1)
@@ -41,3 +49,35 @@ texture = ExtResource("3_hc60e")
 position = Vector2(1040, 349)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_36442")
+
+[node name="Blue Player" parent="." instance=ExtResource("6_i6nhd")]
+z_index = 1
+position = Vector2(426, 360)
+scale = Vector2(0.5, 0.5)
+
+[node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
+z_index = 1
+position = Vector2(711, 360)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+
+[node name="CountdownUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CountdownUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -26.5
+offset_right = 26.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_gw0m2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
+[connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
