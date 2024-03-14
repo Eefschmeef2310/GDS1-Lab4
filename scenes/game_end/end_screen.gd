@@ -27,10 +27,10 @@ func _ready():
 #region Signal methods
 func _on_game_end(b_score:int, r_score:int, time:int):
 	if b_score > r_score:
-		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Blue wins"
+		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Blue wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0, 0.251, 0.863))
 	else:
-		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins"
+		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0.8, 0, 0))
 	$ColorRect/MarginContainer/VBoxContainer/FinalScore.text = "Final Score     " + str(b_score) + " - " + str(r_score)
 	$ColorRect/MarginContainer/VBoxContainer/TimeTaken.text = "Time Taken     " + get_timer_string_from_seconds(120 - time)

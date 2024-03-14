@@ -38,6 +38,7 @@ folder_colors={
 [gui]
 
 theme/custom="res://defaults/default_ui_theme.tres"
+theme/custom_font="res://scenes/ui/BallsoOnTheRampage.ttf"
 
 [input]
 
