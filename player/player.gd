@@ -42,4 +42,13 @@ func _on_head_hurtbox_area_entered(_area):
 
 #region Other methods (please try to separate and organise!)
 
+func set_as_player(prefix: String):
+	pass
+
+func set_as_dummy():
+	pass
+
+func set_as_ai():
+	pass
+
 #endregion

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdw1iypup776f"]
+[gd_scene load_steps=5 format=3 uid="uid://bdw1iypup776f"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/versus.gd" id="1_7lt8v"]
 [ext_resource type="PackedScene" uid="uid://cn5ca3ycbsm2p" path="res://scenes/base_level.tscn" id="2_pjs5m"]
-[ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="3_d8f1j"]
 [ext_resource type="PackedScene" uid="uid://8lasdew10kc0" path="res://scenes/ui/ui.tscn" id="5_2xha0"]
 [ext_resource type="PackedScene" uid="uid://xqfxp3bk3bcr" path="res://scenes/game_end/end_screen.tscn" id="5_fali3"]
 
@@ -10,23 +9,6 @@
 script = ExtResource("1_7lt8v")
 
 [node name="BaseLevel" parent="." instance=ExtResource("2_pjs5m")]
-
-[node name="Blue Player" parent="BaseLevel" instance=ExtResource("3_d8f1j")]
-z_index = 1
-position = Vector2(426, 360)
-scale = Vector2(0.5, 0.5)
-
-[node name="Red Player" parent="BaseLevel" instance=ExtResource("3_d8f1j")]
-z_index = 1
-position = Vector2(711, 360)
-rotation = 3.14159
-scale = Vector2(0.5, -0.5)
-
-[node name="Movement" parent="BaseLevel/Red Player/Scripts" index="0"]
-input_prefix = "p2_"
-
-[node name="Punches" parent="BaseLevel/Red Player/Scripts" index="1"]
-input_prefix = "p2_"
 
 [node name="Ui" parent="." instance=ExtResource("5_2xha0")]
 
@@ -41,9 +23,4 @@ autostart = true
 [connection signal="hide_ui" from="." to="Ui" method="_on_game_end"]
 [connection signal="score_changed" from="." to="Ui" method="_on_gamemode_score_changed"]
 [connection signal="timer_changed" from="." to="Ui" method="_on_gamemode_timer_changed"]
-[connection signal="hit" from="BaseLevel/Blue Player" to="." method="_on_blue_player_hit"]
-[connection signal="hit" from="BaseLevel/Red Player" to="." method="_on_red_player_hit"]
 [connection signal="timeout" from="MatchTimer" to="." method="check_game_end"]
-
-[editable path="BaseLevel/Blue Player"]
-[editable path="BaseLevel/Red Player"]
