@@ -33,6 +33,7 @@ folder_colors={
 "res://player/": "green",
 "res://punch_bases/": "blue",
 "res://scenes/": "orange",
+"res://shaders/": "green",
 "res://sounds/": "teal"
 }
 

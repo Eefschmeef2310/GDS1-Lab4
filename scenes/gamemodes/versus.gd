@@ -25,7 +25,7 @@ func _ready():
 	battle.base_level.get_blue_player().set_as_player("p1_")
 	battle.base_level.get_red_player().set_as_player("p2_")
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	pass
 #endregion

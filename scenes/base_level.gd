@@ -17,17 +17,17 @@ func _ready():
 	#Runs when all children have entered the tree
 	pass
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	pass
 #endregion
 
 #region Signal methods
 
-func _on_blue_player_hit():
+func _on_blue_player_hit(_knockback_power):
 	blue_player_hit.emit()
 
-func _on_red_player_hit():
+func _on_red_player_hit(_knockback_power):
 	red_player_hit.emit()
 	
 #endregion

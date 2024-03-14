@@ -80,6 +80,7 @@ layout_mode = 2
 texture = ExtResource("2_5f6gd")
 expand_mode = 3
 
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Championship" to="." method="_on_championship_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

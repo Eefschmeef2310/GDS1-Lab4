@@ -7,8 +7,7 @@ class_name MovementScript
 #region Variables
 	#Exported Variables
 @export_group("Parameters")
-@export var speed: float = 200
-@export var knockback_speed: float = 1000
+
 
 	#Other Variables (please try to separate and organise!)
 var direction: Vector2
@@ -20,16 +19,16 @@ var can_input: bool = true
 #region Godot methods
 func _physics_process(_delta):
 	if(can_input):
-		owner.velocity = direction * speed
+		owner.velocity = direction * owner.movement_speed
 	else:
 		var ko_direction = -1 if owner.rotation == 0 else 1
 		owner.velocity = Vector2(ko_direction, 0) * knockback_velocity
 		knockback_velocity = lerp(knockback_velocity, 0.0, 0.2*Engine.time_scale)
 	owner.move_and_slide()
 
-func _on_character_hit():
+func _on_character_hit(knockback_power):
 	can_input = false
-	knockback_velocity = knockback_speed
+	knockback_velocity = knockback_power
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 #endregion

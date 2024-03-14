@@ -13,6 +13,7 @@ class_name PunchScript
 #@export_group("Group")
 #@export_subgroup("Subgroup")
 
+
 #Onready Variables
 @onready var left_hitbox: CollisionShape2D = $"../../Body/LArm/LHand/LeftHitbox/CollisionShape2D"
 @onready var right_hitbox: CollisionShape2D = $"../../Body/RArm/RHand/RightHitbox/CollisionShape2D"
@@ -54,7 +55,7 @@ func punch(right: bool):
 	if $"../../AudioPlayers/Punch" : $"../../AudioPlayers/Punch".play()
 	
 	current_arm_anim = $"../../AnimationPlayers/RightArm" if right else $"../../AnimationPlayers/LeftArm"
-	current_arm_anim.play("punch")
+	current_arm_anim.play("punch", -1, owner.punch_speed_scale)
 	
 	left_hitbox.disabled = false
 	right_hitbox.disabled = false
@@ -67,7 +68,7 @@ func finished_punch():
 	right_hitbox.disabled = true
 
 func retract():
-	current_arm_anim.play("retract")
+	current_arm_anim.play("retract", -1, owner.retract_speed_scale)
 	right_hitbox.disabled = true 
 	left_hitbox.disabled = true
 	can_retract = false
