@@ -8,7 +8,7 @@ extends Control
 
 	#Constants
 const OPTIONS = preload("res://scenes/menus/options.tscn")
-
+const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
 	#Exported Variables
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
@@ -40,6 +40,9 @@ func _on_training_pressed():
 func _on_options_pressed():
 	get_tree().root.add_child(OPTIONS.instantiate())
 	
+func _on_championship_pressed():
+	get_tree().change_scene_to_file("res://scenes/gamemodes/championship.tscn")
+	
 func _on_exit_pressed():
 	get_tree().quit()
 #endregion
@@ -47,3 +50,6 @@ func _on_exit_pressed():
 #region Other methods (please try to separate and organise!)
 
 #endregion
+
+
+
