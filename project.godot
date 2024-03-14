@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://assets/": "yellow",
 "res://defaults/": "pink",
+"res://fighters/": "red",
 "res://movement_bases/": "blue",
 "res://player/": "green",
 "res://punch_bases/": "blue",
