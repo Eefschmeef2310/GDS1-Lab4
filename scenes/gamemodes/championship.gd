@@ -16,6 +16,7 @@ extends Node2D
 #Onready Variables
 
 #Other Variables (please try to separate and organise!)
+var total_score: int = 0
 
 #endregion
 

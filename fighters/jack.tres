@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://dr5rjx4uw63bx"]
+
+[ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_6kdnt"]
+
+[resource]
+script = ExtResource("1_6kdnt")
+first_name = "Jack"
+middle_name = "Lightning"
+last_name = "Johnson"
+description = ""
+movement_speed = 200.0
+punch_attack_speed = 1.0
+punch_retract_speed = 1.0
+punch_knockback = 1000.0
+punch_frequency = 0.5
+punch_reach = 1.0
