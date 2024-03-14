@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gx4yv7ylj7ue" path="res://assets/glove.png" id="5_b2583"]
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
-[ext_resource type="Script" path="res://autoloads/pause_manager.gd" id="9_gekwv"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="9_gekwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
 size = Vector2(184, 400)
