@@ -4,6 +4,7 @@ extends CanvasLayer
 
 #region Variables
 	#Signals
+signal continue_pressed
 
 	#Enums
 
@@ -32,8 +33,8 @@ func _on_game_end(b_score:int, r_score:int, time:int):
 	else:
 		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0.8, 0, 0))
-	$ColorRect/MarginContainer/VBoxContainer/FinalScore.text = "Final Score     " + str(b_score) + " - " + str(r_score)
-	$ColorRect/MarginContainer/VBoxContainer/TimeTaken.text = "Time Taken     " + get_timer_string_from_seconds(120 - time)
+	$ColorRect/MarginContainer/VBoxContainer/HBoxScore/Value.text = str(b_score) + " - " + str(r_score)
+	$ColorRect/MarginContainer/VBoxContainer/HBoxTime/Value.text = get_timer_string_from_seconds(time)
 	visible = true
 	get_tree().paused = true
 
@@ -54,3 +55,7 @@ func get_timer_string_from_seconds(time_elapsed := 0.0):
 	var time_string := "%02d:%02d" % [minutes, seconds]
 	return time_string
 #endregion
+
+
+func _on_continue_button_pressed():
+	continue_pressed.emit()

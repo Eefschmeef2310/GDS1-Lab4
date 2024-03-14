@@ -15,7 +15,6 @@ script = ExtResource("1_7lt8v")
 [node name="MatchTimer" type="Timer" parent="."]
 wait_time = 120.0
 one_shot = true
-autostart = true
 
 [node name="EndScreen" parent="." instance=ExtResource("5_fali3")]
 
@@ -23,4 +22,6 @@ autostart = true
 [connection signal="hide_ui" from="." to="Ui" method="_on_game_end"]
 [connection signal="score_changed" from="." to="Ui" method="_on_gamemode_score_changed"]
 [connection signal="timer_changed" from="." to="Ui" method="_on_gamemode_timer_changed"]
+[connection signal="blue_player_hit" from="BaseLevel" to="." method="_on_base_level_blue_player_hit"]
+[connection signal="red_player_hit" from="BaseLevel" to="." method="_on_base_level_red_player_hit"]
 [connection signal="timeout" from="MatchTimer" to="." method="check_game_end"]

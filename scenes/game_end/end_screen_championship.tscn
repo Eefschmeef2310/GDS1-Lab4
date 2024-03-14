@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvsqelb63tmty"]
+
+[ext_resource type="PackedScene" uid="uid://xqfxp3bk3bcr" path="res://scenes/game_end/end_screen.tscn" id="1_165ll"]
+
+[node name="EndScreen" instance=ExtResource("1_165ll")]
+
+[node name="HBoxChamp" parent="ColorRect/MarginContainer/VBoxContainer" index="3"]
+visible = true
+
+[node name="ContinueButton" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer" index="0"]
+visible = true
+
+[node name="OtherBtn" parent="ColorRect/MarginContainer/VBoxContainer/ButtonContainer" index="1"]
+visible = false
