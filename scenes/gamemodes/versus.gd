@@ -6,6 +6,8 @@ extends Node2D
 #Signals
 signal score_changed(blue_score: int, red_score: int)
 signal timer_changed(seconds: float)
+signal game_ended(blue_score: int, red_score: int, timer:int)
+signal hide_ui()
 
 #Enums
 
@@ -39,10 +41,12 @@ func _process(_delta):
 func _on_blue_player_hit():
 	red_score += 1
 	score_changed.emit(blue_score, red_score)
+	check_game_end()
 
 func _on_red_player_hit():
 	blue_score += 1
 	score_changed.emit(blue_score, red_score)
+	check_game_end()
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
@@ -50,7 +54,10 @@ func _on_button_pressed():
 #endregion
 
 #region Other methods (please try to separate and organise!)
-
+func check_game_end():
+	if(blue_score == 1 || red_score == 100 || match_timer.time_left == 0):
+		hide_ui.emit()
+		game_ended.emit(blue_score, red_score, match_timer.time_left)
 #endregion
 
 
