@@ -1,8 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpvibep0desuj"]
+[gd_scene load_steps=12 format=3 uid="uid://cpvibep0desuj"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_l154d"]
 [ext_resource type="FontFile" uid="uid://bxrmwu8yyhydj" path="res://scenes/ui/Pixellari.ttf" id="3_3dgg0"]
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="4_7tufh"]
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="5_iojj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdwp3"]
+resource_local_to_scene = true
+shader = ExtResource("4_7tufh")
+shader_parameter/gradientStep = 0.2
+shader_parameter/fire_height = 1.0
+shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
+shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lr6v8"]
+resource_local_to_scene = true
+shader = ExtResource("4_7tufh")
+shader_parameter/gradientStep = 0.2
+shader_parameter/fire_height = 1.0
+shader_parameter/brighterColor = Color(1, 0.65098, 0.101961, 1)
+shader_parameter/darkerColor = Color(1, 0, 0.14902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qyx6m"]
 font_size = 128
@@ -22,6 +40,26 @@ font_size = 24
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PrematchScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Sprite2D" type="TextureRect" parent="PrematchScreen/HBoxContainer"]
+material = SubResource("ShaderMaterial_qdwp3")
+layout_mode = 2
+texture = ExtResource("5_iojj0")
+expand_mode = 2
+
+[node name="Sprite2D2" type="TextureRect" parent="PrematchScreen/HBoxContainer"]
+material = SubResource("ShaderMaterial_lr6v8")
+layout_mode = 2
+texture = ExtResource("5_iojj0")
+expand_mode = 2
 
 [node name="RoundLabel" type="Label" parent="PrematchScreen"]
 anchors_preset = 5
