@@ -19,8 +19,8 @@ class_name FighterData
 
 @export_group("Parameters")
 @export var movement_speed: float = 200.0
-@export var punch_attack_speed: float = 1.0
-@export var punch_retract_speed: float = 1.0
+@export var punch_attack_speed: float = 0.2
+@export var punch_retract_speed: float = 0.6
 @export var punch_knockback: float = 1000
-@export var punch_frequency: float = 0.5
-@export var punch_reach: float = 1.0
+@export var punch_frequency: float = 0.6
+# @export var punch_reach: float = 1.0

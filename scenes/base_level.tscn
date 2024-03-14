@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=10 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_hc60e"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
+size = Vector2(630, 45)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw0m2"]
 font_size = 128
@@ -27,11 +30,9 @@ anchor_mode = 0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 355)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-235, 232, -230, -229, -273, -276, -276, 273, 277, 279, 277, -275, -273, -277, -229, -233, 232, -234, 230, 227)
-
 [node name="Ring" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, -1)
+rotation = -1.5708
 texture = ExtResource("2_8ptoh")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -39,6 +40,28 @@ visible = false
 modulate = Color(0.921569, 0.4, 0.4, 1)
 scale = Vector2(4.09375, 4.09375)
 texture = ExtResource("1_sdqqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -260)
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(260, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-260, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 260)
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
 
 [node name="CrowdLeft" type="Sprite2D" parent="."]
 position = Vector2(113, 349)
@@ -52,14 +75,20 @@ texture = ExtResource("4_36442")
 
 [node name="Blue Player" parent="." instance=ExtResource("6_i6nhd")]
 z_index = 1
-position = Vector2(426, 360)
+position = Vector2(380, 194)
 scale = Vector2(0.5, 0.5)
 
 [node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
 z_index = 1
-position = Vector2(711, 360)
+position = Vector2(768, 515)
 rotation = 3.14159
-scale = Vector2(0.5, -0.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="Glove" parent="Red Player/Body/LArm/LHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="Glove" parent="Red Player/Body/RArm/RHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 
 [node name="CountdownUI" type="CanvasLayer" parent="."]
 
@@ -81,3 +110,5 @@ vertical_alignment = 1
 
 [connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
+
+[editable path="Red Player"]

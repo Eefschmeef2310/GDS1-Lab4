@@ -11,9 +11,8 @@ description = "A... training dummy?
 How did this thing even sign up??"
 main_color = Color(0.721569, 0.721569, 0.721569, 1)
 accent_color = Color(0.556863, 0, 0.74902, 1)
-movement_speed = 200.0
-punch_attack_speed = 1.0
-punch_retract_speed = 1.0
-punch_knockback = 1000.0
-punch_frequency = 0.5
-punch_reach = 1.0
+movement_speed = 25.0
+punch_attack_speed = 0.1
+punch_retract_speed = 0.25
+punch_knockback = 200.0
+punch_frequency = 0.25

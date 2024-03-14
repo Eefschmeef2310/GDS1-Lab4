@@ -23,8 +23,7 @@ class_name PunchScript
 var punch_buffer: float = 0.2
 var buffer_timer: float = 0
 
-var frequency_min: float = 0.5 #Can't double tap
-var frequency_timer: float = 0
+var frequency_timer: float = 0 # Prevent punch spam
 
 var can_r_punch: bool = true
 var can_l_punch: bool = true
@@ -63,25 +62,25 @@ func punch(right: bool):
 	if $"../../AudioPlayers/Punch" : $"../../AudioPlayers/Punch".play()
 	
 	buffer_timer = 0
-	frequency_timer = frequency_min
+	frequency_timer = owner.punch_frequency
 	
 	if(right):
-		right_anim.play("punch", -1, owner.punch_speed_scale)
+		right_anim.play("punch", -1, 1/owner.punch_speed_seconds)
 		right_hitbox.disabled = false
 		can_r_punch = false
 	else:
-		left_anim.play("punch", -1, owner.punch_speed_scale)
+		left_anim.play("punch", -1, 1/owner.punch_speed_seconds)
 		left_hitbox.disabled = false
 		can_l_punch = false
 		
 	is_right_arm = !is_right_arm
 	
 func retract_r():
-	right_anim.play("retract", -1, owner.retract_speed_scale)
+	right_anim.play("retract", -1, 1/owner.retract_speed_seconds)
 	right_hitbox.disabled = true 
 
 func retract_l():
-	left_anim.play("retract", -1, owner.retract_speed_scale)
+	left_anim.play("retract", -1, 1/owner.retract_speed_seconds)
 	left_hitbox.disabled = true 
 
 func finished_r_retract():

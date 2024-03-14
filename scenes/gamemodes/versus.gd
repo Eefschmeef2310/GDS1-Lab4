@@ -24,6 +24,8 @@ extends Node2D
 func _ready():
 	battle.base_level.get_blue_player().set_as_player("p1_")
 	battle.base_level.get_red_player().set_as_player("p2_")
+	
+	battle.base_level.get_blue_player().load_resource(load("res://fighters/willie.tres"))
 
 func _process(_delta):
 	#Runs per frame

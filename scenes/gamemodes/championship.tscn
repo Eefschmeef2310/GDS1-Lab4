@@ -7,3 +7,5 @@
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
+
+[connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]

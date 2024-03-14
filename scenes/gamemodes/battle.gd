@@ -1,5 +1,5 @@
 extends Node2D
-#class_name
+class_name Battle
 #Authored by Xander. Please consult for any modifications or major feature requests.
 
 #region Variables
@@ -55,7 +55,7 @@ func _on_base_level_red_player_hit():
 	check_game_end()
 
 func _on_end_screen_continue_pressed():
-	continue_championship.emit()
+	continue_championship.emit(championship_score)
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
@@ -65,7 +65,7 @@ func _on_button_pressed():
 #region Other methods (please try to separate and organise!)
 
 func check_game_end():
-	if(blue_score == 3 || red_score == 3 || match_timer.time_left == 0):
+	if(blue_score == 5 || red_score == 5 || match_timer.time_left == 0):
 		# Calculate new score
 		if blue_score > red_score:
 			var addition = max(0, blue_score - red_score) + floor(match_timer.time_left)

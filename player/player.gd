@@ -26,9 +26,10 @@ const InputScripts: Dictionary = {
 @export_group("Statistics")
 #@export_subgroup("Subgroup")
 @export var movement_speed: float = 200
-@export var punch_speed_scale : float = 1.
-@export var retract_speed_scale : float = 1.
+@export var punch_speed_seconds : float = 0.2
+@export var retract_speed_seconds : float = 0.6
 @export var knockback_power : float = 1000
+@export var punch_frequency : float = 0.6
 
 #Onready Variables
 
@@ -57,11 +58,12 @@ func _on_head_hurtbox_area_entered(area):
 #endregion
 
 #region Other methods (please try to separate and organise!)
-func load_resource(m_s: float, p_s_s : float, r_s_s : float, k_p : float):
-	movement_speed = m_s
-	punch_speed_scale = p_s_s
-	retract_speed_scale = r_s_s
-	knockback_power = k_p
+func load_resource(data: FighterData):
+	movement_speed = data.movement_speed
+	punch_speed_seconds = data.punch_attack_speed
+	retract_speed_seconds = data.punch_retract_speed
+	knockback_power = data.punch_knockback
+	punch_frequency = data.punch_frequency
 	
 
 func toggle_movement(toggle: bool):

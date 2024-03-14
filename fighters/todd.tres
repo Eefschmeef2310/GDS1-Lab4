@@ -8,12 +8,11 @@ first_name = "Todd"
 middle_name = "Stingray"
 last_name = "Bonzalez"
 description = "High school prodigy destined for greatness.
-Aggressive, but knows when to back off."
+Hits fast, but won't spam you with attacks."
 main_color = Color(1, 0.745098, 0, 1)
 accent_color = Color(1, 0, 0, 1)
 movement_speed = 200.0
-punch_attack_speed = 1.0
-punch_retract_speed = 1.0
+punch_attack_speed = 0.15
+punch_retract_speed = 0.7
 punch_knockback = 1000.0
-punch_frequency = 0.5
-punch_reach = 1.0
+punch_frequency = 0.85

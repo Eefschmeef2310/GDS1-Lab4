@@ -12,9 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://b3e0ycihb2urx" path="res://sounds/sfx/fast-simple-chop-5-6270.mp3" id="10_rou3g"]
 [ext_resource type="AudioStream" uid="uid://bb7cmwnvhgy0" path="res://sounds/sfx/punch-boxing-02wav-14897 (1).mp3" id="10_tg7i7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_susnp"]
-radius = 100.0
-height = 275.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
+size = Vector2(184, 204)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evyw4"]
 radius = 50.0
@@ -383,13 +382,11 @@ stream_0/stream = ExtResource("10_tg7i7")
 stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_w5c5t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(35, -2)
-shape = SubResource("CapsuleShape2D_susnp")
+shape = SubResource("RectangleShape2D_n1guc")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwu7d")
@@ -407,7 +404,7 @@ texture = ExtResource("3_gsiok")
 offset = Vector2(2.705, -40)
 
 [node name="Glove" type="Sprite2D" parent="Body/LArm/LHand"]
-self_modulate = Color(0.235294, 0.368627, 0.545098, 1)
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 position = Vector2(1.99955, -122)
 texture = ExtResource("5_b2583")
 

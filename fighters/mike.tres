@@ -11,9 +11,8 @@ description = "Construction worker here to blow off some steam.
 Hits like a truck, but slow on the chase."
 main_color = Color(0.713726, 0.458824, 1, 1)
 accent_color = Color(0.580392, 0.117647, 0.262745, 1)
-movement_speed = 200.0
-punch_attack_speed = 1.0
-punch_retract_speed = 1.0
-punch_knockback = 1000.0
-punch_frequency = 0.5
-punch_reach = 1.0
+movement_speed = 100.0
+punch_attack_speed = 0.15
+punch_retract_speed = 1.5
+punch_knockback = 1500.0
+punch_frequency = 0.4

@@ -34,7 +34,7 @@ signal continue_pressed()
 
 #region Godot methods
 func _ready():
-	set_blue_data(load("res://fighters/jack.tres"))
+	set_blue_data(load("res://fighters/dummy.tres"))
 	set_red_data(load("res://fighters/todd.tres"))
 
 func _process(delta):
@@ -44,6 +44,9 @@ func _process(delta):
 
 #region Signal methods
 
+func _on_play_button_pressed():
+	continue_pressed.emit()
+	
 #endregion
 
 #region Other methods (please try to separate and organise!)
