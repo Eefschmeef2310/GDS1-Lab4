@@ -13,7 +13,7 @@ font_size = 21
 [sub_resource type="LabelSettings" id="LabelSettings_743dm"]
 font_size = 140
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("change_username_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hh7e3")
+change_username_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Change Username")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -112,4 +113,6 @@ expand_mode = 3
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Change Username" to="." method="_on_change_username_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Logout" to="." method="_on_logout_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

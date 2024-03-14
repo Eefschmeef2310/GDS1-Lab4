@@ -20,6 +20,7 @@ var headers = ["Content-Type: application/json", "Authorization: Bearer patr1Uke
 var usernamePickerScene = "res://online/usernamePicker.tscn" #yoink the user to this scene if no account is detected 
 var saveLoaderScene = "res://online/saveLoader.tscn" #sent the user to the save loader after they create their user or login
 var menuSceme = "res://scenes/menus/main_menu.tscn" #where to send the user after login is complete
+var usernameChangerScene = "res://online/usernameChanger.tscn"
 
 var saveRes : SaveDataRes
 var savePath : String = "user://savegame.tres"
@@ -61,7 +62,12 @@ func SetSaveData(userID : String, username : String): #connect with signal(?) fo
 	Save()
 
 func CheckUsername(username): #returns true if it is a new username
-	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores?fields%5B%5D=Username&filterByFormula=%7BUsername%7D+%3D+'"+username+"'&maxRecords=1&pageSize=1"
+	print(username.uri_encode())
+	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/tblFZgNkjkDIozeKw?fields%5B%5D=Username&filterByFormula=%7BUsername%7D+%3D+'"+username.uri_encode()+"'&maxRecords=1&pageSize=1"
+	#var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/tblFZgNkjkDIozeKw?fields%5B%5D=Username&filterByFormula=%7BUsername%7D%3D'Karl%20Truck%20383'&maxRecords=1&pageSize=1"
+	#url=url.uri_encode()
+	#var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores?maxRecords=3&view=Grid%20view"
+	print(url)
 	var error = request(url, headers, HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred in the username lookup request.")
@@ -110,7 +116,7 @@ func UploadData(userID : String, username : String, highscore : int, gamesPlayed
 	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores/" + str(userID)
 	var data = {
 	  "fields": {
-		#"Username" : String(username),
+		"Username" : String(username),
 		"Highscore": int(highscore), 
 		"Games Played": int(gamesPlayed),
 		"Total seconds played": float(playtime),
@@ -147,6 +153,7 @@ func Load():
 		UploadData(saveRes.userID, saveRes.username, saveRes.highscore, saveRes.gamesPlayed, saveRes.playtime, saveRes.version)
 
 func _on_request_completed(_result, _response_code, _headers, body):
+	print("response: " + str(_response_code))
 	print(body.get_string_from_utf8())
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(JSON.stringify(json))

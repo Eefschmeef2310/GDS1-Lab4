@@ -12,6 +12,7 @@ const OPTIONS = preload("res://scenes/menus/options.tscn")
 	#Exported Variables
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
+@export var change_username_button : Button
 
 	#Onready Variables
 
@@ -23,6 +24,7 @@ const OPTIONS = preload("res://scenes/menus/options.tscn")
 func _ready():
 	#Set visibility of exit button (button not required for web)
 	$MarginContainer/HBoxContainer/VBoxContainer/Exit.visible = OS.get_name() != "Web"
+	change_username_button.text = "Change Username: " + AirtableManager.saveRes.username
 
 func _process(_delta):
 	#Runs per frame
@@ -41,8 +43,19 @@ func _on_options_pressed():
 	
 func _on_exit_pressed():
 	get_tree().quit()
+func _on_logout_pressed():
+	get_tree().change_scene_to_file(AirtableManager.usernamePickerScene)
+func _on_change_username_pressed():
+	#print("haii")
+	get_tree().change_scene_to_file(AirtableManager.usernameChangerScene)
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
+
+
+
+
+
+

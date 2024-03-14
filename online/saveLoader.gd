@@ -1,6 +1,6 @@
 extends Control
 
-var headers = ["Content-Type: application/json", "Authorization: Bearer pat4TZdDHn5W4cwql.86f6516a64f037bd6545f3a08516d8f7a2ae6eb2b4c12831329800d1beea0237"]
+var headers = ["Content-Type: application/json", "Authorization: Bearer patr1UkeZbQcUJbKz.ade5023272144cbfef90795aecd3268c721d50eaacf03ccefad5274bd3e3d2bc"]
 @onready var http_request = $HTTPRequest
 @onready var label = $MarginContainer/VBoxContainer/Label
 @onready var retry_button = $MarginContainer/VBoxContainer/RetryButton
@@ -41,7 +41,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 			get_tree().change_scene_to_file(AirtableManager.usernamePickerScene)
 
 func PullSave(userID): 
-	var url = "https://api.airtable.com/v0/appk1cf0ZCXTATYTl/Highscores/" + userID
+	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores/" + userID
 	var error = http_request.request(url, headers, HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred in the user load request.")
