@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf66cyin68fj6"]
+
+[ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
+[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_iqp4l"]
+[ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qyx6m"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
+font_size = 98
+
+[sub_resource type="LabelSettings" id="LabelSettings_bp080"]
+line_spacing = -8.0
+font_size = 52
+outline_size = 1
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwlog"]
+line_spacing = 0.0
+font = ExtResource("3_lrpeb")
+font_size = 20
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_offset = Vector2(2, 2)
+
+[node name="PrematchScreen" type="CanvasLayer"]
+script = ExtResource("1_npwro")
+
+[node name="PlayButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -87.0
+offset_right = 99.5
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Let's go!"
+
+[node name="RoundLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.0
+offset_top = 32.0
+offset_right = 169.0
+offset_bottom = 161.0
+grow_horizontal = 2
+text = "ROUND 1"
+label_settings = SubResource("LabelSettings_qyx6m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VS" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -64.5
+offset_right = 169.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "VS"
+label_settings = SubResource("LabelSettings_1a32f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BluePortrait" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -483.0
+offset_right = 578.0
+grow_vertical = 0
+texture = ExtResource("2_iqp4l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RedPortrait" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -578.0
+offset_top = -483.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_iqp4l")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="BlueDetails" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -171.0
+offset_right = 532.0
+offset_bottom = -32.0
+grow_vertical = 0
+alignment = 2
+
+[node name="Name" type="Label" parent="BlueDetails"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Jack \"Lightning\" Johnson"
+label_settings = SubResource("LabelSettings_bp080")
+autowrap_mode = 2
+
+[node name="Details" type="Label" parent="BlueDetails"]
+layout_mode = 2
+text = "Risen from the slums to fight for a better life.
+Jack of all trades, but not to be underestimated."
+label_settings = SubResource("LabelSettings_qwlog")
+
+[node name="RedDetails" type="VBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -532.0
+offset_top = -171.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Name" type="Label" parent="RedDetails"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "John \"Thunder\" Jackson"
+label_settings = SubResource("LabelSettings_bp080")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Details" type="Label" parent="RedDetails"]
+layout_mode = 2
+text = "Jack's inner demons brought to form.
+Powerful enough to destroy all of New Box City."
+label_settings = SubResource("LabelSettings_qwlog")
+horizontal_alignment = 2

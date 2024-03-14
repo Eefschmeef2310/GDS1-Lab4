@@ -6,8 +6,10 @@ class_name FighterData
 @export var first_name: String = "Jack"
 @export var middle_name: String = "Lightning"
 @export var last_name: String = "Johnson"
-@export var description: String = ""
+@export_multiline var description: String = ""
 @export var portrait: Texture2D
+@export var main_color: Color = Color.BLUE
+@export var accent_color: Color = Color.CYAN
 
 @export_group("Sprites")
 @export var sprite_body: Texture2D

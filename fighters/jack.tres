@@ -7,7 +7,10 @@ script = ExtResource("1_6kdnt")
 first_name = "Jack"
 middle_name = "Lightning"
 last_name = "Johnson"
-description = ""
+description = "Risen from the slums to fight for a better life.
+Jack of all trades, but not to be underestimated."
+main_color = Color(0, 0, 1, 1)
+accent_color = Color(0, 1, 1, 1)
 movement_speed = 200.0
 punch_attack_speed = 1.0
 punch_retract_speed = 1.0
