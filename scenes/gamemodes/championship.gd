@@ -14,7 +14,6 @@ extends Node2D
 #@export_subgroup("Subgroup")
 
 #Onready Variables
-@onready var battle = $Battle
 
 #Other Variables (please try to separate and organise!)
 
@@ -22,8 +21,8 @@ extends Node2D
 
 #region Godot methods
 func _ready():
-	battle.base_level.get_blue_player().set_as_player("p1_")
-	battle.base_level.get_red_player().set_as_player("p2_")
+	#Runs when all children have entered the tree
+	pass
 
 func _process(delta):
 	#Runs per frame

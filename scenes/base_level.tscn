@@ -75,7 +75,6 @@ offset_right = 26.5
 offset_bottom = 102.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "3"
 label_settings = SubResource("LabelSettings_gw0m2")
 horizontal_alignment = 1
 vertical_alignment = 1
