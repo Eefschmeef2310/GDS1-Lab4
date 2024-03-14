@@ -26,7 +26,7 @@ func _ready():
 	super()
 
 func _process(_delta):
-	input_punch = true if Input.is_action_pressed(input_prefix+"punch") else false
+	if Input.is_action_just_pressed(input_prefix+"punch") : input_punch()
 	pass
 #endregion
 
