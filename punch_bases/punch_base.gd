@@ -50,6 +50,9 @@ func _physics_process(_delta):
 
 #region Other methods (please try to separate and organise!)
 func punch(right: bool):
+	#play punch sound
+	if $"../../AudioPlayers/Punch" : $"../../AudioPlayers/Punch".play()
+	
 	current_arm_anim = $"../../AnimationPlayers/RightArm" if right else $"../../AnimationPlayers/LeftArm"
 	current_arm_anim.play("punch")
 	

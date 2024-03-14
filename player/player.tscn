@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=29 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -9,9 +9,11 @@
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_gekwv"]
+[ext_resource type="AudioStream" uid="uid://b3e0ycihb2urx" path="res://sounds/sfx/fast-simple-chop-5-6270.mp3" id="10_rou3g"]
+[ext_resource type="AudioStream" uid="uid://bb7cmwnvhgy0" path="res://sounds/sfx/punch-boxing-02wav-14897 (1).mp3" id="10_tg7i7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
-size = Vector2(184, 400)
+size = Vector2(184, 204)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evyw4"]
 radius = 50.0
@@ -371,6 +373,18 @@ _data = {
 "retract_head": SubResource("Animation_228e0")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s31ct"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("10_rou3g")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jge45"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("10_tg7i7")
+stream_0/weight = 1.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_w5c5t")
 
@@ -470,6 +484,14 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Punch" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_s31ct")
+
+[node name="Hit" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_jge45")
 
 [connection signal="hit" from="." to="Scripts/Movement" method="_on_character_hit"]
 [connection signal="area_entered" from="HeadHurtbox" to="." method="_on_head_hurtbox_area_entered"]

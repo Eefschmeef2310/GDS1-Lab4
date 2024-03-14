@@ -35,7 +35,7 @@ func _process(_delta):
 #region Signal methods
 
 func _on_head_hurtbox_area_entered(_area):
-	print("Punchout!!!")
+	if $"AudioPlayers/Hit" : $"AudioPlayers/Hit".play()
 	hit.emit()
 
 #endregion

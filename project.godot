@@ -31,7 +31,8 @@ folder_colors={
 "res://movement_bases/": "blue",
 "res://player/": "green",
 "res://punch_bases/": "blue",
-"res://scenes/": "orange"
+"res://scenes/": "orange",
+"res://sounds/": "teal"
 }
 
 [gui]
