@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://cbubvqygnooqu"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://cbubvqygnooqu"]
 
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_dnw35"]
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_ob7oe"]
 
 [resource]
@@ -9,6 +10,7 @@ middle_name = "Stingray"
 last_name = "Bonzalez"
 description = "High school prodigy destined for greatness.
 Hits fast, but won't spam you with attacks."
+portrait = ExtResource("1_dnw35")
 main_color = Color(1, 0.745098, 0, 1)
 accent_color = Color(1, 0, 0, 1)
 movement_speed = 200.0

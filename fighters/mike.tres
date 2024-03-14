@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://c54swkvm7jx5d"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://c54swkvm7jx5d"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_mkvsd"]
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_nqotp"]
 
 [resource]
 script = ExtResource("1_mkvsd")
@@ -9,6 +10,7 @@ middle_name = "Monster"
 last_name = "Truk"
 description = "Construction worker here to blow off some steam.
 Hits like a truck, but slow on the chase."
+portrait = ExtResource("1_nqotp")
 main_color = Color(0.713726, 0.458824, 1, 1)
 accent_color = Color(0.580392, 0.117647, 0.262745, 1)
 movement_speed = 100.0

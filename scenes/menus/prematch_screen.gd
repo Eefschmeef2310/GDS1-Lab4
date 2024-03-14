@@ -37,6 +37,8 @@ signal continue_pressed()
 func _ready():
 	set_blue_data(load("res://fighters/dummy.tres"))
 	set_red_data(load("res://fighters/todd.tres"))
+	
+	visibility_changed.connect(became_visible)
 
 func _process(_delta):
 	#Runs per frame
@@ -65,5 +67,10 @@ func set_red_data(data: FighterData):
 	red_portrait.texture = data.portrait
 	red_flames.material.set('shader_parameter/darkerColor', data.accent_color)
 	red_flames.material.set('shader_parameter/brighterColor', data.main_color)
+	
+func became_visible():
+	if visible: 
+		$Swoosh.play()
+		$AnimationPlayer.play("character_spawn")
 
 #endregion

@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=16 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_iqp4l"]
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
+[ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
-resource_local_to_scene = true
 shader = ExtResource("2_0jxdu")
 shader_parameter/gradientStep = 0.2
 shader_parameter/fire_height = 1.0
@@ -15,7 +15,6 @@ shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
 shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6omc"]
-resource_local_to_scene = true
 shader = ExtResource("2_0jxdu")
 shader_parameter/gradientStep = 0.2
 shader_parameter/fire_height = 1.0
@@ -44,6 +43,27 @@ font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
 font_size = 98
+
+[sub_resource type="Animation" id="Animation_l0eiu"]
+resource_name = "character_spawn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portraits:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [1000, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfpea"]
+_data = {
+"character_spawn": SubResource("Animation_l0eiu")
+}
 
 [node name="PrematchScreen" type="CanvasLayer"]
 script = ExtResource("1_npwro")
@@ -203,5 +223,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 42
 text = "Let's go!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bfpea")
+}
+autoplay = "character_spawn"
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fh82x")
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
