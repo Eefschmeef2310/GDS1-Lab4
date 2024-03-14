@@ -23,7 +23,7 @@ class_name PunchScript
 var punch_buffer: float = 0.2
 var buffer_timer: float = 0
 
-var frequency_min: float = 0.3
+var frequency_min: float = 0.5 #Can't double tap
 var frequency_timer: float = 0
 
 var can_r_punch: bool = true
