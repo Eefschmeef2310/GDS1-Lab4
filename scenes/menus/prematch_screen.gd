@@ -4,10 +4,23 @@ class_name PrematchScreen
 
 #region Variables
 #Signals
+signal continue_pressed()
 
 #Enums
 
 #Constants
+@onready var blue_flames = $Background/BlueFlames
+@onready var red_flames = $Background/RedFlames
+@onready var round_label = $RoundLabel
+@onready var round_subtitle = $RoundSubtitle
+@onready var vs = $VS
+@onready var blue_portrait = $Portraits/BluePortrait
+@onready var red_portrait = $Portraits/RedPortrait
+@onready var blue_name = $BlueDetails/Name
+@onready var blue_details = $BlueDetails/Details
+@onready var red_name = $RedDetails/Name
+@onready var red_details = $RedDetails/Details
+
 
 #Exported Variables
 #@export_group("Group")
@@ -21,8 +34,8 @@ class_name PrematchScreen
 
 #region Godot methods
 func _ready():
-	#Runs when all children have entered the tree
-	pass
+	set_blue_data(load("res://fighters/jack.tres"))
+	set_red_data(load("res://fighters/todd.tres"))
 
 func _process(delta):
 	#Runs per frame
@@ -34,5 +47,19 @@ func _process(delta):
 #endregion
 
 #region Other methods (please try to separate and organise!)
+
+func set_blue_data(data: FighterData):
+	blue_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name
+	blue_details.text = data.description
+	blue_portrait.texture = data.portrait
+	blue_flames.material.set('shader_parameter/darkerColor', data.accent_color)
+	blue_flames.material.set('shader_parameter/brighterColor', data.main_color)
+
+func set_red_data(data: FighterData):
+	red_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name
+	red_details.text = data.description
+	red_portrait.texture = data.portrait
+	red_flames.material.set('shader_parameter/darkerColor', data.accent_color)
+	red_flames.material.set('shader_parameter/brighterColor', data.main_color)
 
 #endregion

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://c54swkvm7jx5d"]
+
+[ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_mkvsd"]
+
+[resource]
+script = ExtResource("1_mkvsd")
+first_name = "Mike"
+middle_name = "Monster"
+last_name = "Truk"
+description = "Construction worker here to blow off some steam.
+Hits like a truck, but slow on the chase."
+main_color = Color(0.713726, 0.458824, 1, 1)
+accent_color = Color(0.580392, 0.117647, 0.262745, 1)
+movement_speed = 200.0
+punch_attack_speed = 1.0
+punch_retract_speed = 1.0
+punch_knockback = 1000.0
+punch_frequency = 0.5
+punch_reach = 1.0

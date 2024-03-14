@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://65p3foffb52t"]
+
+[ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_t3gl4"]
+
+[resource]
+script = ExtResource("1_t3gl4")
+first_name = "Training"
+middle_name = "Statue"
+last_name = "Dummy"
+description = "A... training dummy?
+How did this thing even sign up??"
+main_color = Color(0.721569, 0.721569, 0.721569, 1)
+accent_color = Color(0.556863, 0, 0.74902, 1)
+movement_speed = 200.0
+punch_attack_speed = 1.0
+punch_retract_speed = 1.0
+punch_knockback = 1000.0
+punch_frequency = 0.5
+punch_reach = 1.0
