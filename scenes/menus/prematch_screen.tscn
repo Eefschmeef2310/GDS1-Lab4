@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=15 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -34,9 +34,6 @@ font = ExtResource("3_lrpeb")
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.627451)
 shadow_offset = Vector2(2, 2)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qyx6m"]
-font_size = 128
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgjst"]
 font_size = 38
@@ -120,9 +117,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -163.0
+offset_top = -248.0
 offset_right = 532.0
-offset_bottom = -24.0
+offset_bottom = -109.0
 grow_vertical = 0
 alignment = 2
 
@@ -146,9 +143,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -532.0
-offset_top = -163.0
+offset_top = -248.0
 offset_right = -32.0
-offset_bottom = -24.0
+offset_bottom = -109.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
@@ -178,8 +175,9 @@ offset_top = 32.0
 offset_right = 506.0
 offset_bottom = 161.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.529412)
+theme_override_font_sizes/font_size = 128
 text = "Round 1"
-label_settings = SubResource("LabelSettings_qyx6m")
 horizontal_alignment = 1
 vertical_alignment = 1
 
