@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1ua56alnlpdm"
+path="res://.godot/imported/2 rings.mp3-7e56834ff61a4e9b5c316814368bfe38.mp3str"
+
+[deps]
+
+source_file="res://sounds/sfx/2 rings.mp3"
+dest_files=["res://.godot/imported/2 rings.mp3-7e56834ff61a4e9b5c316814368bfe38.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

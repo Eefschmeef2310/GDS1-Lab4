@@ -38,12 +38,12 @@ func _process(_delta):
 
 #region Signal methods
 
-func _on_blue_player_hit():
+func _on_blue_player_hit(_knockback_power):
 	red_score += 1
 	score_changed.emit(blue_score, red_score)
 	check_game_end()
 
-func _on_red_player_hit():
+func _on_red_player_hit(_knockback_power):
 	blue_score += 1
 	score_changed.emit(blue_score, red_score)
 	check_game_end()

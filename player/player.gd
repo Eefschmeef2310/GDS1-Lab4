@@ -4,15 +4,19 @@ extends CharacterBody2D
 
 #region Variables
 #Signals
-signal hit()
+signal hit(power : float)
 
 #Enums
 
 #Constants
 
 #Exported Variables
-#@export_group("Group")
+@export_group("Statistics")
 #@export_subgroup("Subgroup")
+@export var movement_speed: float = 200
+@export var punch_speed_scale : float = 1.
+@export var retract_speed_scale : float = 1.
+@export var knockback_power : float = 1000
 
 #Onready Variables
 
@@ -34,12 +38,17 @@ func _process(_delta):
 
 #region Signal methods
 
-func _on_head_hurtbox_area_entered(_area):
+func _on_head_hurtbox_area_entered(area):
 	if $"AudioPlayers/Hit" : $"AudioPlayers/Hit".play()
-	hit.emit()
+	hit.emit(area.owner.knockback_power)
 
 #endregion
 
 #region Other methods (please try to separate and organise!)
-
+func load_resource(m_s: float, p_s_s : float, r_s_s : float, k_p : float):
+	movement_speed = m_s
+	punch_speed_scale = p_s_s
+	retract_speed_scale = r_s_s
+	knockback_power = k_p
+	
 #endregion
