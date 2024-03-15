@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=2 format=3 uid="uid://65p3foffb52t"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=5 format=3 uid="uid://65p3foffb52t"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_t3gl4"]
+[ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_l83jy"]
+[ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="3_0hmca"]
+[ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="4_w8ghr"]
 
 [resource]
 script = ExtResource("1_t3gl4")
@@ -9,8 +12,13 @@ middle_name = "Statue"
 last_name = "Dummy"
 description = "A... training dummy?
 How did this thing even sign up??"
+battle_color = Color(0.721569, 0.721569, 0.721569, 1)
+alt_battle_color = Color(0.133333, 0.133333, 0.133333, 1)
 main_color = Color(0.721569, 0.721569, 0.721569, 1)
 accent_color = Color(0.556863, 0, 0.74902, 1)
+sprite_body = ExtResource("3_0hmca")
+sprite_arm = ExtResource("2_l83jy")
+sprite_hand = ExtResource("4_w8ghr")
 movement_speed = 25.0
 punch_attack_speed = 0.1
 punch_retract_speed = 0.25

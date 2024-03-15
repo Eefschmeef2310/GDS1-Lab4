@@ -14,6 +14,8 @@ last_name = "Jackson"
 description = "Jack's inner demons brought to form.
 Powerful enough to destroy all of NEW BOX CITY."
 portrait = ExtResource("1_wvqsr")
+battle_color = Color(0.141176, 0.227451, 0.368627, 1)
+alt_battle_color = Color(0.458824, 0.141176, 0.223529, 1)
 main_color = Color(0, 0.0980392, 0.12549, 1)
 accent_color = Color(0, 0.615686, 0.85098, 1)
 sprite_body = ExtResource("4_h5dce")

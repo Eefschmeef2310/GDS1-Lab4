@@ -25,8 +25,8 @@ func _ready():
 	battle.base_level.get_blue_player().set_as_player("p1_")
 	battle.base_level.get_red_player().set_as_player("p2_")
 	
-	var p1 = load("res://fighters/willie.tres")
-	var p2 = load("res://fighters/willie.tres")
+	var p1 = load("res://fighters/dummy.tres")
+	var p2 = load("res://fighters/dummy.tres")
 	
 	battle.set_fighter_data(p1, "p1_", p2, "p2_")
 

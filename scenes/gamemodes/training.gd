@@ -24,6 +24,7 @@ extends Node2D
 func _ready():
 	base_level.get_blue_player().set_as_player("p1_")
 	base_level.get_red_player().set_as_dummy()
+	base_level.get_blue_player().load_resource(preload("res://fighters/jack.tres"))
 
 func _process(_delta):
 	#Runs per frame
