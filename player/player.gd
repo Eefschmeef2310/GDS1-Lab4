@@ -17,10 +17,16 @@ const InputScripts: Dictionary = {
 	dummy = {
 		move = preload("res://movement_bases/movement_base.gd"),
 		punch = preload("res://punch_bases/punch_base.gd")
+	},
+	ai = {
+		move = preload("res://movement_bases/ai_movement.gd"),
+		punch = preload("res://punch_bases/ai_punch.gd"),
+		ai_script = preload("res://ai_scripts/ai_script.gd")
 	}
 }
 @onready var movement_node: Node = $Scripts/Movement
 @onready var punches_node: Node = $Scripts/Punches
+@onready var ai_node: Node = $Scripts/AI
 
 #Exported Variables
 @export_group("Statistics")
@@ -74,12 +80,19 @@ func set_as_player(prefix: String):
 	movement_node.input_prefix = prefix
 	punches_node.set_script(InputScripts.player.punch)
 	punches_node.input_prefix = prefix
+	ai_node.set_script(null)
 
 func set_as_dummy():
 	movement_node.set_script(InputScripts.dummy.move)
 	punches_node.set_script(InputScripts.dummy.punch)
 
+#Arguments can be added to change the ai script loaded, so different characters have different playstyles
 func set_as_ai():
-	pass
+	print("I am an AI")
+	movement_node.set_script(InputScripts.ai.move)
+	punches_node.set_script(InputScripts.ai.punch)
+	#Basic AI script for now
+	ai_node.set_script(InputScripts.ai.ai_script)
+	
 
 #endregion

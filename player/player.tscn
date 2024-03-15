@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=30 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_gekwv"]
+[ext_resource type="Script" path="res://ai_scripts/ai_script.gd" id="10_cljjq"]
 [ext_resource type="AudioStream" uid="uid://b3e0ycihb2urx" path="res://sounds/sfx/fast-simple-chop-5-6270.mp3" id="10_rou3g"]
 [ext_resource type="AudioStream" uid="uid://bb7cmwnvhgy0" path="res://sounds/sfx/punch-boxing-02wav-14897 (1).mp3" id="10_tg7i7"]
 
@@ -471,6 +472,9 @@ script = ExtResource("7_qfqi1")
 
 [node name="Pause" type="Node" parent="Scripts"]
 script = ExtResource("9_gekwv")
+
+[node name="AI" type="Node" parent="Scripts"]
+script = ExtResource("10_cljjq")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
