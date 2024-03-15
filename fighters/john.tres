@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://csq8s1alv5b4x"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://csq8s1alv5b4x"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_3ia0m"]
+[ext_resource type="Texture2D" uid="uid://6v2b16de2ngk" path="res://assets/john/icon.png" id="1_t656q"]
 [ext_resource type="Texture2D" uid="uid://i1kq7j73u5un" path="res://assets/john/portrait.png" id="1_wvqsr"]
 [ext_resource type="Texture2D" uid="uid://b2g240ddafhq6" path="res://assets/john/john-arm.png" id="3_3pue4"]
 [ext_resource type="Texture2D" uid="uid://bypt1ch11hsly" path="res://assets/john/john-body.png" id="4_h5dce"]
@@ -14,6 +15,7 @@ last_name = "Jackson"
 description = "Jack's inner demons brought to form.
 Powerful enough to destroy all of NEW BOX CITY."
 portrait = ExtResource("1_wvqsr")
+icon = ExtResource("1_t656q")
 battle_color = Color(0.141176, 0.227451, 0.368627, 1)
 alt_battle_color = Color(0.458824, 0.141176, 0.223529, 1)
 main_color = Color(0, 0.0980392, 0.12549, 1)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci4fog8oidafs"]
+
+[ext_resource type="Script" path="res://scenes/menus/fighter_select.gd" id="1_4u110"]
+[ext_resource type="Texture2D" uid="uid://pymq710manlq" path="res://assets/jack/icon.png" id="1_8g1bj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gni0"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0we76"]
+bg_color = Color(0.647059, 0.188235, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="FighterSelect" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_1gni0")
+script = ExtResource("1_4u110")
+
+[node name="BG" type="PanelContainer" parent="."]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_0we76")
+
+[node name="Icon" type="TextureRect" parent="BG"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_8g1bj")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

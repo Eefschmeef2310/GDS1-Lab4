@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://c54swkvm7jx5d"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://c54swkvm7jx5d"]
 
+[ext_resource type="Texture2D" uid="uid://cux2r6dbvkxsm" path="res://assets/mike/icon.png" id="1_4vftx"]
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_mkvsd"]
 [ext_resource type="Texture2D" uid="uid://cp65plxx4ffbj" path="res://assets/mike/portrait.png" id="1_ng132"]
 [ext_resource type="Texture2D" uid="uid://bqsvwg313eo4q" path="res://assets/mike/mike-arm.png" id="3_p1pk3"]
@@ -14,6 +15,7 @@ last_name = "Truk"
 description = "Construction worker here to blow off some steam.
 Hits like a truck, but slow on the chase."
 portrait = ExtResource("1_ng132")
+icon = ExtResource("1_4vftx")
 battle_color = Color(0.25098, 0.152941, 0.317647, 1)
 alt_battle_color = Color(0.101961, 0.2, 0.176471, 1)
 main_color = Color(0.576471, 0.219608, 0.85098, 1)

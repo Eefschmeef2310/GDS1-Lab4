@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://cbubvqygnooqu"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://cbubvqygnooqu"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_ob7oe"]
+[ext_resource type="Texture2D" uid="uid://rmub7ojow33" path="res://assets/todd/icon.png" id="1_ssonm"]
 [ext_resource type="Texture2D" uid="uid://bb44m3k08p1oq" path="res://assets/todd/portrait.png" id="1_w6hfp"]
 [ext_resource type="Texture2D" uid="uid://7ycc6t417kan" path="res://assets/todd/todd-arm.png" id="3_ys5ng"]
 [ext_resource type="Texture2D" uid="uid://ghwmddssdsw2" path="res://assets/todd/Todd-body.png" id="4_yu4oi"]
@@ -14,6 +15,7 @@ last_name = "Bonzalez"
 description = "High school prodigy destined for greatness.
 Hits fast, but won't spam you with attacks."
 portrait = ExtResource("1_w6hfp")
+icon = ExtResource("1_ssonm")
 battle_color = Color(0.811765, 0.341176, 0.235294, 1)
 alt_battle_color = Color(0.639216, 0.866667, 0.858824, 1)
 main_color = Color(0, 0.952941, 0.345098, 1)

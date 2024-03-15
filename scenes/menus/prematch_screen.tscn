@@ -1,14 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=26 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
 [ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="4_cp0w4"]
-[ext_resource type="Texture2D" uid="uid://pymq710manlq" path="res://assets/jack/icon.png" id="6_educf"]
+[ext_resource type="Script" path="res://scenes/menus/character_select.gd" id="6_bb0cf"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
+[ext_resource type="PackedScene" uid="uid://ci4fog8oidafs" path="res://scenes/menus/fighter_select.tscn" id="6_ymiex"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="7_2v2la"]
 [ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
+[ext_resource type="Resource" uid="uid://cbubvqygnooqu" path="res://fighters/todd.tres" id="7_ogt6n"]
+[ext_resource type="Resource" uid="uid://dr5rjx4uw63bx" path="res://fighters/jack.tres" id="7_whe0j"]
+[ext_resource type="Resource" uid="uid://c54swkvm7jx5d" path="res://fighters/mike.tres" id="9_y613c"]
+[ext_resource type="Resource" uid="uid://bvfhc8y7qb4td" path="res://fighters/willie.tres" id="10_foc4t"]
+[ext_resource type="Resource" uid="uid://csq8s1alv5b4x" path="res://fighters/john.tres" id="11_81fpm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
@@ -89,24 +95,6 @@ font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
 font_size = 98
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gni0"]
-bg_color = Color(0.8, 0.8, 0.8, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0we76"]
-bg_color = Color(0.647059, 0.188235, 0.188235, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="PrematchScreen" type="CanvasLayer"]
 script = ExtResource("1_npwro")
@@ -262,6 +250,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VS" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -290,65 +279,38 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
+script = ExtResource("6_bb0cf")
 
 [node name="Row" type="HBoxContainer" parent="CharacterSelect"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="FighterSelect" type="PanelContainer" parent="CharacterSelect/Row"]
+[node name="FighterSelect" parent="CharacterSelect/Row" instance=ExtResource("6_ymiex")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1gni0")
+fighter = ExtResource("7_whe0j")
 
-[node name="BG" type="PanelContainer" parent="CharacterSelect/Row/FighterSelect"]
-clip_children = 2
+[node name="FighterSelect2" parent="CharacterSelect/Row" instance=ExtResource("6_ymiex")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0we76")
+fighter = ExtResource("7_ogt6n")
 
-[node name="Icon" type="TextureRect" parent="CharacterSelect/Row/FighterSelect/BG"]
-custom_minimum_size = Vector2(100, 100)
+[node name="FighterSelect3" parent="CharacterSelect/Row" instance=ExtResource("6_ymiex")]
 layout_mode = 2
-texture = ExtResource("6_educf")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="FighterSelect2" type="PanelContainer" parent="CharacterSelect/Row"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1gni0")
-
-[node name="BG" type="PanelContainer" parent="CharacterSelect/Row/FighterSelect2"]
-clip_children = 2
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0we76")
-
-[node name="Icon" type="TextureRect" parent="CharacterSelect/Row/FighterSelect2/BG"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("6_educf")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="FighterSelect3" type="PanelContainer" parent="CharacterSelect/Row"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1gni0")
-
-[node name="BG" type="PanelContainer" parent="CharacterSelect/Row/FighterSelect3"]
-clip_children = 2
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0we76")
-
-[node name="Icon" type="TextureRect" parent="CharacterSelect/Row/FighterSelect3/BG"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("6_educf")
-expand_mode = 1
-stretch_mode = 5
+fighter = ExtResource("9_y613c")
 
 [node name="Row2" type="HBoxContainer" parent="CharacterSelect"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
+
+[node name="FighterSelect4" parent="CharacterSelect/Row2" instance=ExtResource("6_ymiex")]
+layout_mode = 2
+fighter = ExtResource("10_foc4t")
+
+[node name="FighterSelect5" parent="CharacterSelect/Row2" instance=ExtResource("6_ymiex")]
+layout_mode = 2
+fighter = ExtResource("11_81fpm")
 
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 476.5
@@ -373,4 +335,9 @@ bus = &"Music"
 [node name="Pause" type="Node" parent="."]
 script = ExtResource("7_2v2la")
 
+[connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect2" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect3" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

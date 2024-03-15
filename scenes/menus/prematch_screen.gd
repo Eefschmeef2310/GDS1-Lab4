@@ -62,6 +62,8 @@ func set_blue_data(data: FighterData):
 	blue_portrait.texture = data.portrait
 	blue_flames.material.set('shader_parameter/darkerColor', data.accent_color)
 	blue_flames.material.set('shader_parameter/brighterColor', data.main_color)
+	$Portraits/BluePlayer.stop()
+	$Portraits/BluePlayer.play("default")
 
 func set_red_data(data: FighterData):
 	red_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name
@@ -69,6 +71,8 @@ func set_red_data(data: FighterData):
 	red_portrait.texture = data.portrait
 	red_flames.material.set('shader_parameter/darkerColor', data.accent_color)
 	red_flames.material.set('shader_parameter/brighterColor', data.main_color)
+	$Portraits/RedPlayer.stop()
+	$Portraits/RedPlayer.play("default")
 	
 func became_visible():
 	if visible: 
