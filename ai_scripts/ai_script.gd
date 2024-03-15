@@ -57,7 +57,7 @@ func _process(_delta):
 #region Signal methods
 func _on_attacked_revenge(power: float):
 	punch_script.input_punch()
-	if randi() % 100 <= 100: current_state = States.Attack
+	if randi() % 100 <= 49: current_state = States.Attack
 #endregion
 
 #region Other methods (please try to separate and organise!)

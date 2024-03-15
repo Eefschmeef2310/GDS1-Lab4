@@ -20,3 +20,4 @@ punch_knockback = 1000.0
 punch_frequency = 0.5
 tick_speed = 0.5
 aggressive_chance_scale = 1.0
+hover_distance = 250.0
