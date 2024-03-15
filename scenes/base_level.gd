@@ -43,21 +43,31 @@ func start_countdown():
 	await get_tree().create_timer(0.01).timeout
 	red_player.toggle_movement(false)
 	await get_tree().create_timer(0.75).timeout
+	$CountdownSound.play()
+	
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "2"
+	$CountdownSound.play()
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "1"
+	$CountdownSound.play()
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "FIGHT!"
 	blue_player.toggle_movement(true)
 	red_player.toggle_movement(true)
+	$BattleMusic.play()
+	$StartSound.play()
 	countdown_complete.emit()
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = ""
 
 func start_slowmo():
+	$BattleMusic.stop()
+	$EndSound.play()
+	
 	blue_player.toggle_movement(false)
 	red_player.toggle_movement(false)
 	Engine.time_scale = 0.25

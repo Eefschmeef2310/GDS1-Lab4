@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+uniform float angle;
+uniform float time_scale = 0.3125;
 uniform float gradientStep = 0.2;
 uniform float fire_height : hint_range(0.5, 1.5, 0.01) = 1.;
 uniform vec4 brighterColor :source_color = vec4(1.0, 0.65, 0.1, 0.25);
@@ -49,10 +51,15 @@ float pnoise(vec2 co, float freq, int steps, float persistence)
 
 void fragment() {
 	vec2 uv = UV;
-    float gradient = uv.y - (1.0 - fire_height);
+    // Rotate UV coordinates based on the angle
+    vec2 rotatedUV = vec2(
+        cos(angle) * (uv.x - 0.5) - sin(angle) * (uv.y - 0.5) + 0.5,
+        sin(angle) * (uv.x - 0.5) + cos(angle) * (uv.y - 0.5) + 0.5
+    );
+    float gradient = rotatedUV.y - (1.0 - fire_height);
     
-    vec2 pos = UV;
-    pos.y += TIME * 0.3125;
+    vec2 pos = rotatedUV;
+    pos.y += TIME * time_scale;
 	
     vec4 middleColor = mix(brighterColor, darkerColor, 0.5);
 

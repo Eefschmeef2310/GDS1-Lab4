@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
+[autoload]
+
+AirtableManager="*res://online/AirtableManager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -30,6 +34,7 @@ folder_colors={
 "res://defaults/": "pink",
 "res://fighters/": "red",
 "res://movement_bases/": "blue",
+"res://online/": "purple",
 "res://player/": "green",
 "res://punch_bases/": "blue",
 "res://scenes/": "orange",
@@ -104,7 +109,3 @@ pause={
 
 2d_physics/layer_1="General"
 2d_physics/layer_2="Punches"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"

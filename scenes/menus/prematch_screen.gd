@@ -22,6 +22,7 @@ signal continue_pressed()
 @onready var red_details = $RedDetails/Details
 @onready var play_button = $PlayButton
 
+@onready var prematch_music = $PrematchMusic
 
 #Exported Variables
 #@export_group("Group")
@@ -39,6 +40,7 @@ func _ready():
 	set_red_data(load("res://fighters/todd.tres"))
 	
 	visibility_changed.connect(became_visible)
+	became_visible()
 
 func _process(_delta):
 	#Runs per frame
@@ -71,6 +73,10 @@ func set_red_data(data: FighterData):
 func became_visible():
 	if visible: 
 		$Swoosh.play()
-		$AnimationPlayer.play("character_spawn")
+		$PrematchMusic.play()
+		$Portraits/BluePlayer.play("default")
+		$Portraits/RedPlayer.play("default")
+	else:
+		$PrematchMusic.stop()
 
 #endregion

@@ -8,6 +8,9 @@ script = ExtResource("1_ymt6m")
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_v08y7")]
 
+[node name="Red Player" parent="BaseLevel" index="7"]
+position = Vector2(654, 353)
+
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -19,3 +22,6 @@ offset_bottom = 74.0
 grow_horizontal = 2
 text = "PAUSE TO EXIT"
 horizontal_alignment = 1
+
+[editable path="BaseLevel"]
+[editable path="BaseLevel/Red Player"]
