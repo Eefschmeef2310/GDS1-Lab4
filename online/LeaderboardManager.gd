@@ -1,6 +1,6 @@
 extends ScrollContainer
 
-var headers = ["Content-Type: application/json", "Authorization: Bearer pat4TZdDHn5W4cwql.86f6516a64f037bd6545f3a08516d8f7a2ae6eb2b4c12831329800d1beea0237"]
+var headers = ["Content-Type: application/json", "Authorization: Bearer patr1UkeZbQcUJbKz.ade5023272144cbfef90795aecd3268c721d50eaacf03ccefad5274bd3e3d2bc"]
 @export var numberOfRecords = 100 # MAX 100 supported
 
 @export var entryPrefab : PackedScene
@@ -25,7 +25,7 @@ func _process(delta):
 	pass
 
 func GetLeaderboard(amount): #returns true if it is a new username
-	var url = "https://api.airtable.com/v0/appk1cf0ZCXTATYTl/Highscores?fields%5B%5D=Username&fields%5B%5D=Highscore&filterByFormula=AND(NOT(%7BHighscore%7D+%3D+0)%2C%7BGame+Version%7D+%3D+"+ str(AirtableManager.GAME_VERSION) +")&maxRecords="+str(numberOfRecords)+"&sort%5B0%5D%5Bfield%5D=Highscore&sort%5B0%5D%5Bdirection%5D=desc"
+	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores?fields%5B%5D=Username&fields%5B%5D=Highscore&filterByFormula=AND(NOT(%7BHighscore%7D+%3D+0)%2C%7BGame+Version%7D+%3D+"+ str(AirtableManager.GAME_VERSION) +")&maxRecords="+str(numberOfRecords)+"&sort%5B0%5D%5Bfield%5D=Highscore&sort%5B0%5D%5Bdirection%5D=desc"
 	var error = $LeaderboardRequest.request(url, headers, HTTPClient.METHOD_GET)
 	if error != OK:
 		push_error("An error occurred in the leaderboard get request.")

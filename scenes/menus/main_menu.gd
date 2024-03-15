@@ -48,11 +48,16 @@ func _on_logout_pressed():
 func _on_change_username_pressed():
 	#print("haii")
 	get_tree().change_scene_to_file(AirtableManager.usernameChangerScene)
+func _on_leaderboard_pressed():
+	get_tree().change_scene_to_file("res://online/Leaderboard.tscn")
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
+
+
+
 
 
 
