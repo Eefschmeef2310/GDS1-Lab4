@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c85mnkvsmyp4q" path="res://sounds/sfx/free-crowd-cheering-sounds-02-strong-cheering-rhythmic-cheering-116190.mp3" id="11_wjnar"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_susnp"]
-radius = 100.0
+radius = 85.0
 height = 275.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evyw4"]
