@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=16 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
+[ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
@@ -230,6 +231,12 @@ autoplay = "character_spawn"
 
 [node name="Swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fh82x")
+volume_db = -15.0
 autoplay = true
+bus = &"SFX"
+
+[node name="PrematchMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mxtb8")
+bus = &"Music"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

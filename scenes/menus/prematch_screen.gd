@@ -22,6 +22,7 @@ signal continue_pressed()
 @onready var red_details = $RedDetails/Details
 @onready var play_button = $PlayButton
 
+@onready var prematch_music = $PrematchMusic
 
 #Exported Variables
 #@export_group("Group")
@@ -71,6 +72,9 @@ func set_red_data(data: FighterData):
 func became_visible():
 	if visible: 
 		$Swoosh.play()
+		$PrematchMusic.play()
 		$AnimationPlayer.play("character_spawn")
+	else:
+		$PrematchMusic.stop()
 
 #endregion
