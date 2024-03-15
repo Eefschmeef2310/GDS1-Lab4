@@ -24,4 +24,5 @@ text = "PAUSE TO EXIT"
 horizontal_alignment = 1
 
 [editable path="BaseLevel"]
+[editable path="BaseLevel/Blue Player"]
 [editable path="BaseLevel/Red Player"]
