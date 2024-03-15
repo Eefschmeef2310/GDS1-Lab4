@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
-[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_iqp4l"]
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
+[ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="4_cp0w4"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="7_2v2la"]
 [ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(-600, 0), Vector2(0, 0)]
+"values": [Vector2(-600, 0), Vector2(-50, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0dpr"]
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(1100, 0), Vector2(533, 0)]
+"values": [Vector2(600, 0), Vector2(50, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ccohn"]
@@ -123,26 +123,30 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BluePortrait" type="TextureRect" parent="Portraits"]
-layout_mode = 2
-offset_right = 642.0
-offset_bottom = 642.0
-texture = ExtResource("2_iqp4l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_right = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cp0w4")
 expand_mode = 2
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="RedPortrait" type="TextureRect" parent="Portraits"]
-modulate = Color(0, 1, 1, 1)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -619.0
-offset_right = 29.0
-offset_bottom = 648.0
-grow_horizontal = 0
-texture = ExtResource("2_iqp4l")
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cp0w4")
 expand_mode = 2
-stretch_mode = 5
+stretch_mode = 6
 flip_h = true
 
 [node name="BluePlayer" type="AnimationPlayer" parent="Portraits"]

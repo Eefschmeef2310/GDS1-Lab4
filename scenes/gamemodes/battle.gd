@@ -69,7 +69,7 @@ func _on_button_pressed():
 #region Other methods (please try to separate and organise!)
 
 func check_game_end():
-	if(blue_score == 5 || red_score == 5 || match_timer.time_left == 0):
+	if(blue_score == 21 || red_score == 21 || match_timer.time_left == 0):
 		# Calculate new score
 		if blue_score > red_score:
 			var addition = max(0, blue_score - red_score) + floor(match_timer.time_left)

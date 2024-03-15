@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=11 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
 [ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_3gbtb"]
@@ -17,6 +17,9 @@ variation_embolden = -0.19
 [sub_resource type="LabelSettings" id="LabelSettings_lybsi"]
 line_spacing = -8.0
 font = SubResource("FontVariation_6jksb")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_pcx1d"]
 font_size = 32
 
 [node name="MainMenu" type="Control"]
@@ -58,6 +61,7 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_lnr45")
 
 [node name="Home" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Home"]
 anchors_preset = 8
@@ -147,7 +151,6 @@ text = "Exit
 "
 
 [node name="Play" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Play"]
 anchors_preset = 4
@@ -200,6 +203,15 @@ texture = ExtResource("2_5f6gd")
 expand_mode = 1
 stretch_mode = 4
 flip_h = true
+
+[node name="Label" type="Label" parent="Play"]
+offset_left = 106.0
+offset_top = 222.0
+offset_right = 468.0
+offset_bottom = 272.0
+text = "HIGH SCORE: 0"
+label_settings = SubResource("LabelSettings_pcx1d")
+horizontal_alignment = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_f6i68")

@@ -91,7 +91,7 @@ func set_as_player(prefix: String):
 	ai_node.set_script(null)
 
 func set_as_dummy():
-	movement_node.set_script(InputScripts.dummy.move)
+	movement_node.set_script(null)
 	punches_node.set_script(InputScripts.dummy.punch)
 	ai_node.set_script(null)
 
@@ -103,5 +103,4 @@ func set_as_ai():
 	ai_node.set_script(InputScripts.ai.logic)
 	#ai_node.set_script(null)
 	
-
 #endregion
