@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="2_bq6e3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_16ysa"]
+line_spacing = -8.0
 font_size = 48
 
 [node name="UsernamePicker" type="Control"]
@@ -35,6 +36,7 @@ layout_mode = 2
 text = "Please enter your username!"
 label_settings = SubResource("LabelSettings_16ysa")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="LoginInfo" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2

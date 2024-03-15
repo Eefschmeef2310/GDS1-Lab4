@@ -14,6 +14,8 @@ const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
 	#@export_subgroup("Subgroup")
 
 	#Onready Variables
+@onready var home_layer = $Home
+@onready var play_layer = $Play
 
 	#Other Variables (please try to separate and organise!)
 
@@ -22,9 +24,11 @@ const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
 #region Godot methods
 func _ready():
 	#Set visibility of exit button (button not required for web)
-	$MarginContainer/HBoxContainer/VBoxContainer/Exit.visible = OS.get_name() != "Web"
+	$Home/HBoxContainer/VBoxContainer/Exit.visible = OS.get_name() != "Web"
 	Engine.time_scale = 1
 	$MenuMusic.play()
+	home_layer.show()
+	play_layer.hide()
 
 func _process(_delta):
 	#Runs per frame
@@ -32,6 +36,14 @@ func _process(_delta):
 #endregion
 
 #region Signal methods
+func _on_play_pressed():
+	home_layer.hide()
+	play_layer.show()
+
+func _on_play_back_pressed():
+	home_layer.show()
+	play_layer.hide()
+
 func _on_versus_pressed():
 	get_tree().change_scene_to_file("res://scenes/gamemodes/versus.tscn")
 
@@ -62,9 +74,3 @@ func _on_logout_pressed():
 #region Other methods (please try to separate and organise!)
 
 #endregion
-
-
-
-
-
-

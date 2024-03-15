@@ -1,19 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=10 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
+[ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_3gbtb"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
-[ext_resource type="Script" path="res://online/usernameButton.gd" id="2_tgtpp"]
+[ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_dud0y"]
 [ext_resource type="AudioStream" uid="uid://bnxvst4le33jd" path="res://sounds/music/boxing title.ogg" id="4_f6i68"]
+[ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_lnr45"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_743dm"]
+line_spacing = -24.0
+font_size = 140
 
 [sub_resource type="FontVariation" id="FontVariation_6jksb"]
 variation_embolden = -0.19
 
 [sub_resource type="LabelSettings" id="LabelSettings_lybsi"]
+line_spacing = -8.0
 font = SubResource("FontVariation_6jksb")
-font_size = 21
-
-[sub_resource type="LabelSettings" id="LabelSettings_743dm"]
-font_size = 140
+font_size = 32
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,102 +28,188 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hh7e3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -440.0
+offset_top = -640.0
+offset_right = 1560.0
+offset_bottom = 1360.0
+color = Color(0.0823529, 0.113725, 0.156863, 1)
+
+[node name="Sprites" type="Control" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0.254902)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ring" type="Sprite2D" parent="ColorRect/Sprites"]
+position = Vector2(1014, 994)
+rotation = -1.5708
+texture = ExtResource("2_3gbtb")
+
+[node name="CrowdLeft" type="Sprite2D" parent="ColorRect/Sprites"]
+position = Vector2(553, 989)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_dud0y")
+
+[node name="CrowdRight" type="Sprite2D" parent="ColorRect/Sprites"]
+position = Vector2(1480, 989)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_lnr45")
+
+[node name="Home" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Home"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -166.0
+offset_right = 315.5
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
+text = "SUPER BOXING"
+label_settings = SubResource("LabelSettings_743dm")
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 60
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Home"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -4.0
+offset_right = 316.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Championship" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Online" type="VBoxContainer" parent="Home/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Home/HBoxContainer/Online"]
+layout_mode = 2
+text = "NyaNya!"
+label_settings = SubResource("LabelSettings_lybsi")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Leaderboard" type="Button" parent="Home/HBoxContainer/Online"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Leaderboard"
+text_overrun_behavior = 1
+
+[node name="ChangeName" type="Button" parent="Home/HBoxContainer/Online"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Change Name"
+text_overrun_behavior = 1
+
+[node name="Logout" type="Button" parent="Home/HBoxContainer/Online"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Logout"
+text_overrun_behavior = 1
+
+[node name="Play" type="Button" parent="Home/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Championship"
+text = "Play"
 
-[node name="Versus" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Home/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Versus"
+theme_override_constants/separation = 16
 
-[node name="Training" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Home/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Training"
-
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Options"
 
-[node name="OnlinePanel" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Home/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
-layout_mode = 2
-text = "Online Account"
-label_settings = SubResource("LabelSettings_lybsi")
-horizontal_alignment = 1
-
-[node name="Leaderboard" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Leaderboard"
-
-[node name="Change Username" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Change Username: NyaNya!"
-script = ExtResource("2_tgtpp")
-
-[node name="Logout" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Logout"
-
-[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Exit
 "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Play" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Play"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -225.0
+offset_right = 462.0
+offset_bottom = 225.0
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Championship" type="Button" parent="Play/VBoxContainer"]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Championship"
+
+[node name="Versus" type="Button" parent="Play/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Versus"
+
+[node name="Training" type="Button" parent="Play/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Training"
+
+[node name="PlayBack" type="Button" parent="Play/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="OnlinePanel" type="PanelContainer" parent="Play/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "BOXING"
-label_settings = SubResource("LabelSettings_743dm")
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 450.55)
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Play"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -717.0
+offset_top = -577.0
+offset_right = -84.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("2_5f6gd")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_f6i68")
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Championship" to="." method="_on_championship_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Training" to="." method="_on_training_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Change Username" to="." method="_on_change_username_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Logout" to="." method="_on_logout_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/Online/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/Online/ChangeName" to="." method="_on_change_username_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/Online/Logout" to="." method="_on_logout_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Home/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Play/VBoxContainer/Championship" to="." method="_on_championship_pressed"]
+[connection signal="pressed" from="Play/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
+[connection signal="pressed" from="Play/VBoxContainer/Training" to="." method="_on_training_pressed"]
+[connection signal="pressed" from="Play/VBoxContainer/PlayBack" to="." method="_on_play_back_pressed"]
