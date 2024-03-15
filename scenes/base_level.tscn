@@ -9,9 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_x7ktp"]
-noise_type = 3
-seed = 5589
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8vcko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
 size = Vector2(630, 45)
@@ -37,9 +35,12 @@ texture = ExtResource("1_pf8nb")
 centered = false
 
 [node name="Camera" type="Camera2D" parent="."]
-anchor_mode = 0
+position = Vector2(576, 324)
 script = ExtResource("3_nngem")
-noise = SubResource("FastNoiseLite_x7ktp")
+decay = 1.5
+max_offset = Vector2(50, 15)
+max_roll = 0.0
+noise = SubResource("FastNoiseLite_8vcko")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 355)
