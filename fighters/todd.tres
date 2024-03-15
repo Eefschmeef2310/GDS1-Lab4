@@ -18,3 +18,5 @@ punch_attack_speed = 0.15
 punch_retract_speed = 0.7
 punch_knockback = 1000.0
 punch_frequency = 0.8
+tick_speed = 0.4
+aggressive_chance_scale = 0.8
