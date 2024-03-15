@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=18 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -6,20 +6,67 @@
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="7_2v2la"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
-shader_parameter/gradientStep = 0.2
+shader_parameter/angle = -1.555
+shader_parameter/time_scale = 0.3125
+shader_parameter/gradientStep = 0.115
 shader_parameter/fire_height = 1.0
 shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
 shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6omc"]
 shader = ExtResource("2_0jxdu")
+shader_parameter/angle = 1.48
+shader_parameter/time_scale = 0.3125
 shader_parameter/gradientStep = 0.2
 shader_parameter/fire_height = 1.0
 shader_parameter/brighterColor = Color(1, 0.65098, 0.101961, 1)
 shader_parameter/darkerColor = Color(1, 0, 0.14902, 1)
+
+[sub_resource type="Animation" id="Animation_vfgmk"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BluePortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-600, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0dpr"]
+_data = {
+"default": SubResource("Animation_vfgmk")
+}
+
+[sub_resource type="Animation" id="Animation_r1mdo"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedPortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1100, 0), Vector2(533, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ccohn"]
+_data = {
+"default": SubResource("Animation_r1mdo")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_bp080"]
 line_spacing = -8.0
@@ -40,27 +87,6 @@ font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
 font_size = 98
-
-[sub_resource type="Animation" id="Animation_l0eiu"]
-resource_name = "character_spawn"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Portraits:theme_override_constants/separation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(2, 0.5),
-"update": 0,
-"values": [1000, 0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfpea"]
-_data = {
-"character_spawn": SubResource("Animation_l0eiu")
-}
 
 [node name="PrematchScreen" type="CanvasLayer"]
 script = ExtResource("1_npwro")
@@ -87,30 +113,46 @@ layout_mode = 2
 texture = ExtResource("3_xa4u6")
 expand_mode = 2
 
-[node name="Portraits" type="HBoxContainer" parent="."]
+[node name="Portraits" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
 
 [node name="BluePortrait" type="TextureRect" parent="Portraits"]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_right = 642.0
+offset_bottom = 642.0
 texture = ExtResource("2_iqp4l")
-expand_mode = 4
+expand_mode = 2
 stretch_mode = 5
 
 [node name="RedPortrait" type="TextureRect" parent="Portraits"]
 modulate = Color(0, 1, 1, 1)
-layout_mode = 2
-size_flags_horizontal = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -619.0
+offset_right = 29.0
+offset_bottom = 648.0
+grow_horizontal = 0
 texture = ExtResource("2_iqp4l")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 flip_h = true
+
+[node name="BluePlayer" type="AnimationPlayer" parent="Portraits"]
+libraries = {
+"": SubResource("AnimationLibrary_n0dpr")
+}
+
+[node name="RedPlayer" type="AnimationPlayer" parent="Portraits"]
+libraries = {
+"": SubResource("AnimationLibrary_ccohn")
+}
 
 [node name="BlueDetails" type="VBoxContainer" parent="."]
 anchors_preset = 2
@@ -222,14 +264,12 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 42
 text = "Let's go!"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_bfpea")
-}
-autoplay = "character_spawn"
-
 [node name="Swoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fh82x")
 autoplay = true
+bus = &"SFX"
+
+[node name="Pause" type="Node" parent="."]
+script = ExtResource("7_2v2la")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

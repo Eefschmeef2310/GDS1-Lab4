@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=13 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/battle_camera.gd" id="3_nngem"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="9_6l2jr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8vcko"]
 
@@ -122,6 +123,9 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_gw0m2")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Pause" type="Node" parent="."]
+script = ExtResource("9_6l2jr")
 
 [connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]

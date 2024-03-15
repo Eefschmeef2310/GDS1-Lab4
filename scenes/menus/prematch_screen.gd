@@ -71,6 +71,6 @@ func set_red_data(data: FighterData):
 func became_visible():
 	if visible: 
 		$Swoosh.play()
-		$AnimationPlayer.play("character_spawn")
-
+		$Portraits/BluePlayer.play("default")
+		$Portraits/RedPlayer.play("default")
 #endregion

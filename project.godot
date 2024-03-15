@@ -104,7 +104,3 @@ pause={
 
 2d_physics/layer_1="General"
 2d_physics/layer_2="Punches"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
