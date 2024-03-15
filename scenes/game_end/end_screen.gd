@@ -30,14 +30,24 @@ func _ready():
 #region Signal methods
 func _on_game_end(b_score:int, r_score:int, time:int, c_score:int):
 	if b_score > r_score:
-		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Blue wins!"
+		if is_championship:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Jack wins!"
+		else:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Blue wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0, 0.251, 0.863))
 	elif r_score > b_score:
-		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins!"
+		if is_championship:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Game over!"
+		else:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Red wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0.8, 0, 0))
 		$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton.hide()
 	else:
-		$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Draw!"
+		if is_championship:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Draw (Game over!)"
+			$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", Color(0.8, 0, 0))
+		else:
+			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Draw!"
 		$ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton.hide()
 
 	$ColorRect/MarginContainer/VBoxContainer/HBoxScore/Value.text = str(b_score) + " - " + str(r_score)

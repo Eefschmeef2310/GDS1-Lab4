@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://csq8s1alv5b4x"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_3ia0m"]
-[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="1_c2bhg"]
+[ext_resource type="Texture2D" uid="uid://i1kq7j73u5un" path="res://assets/john/portrait.png" id="1_wvqsr"]
 
 [resource]
 script = ExtResource("1_3ia0m")
@@ -9,8 +9,8 @@ first_name = "John"
 middle_name = "Thunder"
 last_name = "Jackson"
 description = "Jack's inner demons brought to form.
-Powerful enough to destroy all of New Box City."
-portrait = ExtResource("1_c2bhg")
+Powerful enough to destroy all of NEW BOX CITY."
+portrait = ExtResource("1_wvqsr")
 main_color = Color(0, 0.0980392, 0.12549, 1)
 accent_color = Color(0, 0.615686, 0.85098, 1)
 movement_speed = 200.0

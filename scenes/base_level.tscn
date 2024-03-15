@@ -42,6 +42,7 @@ centered = false
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+zoom = Vector2(0.75, 0.75)
 script = ExtResource("3_nngem")
 decay = 1.0
 max_offset = Vector2(75, 25)

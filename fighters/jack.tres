@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://dr5rjx4uw63bx"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_6kdnt"]
-[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="1_vccw7"]
+[ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="1_bpnrt"]
 
 [resource]
 script = ExtResource("1_6kdnt")
@@ -10,7 +10,7 @@ middle_name = "Lightning"
 last_name = "Johnson"
 description = "Risen from the slums to fight for a better life.
 Jack of all trades, but not to be underestimated."
-portrait = ExtResource("1_vccw7")
+portrait = ExtResource("1_bpnrt")
 main_color = Color(0, 1, 1, 1)
 accent_color = Color(0, 0, 1, 1)
 movement_speed = 200.0

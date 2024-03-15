@@ -44,7 +44,8 @@ func _ready():
 
 func _process(_delta):
 	#Runs per frame
-	pass
+	if Input.is_action_just_pressed("debug_continue"):
+		start_next_round()
 #endregion
 
 #region Signal methods

@@ -76,10 +76,15 @@ func set_as_player(prefix: String):
 	punches_node.input_prefix = prefix
 
 func set_as_dummy():
-	movement_node.set_script(InputScripts.dummy.move)
+	movement_node.set_script(null)
 	punches_node.set_script(InputScripts.dummy.punch)
 
 func set_as_ai():
-	pass
-
+	movement_node.set_script(InputScripts.ai.move)
+	punches_node.set_script(InputScripts.ai.punch)
+	#Basic AI script for now
+	ai_node.set_script(InputScripts.ai.logic)
+	print(ai_node.get_script())
+	#ai_node.set_script(null)
+	
 #endregion
