@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ednacg3t8wy3" path="res://online/menus_border_x2.png" id="2_dwss6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jsh63"]
-font_size = 36
+font_size = 98
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -45,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
@@ -161,6 +161,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Button" type="Button" parent="BG2/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Back"
 
 [connection signal="request_completed" from="BG2/VBoxContainer/MarginContainer/ScrollContainer/LeaderboardRequest" to="BG2/VBoxContainer/MarginContainer/ScrollContainer" method="_on_leaderboard_request_request_completed"]

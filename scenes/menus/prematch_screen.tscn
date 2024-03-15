@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=19 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -6,8 +6,8 @@
 [ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="3_lrpeb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="3_xa4u6"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
-[ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="7_2v2la"]
+[ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
@@ -160,9 +160,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -248.0
+offset_top = -171.0
 offset_right = 532.0
-offset_bottom = -109.0
+offset_bottom = -32.0
 grow_vertical = 0
 alignment = 2
 
@@ -186,9 +186,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -532.0
-offset_top = -248.0
+offset_top = -171.0
 offset_right = -32.0
-offset_bottom = -109.0
+offset_bottom = -32.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2

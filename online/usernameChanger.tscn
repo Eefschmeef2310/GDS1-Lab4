@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwunac3aorv4e"]
+[gd_scene load_steps=4 format=3 uid="uid://bwunac3aorv4e"]
 
 [ext_resource type="Script" path="res://online/usernameChanger.gd" id="1_d6n4b"]
+[ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="2_vgnw4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_16ysa"]
-font_size = 24
+font_size = 48
 
 [node name="UsernameChanger" type="Control"]
 layout_mode = 3
@@ -45,7 +46,7 @@ fit_content = true
 
 [node name="UsernameFeild" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_vgnw4")
 placeholder_text = "New Username"
 alignment = 1
 

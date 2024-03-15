@@ -24,6 +24,7 @@ func _ready():
 	#Set visibility of exit button (button not required for web)
 	$MarginContainer/HBoxContainer/VBoxContainer/Exit.visible = OS.get_name() != "Web"
 	Engine.time_scale = 1
+	$MenuMusic.play()
 
 func _process(_delta):
 	#Runs per frame

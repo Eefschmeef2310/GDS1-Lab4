@@ -40,6 +40,7 @@ func _ready():
 	set_red_data(load("res://fighters/todd.tres"))
 	
 	visibility_changed.connect(became_visible)
+	became_visible()
 
 func _process(_delta):
 	#Runs per frame
@@ -73,7 +74,6 @@ func became_visible():
 	if visible: 
 		$Swoosh.play()
 		$PrematchMusic.play()
-		$AnimationPlayer.play("character_spawn")
 		$Portraits/BluePlayer.play("default")
 		$Portraits/RedPlayer.play("default")
 	else:

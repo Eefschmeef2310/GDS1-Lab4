@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=8 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
 [ext_resource type="Script" path="res://online/usernameButton.gd" id="2_tgtpp"]
+[ext_resource type="AudioStream" uid="uid://bnxvst4le33jd" path="res://sounds/music/boxing title.ogg" id="4_f6i68"]
 
 [sub_resource type="FontVariation" id="FontVariation_6jksb"]
 variation_embolden = -0.19
@@ -110,6 +111,9 @@ custom_minimum_size = Vector2(0, 450.55)
 layout_mode = 2
 texture = ExtResource("2_5f6gd")
 expand_mode = 3
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f6i68")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Championship" to="." method="_on_championship_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
