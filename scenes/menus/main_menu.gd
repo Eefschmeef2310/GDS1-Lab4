@@ -45,11 +45,25 @@ func _on_championship_pressed():
 	
 func _on_exit_pressed():
 	get_tree().quit()
+	
+func _on_leaderboard_pressed():
+	get_tree().change_scene_to_file("res://online/Leaderboard.tscn")
+
+
+func _on_change_username_pressed():
+	get_tree().change_scene_to_file(AirtableManager.usernameChangerScene)
+
+
+func _on_logout_pressed():
+	get_tree().change_scene_to_file(AirtableManager.usernamePickerScene)
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
+
+
+
 
 
 

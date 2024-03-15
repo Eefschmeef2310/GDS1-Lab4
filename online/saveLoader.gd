@@ -35,7 +35,9 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		#if it was able to find and load their save, send them to the menu scene otherwise get them to pick a new name TODO make it show an ewrror instead 
 		if(AirtableManager.saveRes.username != null):
 			print("should have sent user to next scene (menu)")
+			AirtableManager.firstRun = false
 			get_tree().change_scene_to_file(AirtableManager.menuSceme)
+			
 			pass
 		else:
 			get_tree().change_scene_to_file(AirtableManager.usernamePickerScene)

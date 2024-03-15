@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=7 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
 [ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
+[ext_resource type="Script" path="res://online/usernameButton.gd" id="2_tgtpp"]
 
 [sub_resource type="FontVariation" id="FontVariation_6jksb"]
-variation_embolden = 0.52
+variation_embolden = -0.19
 
 [sub_resource type="LabelSettings" id="LabelSettings_lybsi"]
 font = SubResource("FontVariation_6jksb")
@@ -13,7 +14,7 @@ font_size = 21
 [sub_resource type="LabelSettings" id="LabelSettings_743dm"]
 font_size = 140
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("change_username_button")]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hh7e3")
-change_username_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer/Change Username")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -82,6 +82,7 @@ text = "Leaderboard"
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Change Username: NyaNya!"
+script = ExtResource("2_tgtpp")
 
 [node name="Logout" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/OnlinePanel/VBoxContainer"]
 layout_mode = 2
