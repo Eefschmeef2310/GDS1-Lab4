@@ -9,6 +9,7 @@ extends Control
 	#Constants
 const OPTIONS = preload("res://scenes/menus/options.tscn")
 const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
+const LEADERBOARD = preload("res://online/Leaderboard.tscn")
 	#Exported Variables
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
@@ -60,7 +61,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 	
 func _on_leaderboard_pressed():
-	get_tree().change_scene_to_file("res://online/Leaderboard.tscn")
+	get_tree().root.add_child(LEADERBOARD.instantiate())
 
 
 func _on_change_username_pressed():

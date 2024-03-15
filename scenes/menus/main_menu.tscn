@@ -215,6 +215,7 @@ horizontal_alignment = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_f6i68")
+bus = &"Music"
 
 [connection signal="pressed" from="Home/HBoxContainer/Online/Leaderboard" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="Home/HBoxContainer/Online/ChangeName" to="." method="_on_change_username_pressed"]
