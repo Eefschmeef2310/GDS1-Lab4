@@ -42,6 +42,9 @@ func start_countdown():
 	await get_tree().create_timer(0.01).timeout
 	red_player.toggle_movement(false)
 	countdown_label.text = "3"
+	await get_tree().create_timer(0.01).timeout
+	red_player.toggle_movement(false)
+	await get_tree().create_timer(0.75).timeout
 	$CountdownSound.play()
 	
 	await get_tree().create_timer(0.75, false, false, false).timeout
