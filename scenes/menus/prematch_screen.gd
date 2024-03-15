@@ -74,6 +74,8 @@ func became_visible():
 		$Swoosh.play()
 		$PrematchMusic.play()
 		$AnimationPlayer.play("character_spawn")
+		$Portraits/BluePlayer.play("default")
+		$Portraits/RedPlayer.play("default")
 	else:
 		$PrematchMusic.stop()
 
