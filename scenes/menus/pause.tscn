@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menus/pause.gd" id="1_uc28u"]
 
 [node name="Pause" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_uc28u")
 
 [node name="ColorRect" type="ColorRect" parent="."]

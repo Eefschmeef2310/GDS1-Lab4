@@ -4,6 +4,7 @@
 
 [node name="Credits" type="CanvasLayer"]
 process_mode = 3
+layer = 4
 script = ExtResource("1_g1f3f")
 
 [node name="ColorRect" type="ColorRect" parent="."]

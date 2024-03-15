@@ -11,6 +11,7 @@ font_size = 48
 
 [node name="Options" type="CanvasLayer"]
 process_mode = 3
+layer = 3
 script = ExtResource("1_n84ok")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -87,9 +88,22 @@ step = 0.001
 script = ExtResource("2_7hoxj")
 bus_name = "SFX"
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 86
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

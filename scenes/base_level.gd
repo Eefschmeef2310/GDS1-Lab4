@@ -41,19 +41,19 @@ func start_countdown():
 	red_player.toggle_movement(false)
 	countdown_label.text = "3"
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "2"
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "1"
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = "FIGHT!"
 	blue_player.toggle_movement(true)
 	red_player.toggle_movement(true)
 	countdown_complete.emit()
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75, false, false, false).timeout
 	countdown_label.text = ""
 
 func start_slowmo():
@@ -62,7 +62,7 @@ func start_slowmo():
 	Engine.time_scale = 0.25
 	countdown_label.text = "GAME!"
 	
-	await get_tree().create_timer(2, true, false, true).timeout
+	await get_tree().create_timer(2, false, false, true).timeout
 	Engine.time_scale = 1
 	countdown_label.text = ""
 	slowmo_complete.emit()
