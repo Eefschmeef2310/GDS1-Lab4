@@ -11,8 +11,8 @@ extends Node2D
 const PlayerData: FighterData = preload("res://fighters/jack.tres")
 const Opponents: Array[FighterData] = [
 	preload("res://fighters/todd.tres"),
-	preload("res://fighters/willie.tres"),
 	preload("res://fighters/mike.tres"),
+	preload("res://fighters/willie.tres"),
 	preload("res://fighters/john.tres"),
 ]
 const RoundNames: PackedStringArray = [

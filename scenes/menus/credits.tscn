@@ -1,19 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://e5usrk5gs4lv"]
+[gd_scene load_steps=6 format=3 uid="uid://e5usrk5gs4lv"]
 
 [ext_resource type="Script" path="res://scenes/menus/credits.gd" id="1_g1f3f"]
+[ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_x6kwd"]
+[ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_wgc40"]
+[ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_uxfas"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mtmn"]
+font_size = 48
 
 [node name="Credits" type="CanvasLayer"]
 process_mode = 3
 layer = 4
 script = ExtResource("1_g1f3f")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.34902, 0.211765, 1)
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -440.0
+offset_top = -640.0
+offset_right = 1560.0
+offset_bottom = 1360.0
+color = Color(0.0823529, 0.113725, 0.156863, 1)
+
+[node name="Sprites" type="Control" parent="ColorRect2"]
+modulate = Color(1, 1, 1, 0.254902)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ring" type="Sprite2D" parent="ColorRect2/Sprites"]
+position = Vector2(1014, 994)
+rotation = -1.5708
+texture = ExtResource("2_x6kwd")
+
+[node name="CrowdLeft" type="Sprite2D" parent="ColorRect2/Sprites"]
+position = Vector2(553, 989)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_wgc40")
+
+[node name="CrowdRight" type="Sprite2D" parent="ColorRect2/Sprites"]
+position = Vector2(1480, 989)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_uxfas")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -21,9 +47,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -38,8 +64,7 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_left = 75
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -50,15 +75,47 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label11" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Developers" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "DEVELOPERS"
+label_settings = SubResource("LabelSettings_0mtmn")
+horizontal_alignment = 1
 
 [node name="Label12" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
-text = "Our names here"
+text = "Xander Akkari"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Ethan Lucas"
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Lauren Szmandiuk"
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Tom Howarth"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Alex Valacos"
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,6 +124,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "FONTS"
+label_settings = SubResource("LabelSettings_0mtmn")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -74,13 +132,11 @@ theme_override_font_sizes/font_size = 30
 text = "Ballso On The Rampage - Pizzadude, DaFont
     https://www.dafont.com/balls-on-the-rampag.font"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "SOUNDS"
+label_settings = SubResource("LabelSettings_0mtmn")
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
