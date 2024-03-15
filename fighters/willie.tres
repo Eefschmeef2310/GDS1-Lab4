@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://bvfhc8y7qb4td"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://bvfhc8y7qb4td"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_i18cg"]
 [ext_resource type="Texture2D" uid="uid://crutmaixij35j" path="res://assets/willie/portrait.png" id="1_o150d"]
+[ext_resource type="Texture2D" uid="uid://dvseiai3xkd68" path="res://assets/willie/willie-arm.png" id="3_2ppmk"]
+[ext_resource type="Texture2D" uid="uid://culorgv3vkw5o" path="res://assets/willie/Willie-Body.png" id="4_jg1ad"]
+[ext_resource type="Texture2D" uid="uid://c77spluio6ukl" path="res://assets/willie/willie-hand.png" id="5_t5ceo"]
 
 [resource]
 script = ExtResource("1_i18cg")
@@ -11,8 +14,13 @@ last_name = "Dustice"
 description = "Manic hothead who fights for pleasure.
 Agile and quick to punch, but lacks force."
 portrait = ExtResource("1_o150d")
+battle_color = Color(0.905882, 0.756863, 0.435294, 1)
+alt_battle_color = Color(0.254902, 0.113725, 0.192157, 1)
 main_color = Color(0.988235, 0.666667, 0, 1)
 accent_color = Color(0.917647, 0, 0.0705882, 1)
+sprite_body = ExtResource("4_jg1ad")
+sprite_arm = ExtResource("3_2ppmk")
+sprite_hand = ExtResource("5_t5ceo")
 movement_speed = 300.0
 punch_attack_speed = 0.15
 punch_retract_speed = 1.2

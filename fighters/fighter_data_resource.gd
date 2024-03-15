@@ -8,6 +8,8 @@ class_name FighterData
 @export var last_name: String = "Johnson"
 @export_multiline var description: String = ""
 @export var portrait: Texture2D
+@export var battle_color: Color = Color.WHITE
+@export var alt_battle_color: Color = Color.WHITE
 @export var main_color: Color = Color.BLUE
 @export var accent_color: Color = Color.CYAN
 

@@ -25,7 +25,10 @@ func _ready():
 	battle.base_level.get_blue_player().set_as_player("p1_")
 	battle.base_level.get_red_player().set_as_player("p2_")
 	
-	battle.base_level.get_blue_player().load_resource(load("res://fighters/willie.tres"))
+	var p1 = load("res://fighters/willie.tres")
+	var p2 = load("res://fighters/willie.tres")
+	
+	battle.set_fighter_data(p1, "p1_", p2, "p2_")
 
 func _process(_delta):
 	#Runs per frame

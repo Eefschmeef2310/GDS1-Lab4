@@ -69,10 +69,7 @@ func start_battle():
 	prematch_screen.hide()
 	battle = BattleScene.instantiate()
 	add_child(battle)
-	battle.base_level.get_blue_player().set_as_player("p1_")
-	battle.base_level.get_blue_player().load_resource(PlayerData)
-	battle.base_level.get_red_player().set_as_ai()
-	battle.base_level.get_red_player().load_resource(Opponents[current_round])
+	battle.set_fighter_data(PlayerData, "p1_", Opponents[current_round], "ai")
 	battle.end_screen.set_championship()
 	battle.championship_score = total_score
 	battle.continue_championship.connect(_on_battle_continue_championship)

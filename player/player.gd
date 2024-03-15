@@ -69,16 +69,30 @@ func _on_head_hurtbox_area_entered(area):
 #endregion
 
 #region Other methods (please try to separate and organise!)
-func load_resource(data: FighterData):
+func load_resource(data: FighterData, use_alternate := false):
+	# Parameters
 	movement_speed = data.movement_speed
 	punch_speed_seconds = data.punch_attack_speed
 	retract_speed_seconds = data.punch_retract_speed
 	knockback_power = data.punch_knockback
 	punch_frequency = data.punch_frequency
-	#Ai stuff below
+	
+	# AI params
 	tick_speed = data.tick_speed
 	aggressive_chance_scale = data.aggressive_chance_scale
 	hover_distance = data.hover_distance
+	
+	# Sprites
+	$Body.texture = data.sprite_body
+	$Body/LArm.texture = data.sprite_arm
+	$Body/RArm.texture = data.sprite_arm
+	$Body/LArm/LHand.texture = data.sprite_hand
+	$Body/RArm/RHand.texture = data.sprite_hand
+	if data.sprite_glove:
+		$Body/LArm/LHand/Glove.texture = data.sprite_glove
+		$Body/RArm/RHand/Glove.texture = data.sprite_glove
+	$Body/LArm/LHand/Glove.self_modulate = data.battle_color if !use_alternate else data.alt_battle_color
+	$Body/RArm/RHand/Glove.self_modulate = data.battle_color if !use_alternate else data.alt_battle_color
 
 func toggle_movement(toggle: bool):
 	movement_node.can_input = toggle

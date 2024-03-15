@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=19 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
-[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
 [ext_resource type="Script" path="res://scenes/base_level.gd" id="1_sdqvl"]
-[ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_8ptoh"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_hc60e"]
 [ext_resource type="Script" path="res://scenes/battle_camera.gd" id="3_nngem"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
+[ext_resource type="Texture2D" uid="uid://dvqtuvdxwmlvr" path="res://assets/ring_floor.png" id="4_vdaxn"]
+[ext_resource type="Texture2D" uid="uid://cd645n1v6lmp3" path="res://assets/ring_post_left.png" id="5_n8gky"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
+[ext_resource type="Texture2D" uid="uid://brfcnbemiyjkw" path="res://assets/ring_post_right.png" id="6_yw78o"]
+[ext_resource type="Texture2D" uid="uid://bn7u3xvo4rslw" path="res://assets/ring_outline.png" id="7_tuda2"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_6l2jr"]
 [ext_resource type="AudioStream" uid="uid://b18iui8s73741" path="res://sounds/music/boxing fight.ogg" id="9_dk2ew"]
 [ext_resource type="AudioStream" uid="uid://ce2hqsvkspvoa" path="res://sounds/sfx/arcade-countdown-7007.mp3" id="10_10wf8"]
@@ -48,38 +50,51 @@ decay = 1.0
 max_offset = Vector2(75, 25)
 noise = SubResource("FastNoiseLite_vckb6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ring" type="StaticBody2D" parent="."]
 position = Vector2(574, 355)
 
-[node name="Ring" type="Sprite2D" parent="StaticBody2D"]
+[node name="Floor" type="Sprite2D" parent="Ring"]
 position = Vector2(0, -1)
-rotation = -1.5708
-texture = ExtResource("2_8ptoh")
+rotation = 1.5708
+texture = ExtResource("4_vdaxn")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="BluePost" type="Sprite2D" parent="Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("5_n8gky")
+
+[node name="RedPost" type="Sprite2D" parent="Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("6_yw78o")
+
+[node name="Outline" type="Sprite2D" parent="Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("7_tuda2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ring"]
 visible = false
-modulate = Color(0.921569, 0.4, 0.4, 1)
-scale = Vector2(4.09375, 4.09375)
-texture = ExtResource("1_sdqqs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -260)
 shape = SubResource("RectangleShape2D_56rhn")
 debug_color = Color(0.996078, 0, 0, 0.188235)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ring"]
+visible = false
 position = Vector2(260, 0)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_56rhn")
 debug_color = Color(0.996078, 0, 0, 0.188235)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ring"]
+visible = false
 position = Vector2(-260, 0)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_56rhn")
 debug_color = Color(0.996078, 0, 0, 0.188235)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ring"]
+visible = false
 position = Vector2(0, 260)
 shape = SubResource("RectangleShape2D_56rhn")
 debug_color = Color(0.996078, 0, 0, 0.188235)
@@ -99,17 +114,17 @@ z_index = 1
 position = Vector2(380, 194)
 scale = Vector2(0.5, 0.5)
 
+[node name="Glove" parent="Blue Player/Body/LArm/LHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="Glove" parent="Blue Player/Body/RArm/RHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+
 [node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
 z_index = 1
 position = Vector2(768, 515)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
-
-[node name="Glove" parent="Red Player/Body/LArm/LHand" index="0"]
-self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
-
-[node name="Glove" parent="Red Player/Body/RArm/RHand" index="0"]
-self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 
 [node name="CountdownUI" type="CanvasLayer" parent="."]
 
@@ -152,4 +167,4 @@ script = ExtResource("9_6l2jr")
 [connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
 
-[editable path="Red Player"]
+[editable path="Blue Player"]

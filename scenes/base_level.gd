@@ -83,4 +83,8 @@ func get_blue_player():
 func get_red_player():
 	return red_player
 
+func set_player_data(blue: FighterData, red: FighterData, use_alternate := false):
+	$Ring/BluePost.self_modulate = blue.battle_color
+	$Ring/RedPost.self_modulate = red.battle_color if !use_alternate else red.alt_battle_color
+
 #endregion

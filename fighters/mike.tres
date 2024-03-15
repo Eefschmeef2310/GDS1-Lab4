@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://c54swkvm7jx5d"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://c54swkvm7jx5d"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_mkvsd"]
 [ext_resource type="Texture2D" uid="uid://cp65plxx4ffbj" path="res://assets/mike/portrait.png" id="1_ng132"]
+[ext_resource type="Texture2D" uid="uid://bqsvwg313eo4q" path="res://assets/mike/mike-arm.png" id="3_p1pk3"]
+[ext_resource type="Texture2D" uid="uid://b3d0vlytuhfcs" path="res://assets/mike/Mike-body.png" id="4_bue8l"]
+[ext_resource type="Texture2D" uid="uid://bl45xxi586kg4" path="res://assets/mike/mike-hand.png" id="5_8fvbo"]
 
 [resource]
 script = ExtResource("1_mkvsd")
@@ -11,8 +14,13 @@ last_name = "Truk"
 description = "Construction worker here to blow off some steam.
 Hits like a truck, but slow on the chase."
 portrait = ExtResource("1_ng132")
+battle_color = Color(0.25098, 0.152941, 0.317647, 1)
+alt_battle_color = Color(0.101961, 0.2, 0.176471, 1)
 main_color = Color(0.713726, 0.458824, 1, 1)
 accent_color = Color(0.580392, 0.117647, 0.262745, 1)
+sprite_body = ExtResource("4_bue8l")
+sprite_arm = ExtResource("3_p1pk3")
+sprite_hand = ExtResource("5_8fvbo")
 movement_speed = 100.0
 punch_attack_speed = 0.15
 punch_retract_speed = 0.5

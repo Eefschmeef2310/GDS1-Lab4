@@ -22,6 +22,7 @@ signal continue_championship(new_score: int)
 @onready var base_level: BaseLevel = $BaseLevel
 @onready var match_timer = $MatchTimer
 @onready var end_screen = $EndScreen
+@onready var ui = $Ui
 
 #Other Variables (please try to separate and organise!)
 var blue_score: int = 0
@@ -80,5 +81,28 @@ func check_game_end():
 		await base_level.slowmo_complete
 		hide_ui.emit()
 		game_ended.emit(blue_score, red_score, match_timer.time_left, championship_score)
+
+func set_fighter_data(blue: FighterData, blue_type: String, red: FighterData, red_type: String):
+	match blue_type:
+		"ai":
+			base_level.get_blue_player().set_as_ai()
+		"dummy":
+			base_level.get_blue_player().set_as_dummy()
+		_:
+			base_level.get_blue_player().set_as_player(blue_type)
+	match red_type:
+		"ai":
+			base_level.get_red_player().set_as_ai()
+		"dummy":
+			base_level.get_red_player().set_as_dummy()
+		_:
+			base_level.get_red_player().set_as_player(red_type)
+	var is_ditto = blue == red
+	base_level.get_blue_player().load_resource(blue)
+	base_level.get_red_player().load_resource(red, is_ditto)
+	base_level.set_player_data(blue, red, is_ditto)
+	ui.set_blue_data(blue)
+	ui.set_red_data(red, is_ditto)
+	end_screen.set_player_data(blue, red, is_ditto)
 
 #endregion

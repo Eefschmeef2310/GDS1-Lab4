@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://csq8s1alv5b4x"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://csq8s1alv5b4x"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_3ia0m"]
 [ext_resource type="Texture2D" uid="uid://i1kq7j73u5un" path="res://assets/john/portrait.png" id="1_wvqsr"]
+[ext_resource type="Texture2D" uid="uid://b2g240ddafhq6" path="res://assets/john/john-arm.png" id="3_3pue4"]
+[ext_resource type="Texture2D" uid="uid://bypt1ch11hsly" path="res://assets/john/john-body.png" id="4_h5dce"]
+[ext_resource type="Texture2D" uid="uid://c8g5btlql1rsf" path="res://assets/john/john-hand.png" id="5_poj60"]
 
 [resource]
 script = ExtResource("1_3ia0m")
@@ -13,6 +16,9 @@ Powerful enough to destroy all of NEW BOX CITY."
 portrait = ExtResource("1_wvqsr")
 main_color = Color(0, 0.0980392, 0.12549, 1)
 accent_color = Color(0, 0.615686, 0.85098, 1)
+sprite_body = ExtResource("4_h5dce")
+sprite_arm = ExtResource("3_3pue4")
+sprite_hand = ExtResource("5_poj60")
 movement_speed = 200.0
 punch_attack_speed = 0.2
 punch_retract_speed = 0.6

@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=3 format=3 uid="uid://cbubvqygnooqu"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=6 format=3 uid="uid://cbubvqygnooqu"]
 
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_ob7oe"]
 [ext_resource type="Texture2D" uid="uid://bb44m3k08p1oq" path="res://assets/todd/portrait.png" id="1_w6hfp"]
+[ext_resource type="Texture2D" uid="uid://7ycc6t417kan" path="res://assets/todd/todd-arm.png" id="3_ys5ng"]
+[ext_resource type="Texture2D" uid="uid://ghwmddssdsw2" path="res://assets/todd/Todd-body.png" id="4_yu4oi"]
+[ext_resource type="Texture2D" uid="uid://brhjgyk453lyd" path="res://assets/todd/todd-hand.png" id="5_362c7"]
 
 [resource]
 script = ExtResource("1_ob7oe")
@@ -11,8 +14,13 @@ last_name = "Bonzalez"
 description = "High school prodigy destined for greatness.
 Hits fast, but won't spam you with attacks."
 portrait = ExtResource("1_w6hfp")
+battle_color = Color(0.811765, 0.341176, 0.235294, 1)
+alt_battle_color = Color(0.639216, 0.866667, 0.858824, 1)
 main_color = Color(0, 0.952941, 0.345098, 1)
 accent_color = Color(0, 0.603922, 0.682353, 1)
+sprite_body = ExtResource("4_yu4oi")
+sprite_arm = ExtResource("3_ys5ng")
+sprite_hand = ExtResource("5_362c7")
 movement_speed = 200.0
 punch_attack_speed = 0.15
 punch_retract_speed = 0.7
