@@ -17,10 +17,16 @@ const InputScripts: Dictionary = {
 	dummy = {
 		move = preload("res://movement_bases/movement_base.gd"),
 		punch = preload("res://punch_bases/punch_base.gd")
+	},
+	ai = {
+		move = preload("res://movement_bases/ai_movement.gd"),
+		punch = preload("res://punch_bases/ai_punch.gd"),
+		logic = preload("res://ai_scripts/ai_script.gd")
 	}
 }
 @onready var movement_node: Node = $Scripts/Movement
 @onready var punches_node: Node = $Scripts/Punches
+@onready var ai_node: Node = $Scripts/AI
 
 #Exported Variables
 @export_group("Statistics")
@@ -30,6 +36,10 @@ const InputScripts: Dictionary = {
 @export var retract_speed_seconds : float = 0.6
 @export var knockback_power : float = 1000
 @export var punch_frequency : float = 0.6
+
+@export var tick_speed: float = 0.5
+@export var aggressive_chance_scale: float = 1
+@export var hover_distance: float = 200
 
 #Onready Variables
 
@@ -65,7 +75,10 @@ func load_resource(data: FighterData):
 	retract_speed_seconds = data.punch_retract_speed
 	knockback_power = data.punch_knockback
 	punch_frequency = data.punch_frequency
-	
+	#Ai stuff below
+	tick_speed = data.tick_speed
+	aggressive_chance_scale = data.aggressive_chance_scale
+	hover_distance = data.hover_distance
 
 func toggle_movement(toggle: bool):
 	movement_node.can_input = toggle
@@ -75,12 +88,20 @@ func set_as_player(prefix: String):
 	movement_node.input_prefix = prefix
 	punches_node.set_script(InputScripts.player.punch)
 	punches_node.input_prefix = prefix
+	ai_node.set_script(null)
 
 func set_as_dummy():
 	movement_node.set_script(InputScripts.dummy.move)
 	punches_node.set_script(InputScripts.dummy.punch)
+	ai_node.set_script(null)
 
+#Arguments can be added to change the ai script loaded, so different characters have different playstyles
 func set_as_ai():
-	pass
+	movement_node.set_script(InputScripts.ai.move)
+	punches_node.set_script(InputScripts.ai.punch)
+	#Basic AI script for now
+	ai_node.set_script(InputScripts.ai.logic)
+	#ai_node.set_script(null)
+	
 
 #endregion

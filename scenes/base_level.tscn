@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=17 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="1_sdqqs"]
@@ -9,8 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_36442"]
 [ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="6_i6nhd"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_6l2jr"]
+[ext_resource type="AudioStream" uid="uid://b18iui8s73741" path="res://sounds/music/boxing fight.ogg" id="9_dk2ew"]
+[ext_resource type="AudioStream" uid="uid://ce2hqsvkspvoa" path="res://sounds/sfx/arcade-countdown-7007.mp3" id="10_10wf8"]
+[ext_resource type="AudioStream" uid="uid://b1ua56alnlpdm" path="res://sounds/sfx/2 rings.mp3" id="11_360ge"]
+[ext_resource type="AudioStream" uid="uid://cayrrn641b80g" path="res://sounds/sfx/3 rings.mp3" id="12_6frh1"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8vcko"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vckb6"]
+noise_type = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
 size = Vector2(630, 45)
@@ -38,10 +43,9 @@ centered = false
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 script = ExtResource("3_nngem")
-decay = 1.5
-max_offset = Vector2(50, 15)
-max_roll = 0.0
-noise = SubResource("FastNoiseLite_8vcko")
+decay = 1.0
+max_offset = Vector2(75, 25)
+noise = SubResource("FastNoiseLite_vckb6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 355)
@@ -123,6 +127,23 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_gw0m2")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dk2ew")
+bus = &"Music"
+
+[node name="CountdownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_10wf8")
+bus = &"SFX"
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_360ge")
+bus = &"SFX"
+
+[node name="EndSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("12_6frh1")
+bus = &"SFX"
 
 [node name="Pause" type="Node" parent="."]
 script = ExtResource("9_6l2jr")

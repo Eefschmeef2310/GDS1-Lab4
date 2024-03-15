@@ -24,3 +24,8 @@ class_name FighterData
 @export var punch_knockback: float = 1000
 @export var punch_frequency: float = 0.6
 # @export var punch_reach: float = 1.0
+
+@export_group("Ai_Stuff")
+@export var tick_speed: float = 0.5
+@export var aggressive_chance_scale: float = 1
+@export var hover_distance: float = 250

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bnxvst4le33jd"
+path="res://.godot/imported/boxing title.ogg-8c5a130e73d071386b960b4ce3d1b418.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/music/boxing title.ogg"
+dest_files=["res://.godot/imported/boxing title.ogg-8c5a130e73d071386b960b4ce3d1b418.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

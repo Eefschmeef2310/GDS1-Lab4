@@ -70,7 +70,7 @@ func start_battle():
 	add_child(battle)
 	battle.base_level.get_blue_player().set_as_player("p1_")
 	battle.base_level.get_blue_player().load_resource(PlayerData)
-	battle.base_level.get_red_player().set_as_player("p2_")
+	battle.base_level.get_red_player().set_as_ai()
 	battle.base_level.get_red_player().load_resource(Opponents[current_round])
 	battle.end_screen.set_championship()
 	battle.championship_score = total_score
