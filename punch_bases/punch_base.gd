@@ -41,7 +41,7 @@ func _ready():
 
 func _physics_process(_delta):
 	#Runs per frame
-	if (can_l_punch || can_r_punch) && buffer_timer > 0 && frequency_timer < 0:
+	if can_punch() && buffer_timer > 0 && frequency_timer < 0:
 		punch(is_right_arm)
 	
 	buffer_timer -= _delta
@@ -55,6 +55,9 @@ func _physics_process(_delta):
 #region Other methods (please try to separate and organise!)
 func input_punch():
 	buffer_timer = punch_buffer
+	
+func can_punch():
+	return can_l_punch || can_r_punch
 
 
 func punch(right: bool):
@@ -65,23 +68,23 @@ func punch(right: bool):
 	frequency_timer = owner.punch_frequency
 	
 	if(right):
-		right_anim.play("punch", -1, 1/owner.punch_speed_seconds)
-		right_hitbox.disabled = false
+		$"../../AnimationPlayers/RightArm".play("punch", -1, 1/owner.punch_speed_seconds)
+		$"../../Body/RArm/RHand/RightHitbox/CollisionShape2D".disabled = false
 		can_r_punch = false
 	else:
-		left_anim.play("punch", -1, 1/owner.punch_speed_seconds)
-		left_hitbox.disabled = false
+		$"../../AnimationPlayers/LeftArm".play("punch", -1, 1/owner.punch_speed_seconds)
+		$"../../Body/LArm/LHand/LeftHitbox/CollisionShape2D".disabled = false
 		can_l_punch = false
 		
 	is_right_arm = !is_right_arm
 	
 func retract_r():
-	right_anim.play("retract", -1, 1/owner.retract_speed_seconds)
-	right_hitbox.disabled = true 
+	$"../../AnimationPlayers/RightArm".play("retract", -1, 1/owner.retract_speed_seconds)
+	$"../../Body/RArm/RHand/RightHitbox/CollisionShape2D".disabled = true 
 
 func retract_l():
-	left_anim.play("retract", -1, 1/owner.retract_speed_seconds)
-	left_hitbox.disabled = true 
+	$"../../AnimationPlayers/LeftArm".play("retract", -1, 1/owner.retract_speed_seconds)
+	$"../../Body/LArm/LHand/LeftHitbox/CollisionShape2D".disabled = true 
 
 func finished_r_retract():
 	can_r_punch = true

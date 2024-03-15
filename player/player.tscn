@@ -497,4 +497,5 @@ stream = SubResource("AudioStreamRandomizer_s31ct")
 stream = SubResource("AudioStreamRandomizer_jge45")
 
 [connection signal="hit" from="." to="Scripts/Movement" method="_on_character_hit"]
+[connection signal="hit" from="." to="Scripts/AI" method="_on_attacked_revenge"]
 [connection signal="area_entered" from="HeadHurtbox" to="." method="_on_head_hurtbox_area_entered"]
