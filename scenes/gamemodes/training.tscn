@@ -1,41 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmuvchpu2f8ho"]
+[gd_scene load_steps=3 format=3 uid="uid://dmuvchpu2f8ho"]
 
 [ext_resource type="PackedScene" uid="uid://cn5ca3ycbsm2p" path="res://scenes/base_level.tscn" id="1_v08y7"]
 [ext_resource type="Script" path="res://scenes/gamemodes/training.gd" id="1_ymt6m"]
-[ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="2_2p8d0"]
-[ext_resource type="Script" path="res://movement_bases/movement_base.gd" id="4_j6en5"]
-[ext_resource type="Script" path="res://punch_bases/punch_base.gd" id="5_mynrd"]
 
 [node name="Training" type="Node2D"]
 script = ExtResource("1_ymt6m")
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_v08y7")]
 
-[node name="Player" parent="BaseLevel" instance=ExtResource("2_2p8d0")]
-z_index = 1
-position = Vector2(433, 359)
-scale = Vector2(0.5, 0.5)
+[node name="Red Player" parent="BaseLevel" index="7"]
+position = Vector2(654, 353)
 
-[node name="Dummy" parent="BaseLevel" instance=ExtResource("2_2p8d0")]
-z_index = 1
-position = Vector2(718, 359)
-rotation = 3.14159
-scale = Vector2(0.5, -0.5)
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 456.0
+offset_top = 24.0
+offset_right = 692.0
+offset_bottom = 74.0
+grow_horizontal = 2
+text = "PAUSE TO EXIT"
+horizontal_alignment = 1
 
-[node name="Movement" parent="BaseLevel/Dummy/Scripts" index="0"]
-script = ExtResource("4_j6en5")
-
-[node name="Punches" parent="BaseLevel/Dummy/Scripts" index="1"]
-script = ExtResource("5_mynrd")
-
-[node name="Button" type="Button" parent="."]
-offset_left = 32.0
-offset_top = 585.0
-offset_right = 146.0
-offset_bottom = 616.0
-text = "Back to Menu"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-
-[editable path="BaseLevel/Player"]
-[editable path="BaseLevel/Dummy"]
+[editable path="BaseLevel"]
+[editable path="BaseLevel/Red Player"]

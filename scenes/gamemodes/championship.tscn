@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpvibep0desuj"]
+
+[ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
+[ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_unrwm"]
+[ext_resource type="Texture2D" uid="uid://cvm26r8yda8q0" path="res://scenes/ui/ui_sprites/VICTORY.png" id="3_diyvh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_24kmp"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_pk41u"]
+font_size = 38
+
+[node name="Championship" type="Node2D"]
+script = ExtResource("1_8xust")
+
+[node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
+visible = false
+
+[node name="ChampionshipWin" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="RoundLabel" type="Label" parent="ChampionshipWin"]
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 32.0
+offset_right = 506.0
+offset_bottom = 161.0
+grow_horizontal = 2
+text = "victory!"
+label_settings = SubResource("LabelSettings_24kmp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundSubtitle" type="Label" parent="ChampionshipWin"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_top = 96.0
+offset_right = 187.0
+offset_bottom = 225.0
+grow_horizontal = 2
+text = "FINAL SCORE: 00000000"
+label_settings = SubResource("LabelSettings_pk41u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ChampionshipWin"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -110.0
+offset_right = 150.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_diyvh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FinishButton" type="Button" parent="ChampionshipWin"]
+offset_left = 476.5
+offset_top = 561.0
+offset_right = 675.5
+offset_bottom = 616.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "finish"
+
+[connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
+[connection signal="pressed" from="ChampionshipWin/FinishButton" to="." method="_on_finish_button_pressed"]

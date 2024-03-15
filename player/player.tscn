@@ -1,15 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=29 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
 [ext_resource type="Script" path="res://movement_bases/player_movement.gd" id="2_oq0kp"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_sngc8"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="3_gsiok"]
+[ext_resource type="Texture2D" uid="uid://gx4yv7ylj7ue" path="res://assets/glove.png" id="5_b2583"]
 [ext_resource type="Script" path="res://punch_bases/player_punch.gd" id="6_sfrpy"]
 [ext_resource type="Script" path="res://player/auto_rotation.gd" id="7_qfqi1"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="9_gekwv"]
+[ext_resource type="AudioStream" uid="uid://b3e0ycihb2urx" path="res://sounds/sfx/fast-simple-chop-5-6270.mp3" id="10_rou3g"]
+[ext_resource type="AudioStream" uid="uid://bb7cmwnvhgy0" path="res://sounds/sfx/punch-boxing-02wav-14897 (1).mp3" id="10_tg7i7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1guc"]
-size = Vector2(184, 400)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_susnp"]
+radius = 100.0
+height = 275.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evyw4"]
 radius = 50.0
@@ -46,7 +51,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_2puw0"]
 resource_name = "punch"
-length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,7 +58,7 @@ tracks/0/path = NodePath("../Body/LArm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.5708]
@@ -66,7 +70,7 @@ tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.00713, 0.0]
@@ -78,11 +82,11 @@ tracks/2/path = NodePath("../Scripts/Punches")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_punch"
+"method": &"retract_l"
 }]
 }
 
@@ -116,7 +120,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_eyw0p"]
 resource_name = "retract"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -124,7 +127,7 @@ tracks/0/path = NodePath("../Body/LArm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.5708, 0.0]
@@ -136,7 +139,7 @@ tracks/1/path = NodePath("../Body/LArm/LHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.00713]
@@ -148,11 +151,11 @@ tracks/2/path = NodePath("../Scripts/Punches")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_retract"
+"method": &"finished_l_retract"
 }]
 }
 
@@ -222,7 +225,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0agmt"]
 resource_name = "punch"
-length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -230,7 +232,7 @@ tracks/0/path = NodePath("../Body/RArm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [3.14159, 1.5708]
@@ -242,7 +244,7 @@ tracks/1/path = NodePath("../Body/RArm/RHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-2.00713, 0.0]
@@ -254,11 +256,11 @@ tracks/2/path = NodePath("../Scripts/Punches")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_punch"
+"method": &"retract_r"
 }]
 }
 
@@ -292,7 +294,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_bblkd"]
 resource_name = "retract"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -300,7 +301,7 @@ tracks/0/path = NodePath("../Body/RArm/RHand:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -2.00713]
@@ -312,7 +313,7 @@ tracks/1/path = NodePath("../Body/RArm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.5708, 3.14159]
@@ -324,11 +325,11 @@ tracks/2/path = NodePath("../Scripts/Punches")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"finished_retract"
+"method": &"finished_r_retract"
 }]
 }
 
@@ -369,12 +370,26 @@ _data = {
 "retract_head": SubResource("Animation_228e0")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s31ct"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("10_rou3g")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jge45"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("10_tg7i7")
+stream_0/weight = 1.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_w5c5t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(35, -2)
-shape = SubResource("RectangleShape2D_n1guc")
+shape = SubResource("CapsuleShape2D_susnp")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwu7d")
@@ -389,7 +404,12 @@ offset = Vector2(0, -51.24)
 position = Vector2(0, -93)
 rotation = 1.5708
 texture = ExtResource("3_gsiok")
-offset = Vector2(2.705, -73.27)
+offset = Vector2(2.705, -40)
+
+[node name="Glove" type="Sprite2D" parent="Body/LArm/LHand"]
+self_modulate = Color(0.235294, 0.368627, 0.545098, 1)
+position = Vector2(1.99955, -122)
+texture = ExtResource("5_b2583")
 
 [node name="LeftHitbox" type="Area2D" parent="Body/LArm/LHand"]
 position = Vector2(-0.000452499, -125)
@@ -412,7 +432,13 @@ flip_h = true
 position = Vector2(0, -93)
 rotation = -1.5708
 texture = ExtResource("3_gsiok")
-offset = Vector2(2.705, -73.27)
+offset = Vector2(2.705, -40)
+flip_h = true
+
+[node name="Glove" type="Sprite2D" parent="Body/RArm/RHand"]
+self_modulate = Color(0.235294, 0.368627, 0.545098, 1)
+position = Vector2(1.99957, -122)
+texture = ExtResource("5_b2583")
 flip_h = true
 
 [node name="RightHitbox" type="Area2D" parent="Body/RArm/RHand"]
@@ -443,6 +469,9 @@ script = ExtResource("6_sfrpy")
 [node name="Auto-Rotation" type="Node" parent="Scripts"]
 script = ExtResource("7_qfqi1")
 
+[node name="Pause" type="Node" parent="Scripts"]
+script = ExtResource("9_gekwv")
+
 [node name="AnimationPlayers" type="Node" parent="."]
 
 [node name="LeftArm" type="AnimationPlayer" parent="AnimationPlayers"]
@@ -454,6 +483,14 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_22anh")
 }
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Punch" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_s31ct")
+
+[node name="Hit" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_jge45")
 
 [connection signal="hit" from="." to="Scripts/Movement" method="_on_character_hit"]
 [connection signal="area_entered" from="HeadHurtbox" to="." method="_on_head_hurtbox_area_entered"]

@@ -14,6 +14,7 @@ extends Node2D
 #@export_subgroup("Subgroup")
 
 #Onready Variables
+@onready var base_level: BaseLevel = $BaseLevel
 
 #Other Variables (please try to separate and organise!)
 
@@ -21,10 +22,10 @@ extends Node2D
 
 #region Godot methods
 func _ready():
-	#Runs when all children have entered the tree
-	pass
+	base_level.get_blue_player().set_as_player("p1_")
+	base_level.get_red_player().set_as_dummy()
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	pass
 #endregion

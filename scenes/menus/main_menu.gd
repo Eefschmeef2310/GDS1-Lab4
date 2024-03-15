@@ -8,11 +8,10 @@ extends Control
 
 	#Constants
 const OPTIONS = preload("res://scenes/menus/options.tscn")
-
+const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
 	#Exported Variables
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
-@export var change_username_button : Button
 
 	#Onready Variables
 
@@ -24,7 +23,7 @@ const OPTIONS = preload("res://scenes/menus/options.tscn")
 func _ready():
 	#Set visibility of exit button (button not required for web)
 	$MarginContainer/HBoxContainer/VBoxContainer/Exit.visible = OS.get_name() != "Web"
-	change_username_button.text = "Change Username: " + AirtableManager.saveRes.username
+	Engine.time_scale = 1
 
 func _process(_delta):
 	#Runs per frame
@@ -41,26 +40,16 @@ func _on_training_pressed():
 func _on_options_pressed():
 	get_tree().root.add_child(OPTIONS.instantiate())
 	
+func _on_championship_pressed():
+	get_tree().change_scene_to_file("res://scenes/gamemodes/championship.tscn")
+	
 func _on_exit_pressed():
 	get_tree().quit()
-func _on_logout_pressed():
-	get_tree().change_scene_to_file(AirtableManager.usernamePickerScene)
-func _on_change_username_pressed():
-	#print("haii")
-	get_tree().change_scene_to_file(AirtableManager.usernameChangerScene)
-func _on_leaderboard_pressed():
-	get_tree().change_scene_to_file("res://online/Leaderboard.tscn")
 #endregion
 
 #region Other methods (please try to separate and organise!)
 
 #endregion
-
-
-
-
-
-
 
 
 
