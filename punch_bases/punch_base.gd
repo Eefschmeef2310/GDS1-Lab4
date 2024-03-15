@@ -41,7 +41,7 @@ func _ready():
 
 func _physics_process(_delta):
 	#Runs per frame
-	if can_punch() && buffer_timer > 0 && frequency_timer < 0:
+	if can_punch() && buffer_timer > 0:
 		punch(is_right_arm)
 	
 	buffer_timer -= _delta
@@ -57,7 +57,7 @@ func input_punch():
 	buffer_timer = punch_buffer
 	
 func can_punch():
-	return can_l_punch || can_r_punch
+	return (can_l_punch || can_r_punch) && frequency_timer < 0
 
 
 func punch(right: bool):
