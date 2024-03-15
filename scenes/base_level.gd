@@ -40,7 +40,8 @@ func start_countdown():
 	blue_player.toggle_movement(false)
 	red_player.toggle_movement(false)
 	countdown_label.text = "3"
-	
+	await get_tree().create_timer(0.01).timeout
+	red_player.toggle_movement(false)
 	await get_tree().create_timer(0.75).timeout
 	countdown_label.text = "2"
 	

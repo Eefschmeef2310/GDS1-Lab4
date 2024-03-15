@@ -34,6 +34,5 @@ func _process(delta):
 #endregion
 
 #region Other methods (please try to separate and organise!)
-
 #endregion
 

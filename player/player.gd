@@ -88,11 +88,11 @@ func set_as_dummy():
 
 #Arguments can be added to change the ai script loaded, so different characters have different playstyles
 func set_as_ai():
-	print("I am an AI")
 	movement_node.set_script(InputScripts.ai.move)
 	punches_node.set_script(InputScripts.ai.punch)
 	#Basic AI script for now
 	ai_node.set_script(InputScripts.ai.ai_script)
+	#ai_node.set_script(null)
 	
 
 #endregion

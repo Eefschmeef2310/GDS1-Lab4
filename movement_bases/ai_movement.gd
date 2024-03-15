@@ -24,7 +24,7 @@ func _ready():
 	#Runs when all children have entered the tree
 	pass
 
-func _process(delta):
+func _process(_delta):
 	#Runs per frame
 	pass
 #endregion
@@ -34,6 +34,7 @@ func _process(delta):
 #endregion
 
 #region Other methods (please try to separate and organise!)
-
+func move_in_direction(direction: Vector2):
+	set_direction(direction)
 #endregion
 
