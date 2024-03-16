@@ -15,9 +15,9 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
-visible = false
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="ChampionshipWin"]
 anchors_preset = 15
