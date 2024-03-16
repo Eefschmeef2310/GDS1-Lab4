@@ -1,14 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=16 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
-[ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_3gbtb"]
-[ext_resource type="Texture2D" uid="uid://yte6ya8icrxa" path="res://scenes/ui/ui_sprites/boxer.png" id="2_5f6gd"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_dud0y"]
 [ext_resource type="AudioStream" uid="uid://bnxvst4le33jd" path="res://sounds/music/boxing title.ogg" id="4_f6i68"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_lnr45"]
+[ext_resource type="Texture2D" uid="uid://dvqtuvdxwmlvr" path="res://assets/ring_floor.png" id="4_ocpuy"]
+[ext_resource type="Texture2D" uid="uid://cd645n1v6lmp3" path="res://assets/ring_post_left.png" id="5_3txxo"]
+[ext_resource type="Texture2D" uid="uid://brfcnbemiyjkw" path="res://assets/ring_post_right.png" id="6_2crme"]
+[ext_resource type="Texture2D" uid="uid://bn7u3xvo4rslw" path="res://assets/ring_outline.png" id="7_6ggtk"]
+[ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="8_5cn77"]
+[ext_resource type="Texture2D" uid="uid://cp65plxx4ffbj" path="res://assets/mike/portrait.png" id="8_v14cj"]
+[ext_resource type="Texture2D" uid="uid://crutmaixij35j" path="res://assets/willie/portrait.png" id="9_mq8w5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_743dm"]
-line_spacing = -24.0
+line_spacing = -48.0
 font_size = 140
 
 [sub_resource type="FontVariation" id="FontVariation_6jksb"]
@@ -47,11 +52,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Ring" type="Sprite2D" parent="ColorRect/Sprites"]
-position = Vector2(1014, 994)
-rotation = -1.5708
-texture = ExtResource("2_3gbtb")
-
 [node name="CrowdLeft" type="Sprite2D" parent="ColorRect/Sprites"]
 position = Vector2(553, 989)
 scale = Vector2(0.9, 0.9)
@@ -62,7 +62,30 @@ position = Vector2(1480, 989)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_lnr45")
 
+[node name="Floor" type="Sprite2D" parent="ColorRect/Sprites"]
+position = Vector2(1014, 994)
+rotation = 1.5708
+texture = ExtResource("4_ocpuy")
+
+[node name="BluePost" type="Sprite2D" parent="ColorRect/Sprites"]
+visible = false
+position = Vector2(1014, 994)
+rotation = 1.5708
+texture = ExtResource("5_3txxo")
+
+[node name="RedPost" type="Sprite2D" parent="ColorRect/Sprites"]
+visible = false
+position = Vector2(1014, 994)
+rotation = 1.5708
+texture = ExtResource("6_2crme")
+
+[node name="Outline" type="Sprite2D" parent="ColorRect/Sprites"]
+position = Vector2(1014, 994)
+rotation = 1.5708
+texture = ExtResource("7_6ggtk")
+
 [node name="Home" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Home"]
 anchors_preset = 8
@@ -71,13 +94,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -315.5
-offset_top = -166.0
+offset_top = -196.0
 offset_right = 315.5
-offset_bottom = -26.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-text = "SUPER BOXING"
+text = "SUPER
+BOXING"
 label_settings = SubResource("LabelSettings_743dm")
 horizontal_alignment = 1
 
@@ -88,9 +112,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -316.0
-offset_top = -4.0
+offset_top = 28.0
 offset_right = 316.0
-offset_bottom = 196.0
+offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -152,7 +176,56 @@ text = "Exit
 "
 
 [node name="Play" type="CanvasLayer" parent="."]
-visible = false
+
+[node name="TextureRect3" type="TextureRect" parent="Play"]
+modulate = Color(0.505882, 0.592157, 0.713726, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1154.0
+offset_top = -428.0
+offset_right = -393.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_v14cj")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Play"]
+modulate = Color(0.623529, 0.698039, 0.8, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1065.0
+offset_top = -473.0
+offset_right = -224.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_mq8w5")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="Play"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1079.0
+offset_top = -643.0
+offset_right = 73.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_5cn77")
+stretch_mode = 5
+flip_h = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Play"]
 anchors_preset = 4
@@ -189,22 +262,6 @@ text = "Back"
 
 [node name="OnlinePanel" type="PanelContainer" parent="Play/VBoxContainer"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Play"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -717.0
-offset_top = -577.0
-offset_right = -84.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("2_5f6gd")
-expand_mode = 1
-stretch_mode = 4
-flip_h = true
 
 [node name="Label" type="Label" parent="Play"]
 offset_left = 106.0
