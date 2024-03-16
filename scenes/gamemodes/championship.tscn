@@ -14,9 +14,9 @@ font_size = 38
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
-visible = false
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="ChampionshipWin"]
 offset_right = 40.0

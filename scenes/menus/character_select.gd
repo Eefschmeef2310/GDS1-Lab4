@@ -74,8 +74,10 @@ func _on_fighter_select_select_fighter(data):
 		SelectionPhase.P1:
 			blue_fighter = data
 			phase = SelectionPhase.P2
+			$"../Swoosh".play()
 		SelectionPhase.P2:
 			red_fighter = data
+			$"../Swoosh".play()
 			phase = SelectionPhase.DONE
 		SelectionPhase.DONE:
 			pass
