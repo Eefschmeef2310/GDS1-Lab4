@@ -5,6 +5,7 @@ const CREDITS = preload("res://scenes/menus/credits.tscn")
 
 #region Signal methods
 func _on_back_button_pressed():
+	SoundSaveManager.save()
 	queue_free()
 	
 func _on_credits_button_pressed():
