@@ -39,7 +39,7 @@ offset_bottom = 1360.0
 color = Color(0.0823529, 0.113725, 0.156863, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.8, 0.8, 0.8, 1)
+color = Color(0.882353, 0.882353, 0.882353, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.0823529, 0.113725, 0.156863, 1)
@@ -58,7 +58,7 @@ noise = SubResource("FastNoiseLite_vckb6")
 position = Vector2(574, 355)
 
 [node name="PointLight2D" type="PointLight2D" parent="Ring"]
-energy = 0.75
+energy = 0.5
 texture = ExtResource("4_th7ia")
 texture_scale = 2.0
 
