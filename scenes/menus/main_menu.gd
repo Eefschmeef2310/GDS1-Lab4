@@ -10,6 +10,10 @@ extends Control
 const OPTIONS = preload("res://scenes/menus/options.tscn")
 const CHAMPIONSHIP = preload("res://scenes/gamemodes/championship.tscn")
 	#Exported Variables
+@export var leaderboard_scene :PackedScene
+
+@export var username_label : Label
+@export var highscore_label : Label
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
 
@@ -27,6 +31,8 @@ func _ready():
 
 func _process(_delta):
 	#Runs per frame
+	username_label.text = AirtableManager.saveRes.username
+	highscore_label.text = str(AirtableManager.saveRes.highscore)
 	pass
 #endregion
 
@@ -47,7 +53,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 	
 func _on_leaderboard_pressed():
-	get_tree().change_scene_to_file("res://online/Leaderboard.tscn")
+	get_tree().root.add_child(leaderboard_scene.instantiate())
 
 
 func _on_change_username_pressed():
