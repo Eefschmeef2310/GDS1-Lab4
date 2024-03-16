@@ -118,6 +118,12 @@ position = Vector2(1040, 349)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_36442")
 
+[node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
+z_index = 1
+position = Vector2(768, 515)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
 [node name="Blue Player" parent="." instance=ExtResource("6_i6nhd")]
 z_index = 1
 position = Vector2(380, 194)
@@ -128,12 +134,6 @@ self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 
 [node name="Glove" parent="Blue Player/Body/RArm/RHand" index="0"]
 self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
-
-[node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
-z_index = 1
-position = Vector2(768, 515)
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
 
 [node name="CountdownUI" type="CanvasLayer" parent="."]
 
@@ -173,7 +173,7 @@ bus = &"SFX"
 [node name="Pause" type="Node" parent="."]
 script = ExtResource("9_6l2jr")
 
-[connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
+[connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
 
 [editable path="Blue Player"]

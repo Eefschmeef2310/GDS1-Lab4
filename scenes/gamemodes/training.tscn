@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmuvchpu2f8ho"]
 
-[ext_resource type="PackedScene" uid="uid://cn5ca3ycbsm2p" path="res://scenes/base_level.tscn" id="1_v08y7"]
 [ext_resource type="Script" path="res://scenes/gamemodes/training.gd" id="1_ymt6m"]
+[ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_es1ag"]
 
 [node name="Training" type="Node2D"]
 script = ExtResource("1_ymt6m")
 
-[node name="BaseLevel" parent="." instance=ExtResource("1_v08y7")]
+[node name="PrematchScreen" parent="." instance=ExtResource("2_es1ag")]
 
-[node name="Red Player" parent="BaseLevel" index="8"]
-position = Vector2(654, 353)
+[node name="Anchor" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -23,6 +23,4 @@ grow_horizontal = 2
 text = "PAUSE TO EXIT"
 horizontal_alignment = 1
 
-[editable path="BaseLevel"]
-[editable path="BaseLevel/Blue Player"]
-[editable path="BaseLevel/Red Player"]
+[connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
