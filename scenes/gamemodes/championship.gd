@@ -35,9 +35,6 @@ const BattleScene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
 var current_round: int = -1
 var total_score: int = 0
 var battle: Node
-#total player hits
-#total enemy hits
-#total clear time
 
 #endregion
 
@@ -54,7 +51,6 @@ func _process(_delta):
 #region Signal methods
 
 func _on_prematch_screen_continue_pressed():
-	print("clicky!")
 	start_battle()
 
 func _on_battle_continue_championship(new_score: int):
