@@ -35,7 +35,7 @@ func _ready():
 func _process(_delta):
 	#Runs per frame
 	username_label.text = AirtableManager.saveRes.username
-	highscore_label.text = str(AirtableManager.saveRes.highscore)
+	highscore_label.text = "High Score: " + str(AirtableManager.saveRes.highscore)
 #endregion
 
 #region Signal methods

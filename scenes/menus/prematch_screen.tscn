@@ -250,7 +250,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VS" type="Label" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -268,15 +267,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CharacterSelect" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 300)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -166.0
+offset_top = -118.0
+offset_right = 166.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -312,6 +313,12 @@ fighter = ExtResource("10_foc4t")
 layout_mode = 2
 fighter = ExtResource("11_81fpm")
 
+[node name="BackPhaseButton" type="Button" parent="CharacterSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 476.5
 offset_top = 561.0
@@ -336,8 +343,14 @@ bus = &"Music"
 script = ExtResource("7_2v2la")
 
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect2" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect2" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect3" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect3" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="pressed" from="CharacterSelect/BackPhaseButton" to="CharacterSelect" method="_on_back_phase_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
