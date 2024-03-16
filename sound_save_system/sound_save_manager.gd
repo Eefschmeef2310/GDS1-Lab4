@@ -10,7 +10,7 @@ var saved_settings : SoundSettings
 #endregion
 
 #region Godot methods
-func _ready():
+func _enter_tree():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if FileAccess.file_exists(save_path):
 		load_save()

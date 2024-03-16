@@ -31,6 +31,11 @@ func _ready():
 	$MenuMusic.play()
 	home_layer.show()
 	play_layer.hide()
+	
+	#Set volumes
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), SoundSaveManager.saved_settings.master)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), SoundSaveManager.saved_settings.music)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), SoundSaveManager.saved_settings.sfx)
 
 func _process(_delta):
 	#Runs per frame

@@ -35,6 +35,9 @@ const BattleScene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
 var current_round: int = -1
 var total_score: int = 0
 var battle: Node
+#total player hits
+#total enemy hits
+#total clear time
 
 #endregion
 
