@@ -25,6 +25,8 @@ extends Node2D
 
 #region Godot methods
 func _ready():
+	prematch_screen.set_character_select("Versus")
+	
 	base_level.get_blue_player().set_as_player("p1_")
 	base_level.get_red_player().set_as_dummy()
 	base_level.get_blue_player().load_resource(preload("res://fighters/jack.tres"))

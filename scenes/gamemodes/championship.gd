@@ -35,6 +35,9 @@ const BattleScene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
 var current_round: int = -1
 var total_score: int = 0
 var battle: Node
+var hits: int
+var damage: int
+var clear_time: float
 
 #endregion
 
@@ -51,10 +54,19 @@ func _process(_delta):
 #region Signal methods
 
 func _on_prematch_screen_continue_pressed():
+	print("clicky!")
 	start_battle()
 
+func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
+	hits += blue_score
+	damage += red_score
+	clear_time += timer
+	total_score = champ_score
+	if red_score >= blue_score or current_round == Opponents.size() - 1:
+		print("Submitting championship set.")
+		AirtableManager.ChampionshipGameComplete(total_score, clear_time, current_round + 1, hits, damage, current_round)
+
 func _on_battle_continue_championship(new_score: int):
-	total_score = new_score
 	start_next_round()
 
 func _on_finish_button_pressed():
@@ -72,6 +84,7 @@ func start_battle():
 	battle.end_screen.set_championship()
 	battle.championship_score = total_score
 	battle.continue_championship.connect(_on_battle_continue_championship)
+	battle.game_ended.connect(_on_battle_game_ended)
 	
 
 func start_next_round():

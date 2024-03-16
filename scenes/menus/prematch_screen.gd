@@ -62,6 +62,9 @@ func set_character_select(title: String):
 	round_label.text = title
 	round_subtitle.text = "Select your fighter"
 	vs.hide()
+	if title == "Training":
+		set_red_data(load("res://fighters/dummy.tres"))
+		character_select.is_training = true
 	character_select.show()
 
 func set_blue_data(data: FighterData):

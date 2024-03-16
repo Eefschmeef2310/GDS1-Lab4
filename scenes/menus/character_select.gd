@@ -30,6 +30,7 @@ var red_fighter: FighterData
 @onready var play_button = $"../PlayButton"
 
 #Other Variables (please try to separate and organise!)
+var is_training := false
 
 #endregion
 
@@ -43,12 +44,12 @@ func _process(delta):
 		match phase:
 			SelectionPhase.P1:
 				blue_portrait.modulate.a = 0.75
-				red_portrait.modulate.a = 0
+				red_portrait.modulate.a = 0 if !is_training else 1
 				back_phase_button.hide()
 				play_button.hide()
 			SelectionPhase.P2:
 				blue_portrait.modulate.a = 1
-				red_portrait.modulate.a = 0.75
+				red_portrait.modulate.a = 0.75 if !is_training else 1
 				back_phase_button.show()
 				play_button.hide()
 			SelectionPhase.DONE:
@@ -73,7 +74,7 @@ func _on_fighter_select_select_fighter(data):
 	match phase:
 		SelectionPhase.P1:
 			blue_fighter = data
-			phase = SelectionPhase.P2
+			phase = SelectionPhase.P2 if !is_training else SelectionPhase.DONE
 			$"../Swoosh".play()
 		SelectionPhase.P2:
 			red_fighter = data
@@ -89,7 +90,7 @@ func _on_back_phase_button_pressed():
 		SelectionPhase.P2:
 			phase = SelectionPhase.P1
 		SelectionPhase.DONE:
-			phase = SelectionPhase.P2
+			phase = SelectionPhase.P2  if !is_training else SelectionPhase.P1
 
 #endregion
 

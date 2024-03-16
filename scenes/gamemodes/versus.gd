@@ -37,6 +37,7 @@ func _process(_delta):
 func _on_prematch_screen_continue_pressed():
 	prematch_screen.hide()
 	battle = battle_scene.instantiate()
+	battle.game_ended.connect(_on_battle_game_ended)
 	add_child(battle)
 	
 	var p1 = prematch_screen.get_selected_blue_fighter()
@@ -47,7 +48,10 @@ func _on_prematch_screen_continue_pressed():
 		p2 = default_fighter
 	
 	battle.set_fighter_data(p1, "p1_", p2, "p2_")
-	
+
+func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
+	AirtableManager.CasualGameComplete(timer)
+
 #endregion
 
 #region Other methods (please try to separate and organise!)
