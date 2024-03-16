@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://1fy1qkp633cw"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/versus.gd" id="1_7lt8v"]
-[ext_resource type="PackedScene" uid="uid://bdw1iypup776f" path="res://scenes/gamemodes/battle.tscn" id="1_kfiny"]
+[ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_c070w"]
 
 [node name="Versus" type="Node2D"]
 script = ExtResource("1_7lt8v")
 
-[node name="Battle" parent="." instance=ExtResource("1_kfiny")]
+[node name="PrematchScreen" parent="." instance=ExtResource("2_c070w")]
+
+[connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]

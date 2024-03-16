@@ -22,6 +22,8 @@ signal continue_pressed()
 @onready var red_details = $RedDetails/Details
 @onready var play_button = $PlayButton
 
+@onready var character_select = $CharacterSelect
+
 @onready var prematch_music = $PrematchMusic
 
 #Exported Variables
@@ -36,8 +38,8 @@ signal continue_pressed()
 
 #region Godot methods
 func _ready():
-	set_blue_data(load("res://fighters/dummy.tres"))
-	set_red_data(load("res://fighters/todd.tres"))
+	set_blue_data(load("res://fighters/null.tres"))
+	set_red_data(load("res://fighters/null.tres"))
 	
 	visibility_changed.connect(became_visible)
 	became_visible()
@@ -56,8 +58,14 @@ func _on_play_button_pressed():
 
 #region Other methods (please try to separate and organise!)
 
+func set_character_select(title: String):
+	round_label.text = title
+	round_subtitle.text = "Select your fighter"
+	vs.hide()
+	character_select.show()
+
 func set_blue_data(data: FighterData):
-	blue_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name
+	blue_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name if data.first_name else ""
 	blue_details.text = data.description
 	blue_portrait.texture = data.portrait
 	blue_flames.material.set('shader_parameter/darkerColor', data.accent_color)
@@ -66,7 +74,7 @@ func set_blue_data(data: FighterData):
 	$Portraits/BluePlayer.play("default")
 
 func set_red_data(data: FighterData):
-	red_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name
+	red_name.text = data.first_name + ' "' + data.middle_name + '" ' + data.last_name if data.first_name else ""
 	red_details.text = data.description
 	red_portrait.texture = data.portrait
 	red_flames.material.set('shader_parameter/darkerColor', data.accent_color)
@@ -82,5 +90,11 @@ func became_visible():
 		$Portraits/RedPlayer.play("default")
 	else:
 		$PrematchMusic.stop()
+
+func get_selected_blue_fighter():
+	return character_select.blue_fighter
+
+func get_selected_red_fighter():
+	return character_select.red_fighter
 
 #endregion
