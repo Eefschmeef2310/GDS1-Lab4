@@ -62,8 +62,9 @@ func _process(_delta):
 
 #region Signal methods
 func _on_attacked_revenge(power: float):
-	if randi() % 100 <= 49: 
+	if randi() % 100 <= 39: 
 		current_state = States.Attack
+		punch_counter += 1
 		punch_script.input_punch()
 #endregion
 
@@ -81,14 +82,14 @@ func attack_state():
 	#Go in and attack the player while you can still attack
 	if tick_timer > 0: return
 	
-	var punch_pos = Vector2(-150, -40)
+	var punch_pos = Vector2(-140, -40)
 	if(!punch_script.is_right_arm): punch_pos.y *= -1
 	if(!owner.rotation == 0): punch_pos *= -1
 	target_direction = direction_to_other + punch_pos
 	
 	#if ((direction_to_other.x * direction_to_other.y > 0 && !punch_script.is_right_arm) || (direction_to_other.x * direction_to_other.y < 0 && punch_script.is_right_arm)):
 		#punch_script.input_punch()
-	if((target_direction.length() <= owner.movement_speed * owner.punch_speed_seconds + 30 || direction_to_other.length() <= 140) \
+	if((target_direction.length() <= owner.movement_speed * owner.punch_speed_seconds + 20 || direction_to_other.length() <= 140) \
 	&& punch_script.can_punch() && punch_counter < owner.max_consec_punches):
 		punch_script.input_punch()
 		punch_counter += 1
