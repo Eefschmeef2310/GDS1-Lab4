@@ -32,3 +32,4 @@ tick_speed = 0.08
 aggressive_chance_scale = 0.8
 hover_distance = 250.0
 max_consec_punches = 4
+can_prep_punch = false
