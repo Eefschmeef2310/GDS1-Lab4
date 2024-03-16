@@ -19,7 +19,7 @@ const RoundNames: PackedStringArray = [
 	"Round 1",
 	"Round 2",
 	"Semifinals",
-	"Grand Finals"
+	"Grand Final"
 ]
 const BattleScene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
 

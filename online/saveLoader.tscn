@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_mdrm8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -440.0
 offset_top = -640.0
 offset_right = 1560.0

@@ -13,7 +13,7 @@ first_name = "Jack"
 middle_name = "Lightning"
 last_name = "Johnson"
 description = "Risen from the slums to fight for a better life.
-Jack of all trades, but not to be underestimated."
+Jack of all trades, not to be underestimated."
 portrait = ExtResource("1_bpnrt")
 icon = ExtResource("1_1xbva")
 battle_color = Color(0.647059, 0.188235, 0.188235, 1)

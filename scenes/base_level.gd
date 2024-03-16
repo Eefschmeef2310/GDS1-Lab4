@@ -10,6 +10,7 @@ signal red_player_hit
 @onready var blue_player := $"Blue Player"
 @onready var red_player := $"Red Player"
 @onready var countdown_label = $CountdownUI/Label
+@onready var countdown_sub = $CountdownUI/Sub
 @onready var camera = $Camera
 
 #region Godot methods
@@ -41,18 +42,19 @@ func start_countdown():
 	red_player.toggle_movement(false)
 	await get_tree().create_timer(0.01).timeout
 	red_player.toggle_movement(false)
+	countdown_sub.show()
 	countdown_label.text = "3"
 	$CountdownSound.play()
 	
-	await get_tree().create_timer(0.75, false, false, false).timeout
+	await get_tree().create_timer(0.8, false, false, false).timeout
 	countdown_label.text = "2"
 	$CountdownSound.play()
 	
-	await get_tree().create_timer(0.75, false, false, false).timeout
+	await get_tree().create_timer(0.8, false, false, false).timeout
 	countdown_label.text = "1"
 	$CountdownSound.play()
 	
-	await get_tree().create_timer(0.75, false, false, false).timeout
+	await get_tree().create_timer(0.8, false, false, false).timeout
 	countdown_label.text = "FIGHT!"
 	blue_player.toggle_movement(true)
 	red_player.toggle_movement(true)
@@ -61,6 +63,7 @@ func start_countdown():
 	countdown_complete.emit()
 	
 	await get_tree().create_timer(0.75, false, false, false).timeout
+	countdown_sub.hide()
 	countdown_label.text = ""
 
 func start_slowmo():
@@ -72,7 +75,7 @@ func start_slowmo():
 	Engine.time_scale = 0.25
 	countdown_label.text = "GAME!"
 	
-	await get_tree().create_timer(2, false, false, true).timeout
+	await get_tree().create_timer(2.5, false, false, true).timeout
 	Engine.time_scale = 1
 	countdown_label.text = ""
 	slowmo_complete.emit()

@@ -7,11 +7,11 @@
 
 [resource]
 script = ExtResource("1_t3gl4")
-first_name = "Training"
-middle_name = "Statue"
-last_name = "Dummy"
-description = "A... training dummy?
-How did this thing even sign up??"
+first_name = "Dan"
+middle_name = "Dummy"
+last_name = "Daniels"
+description = "A training dummy.
+Will take your hits... gladly?"
 battle_color = Color(0.721569, 0.721569, 0.721569, 1)
 alt_battle_color = Color(0.133333, 0.133333, 0.133333, 1)
 main_color = Color(0.721569, 0.721569, 0.721569, 1)
