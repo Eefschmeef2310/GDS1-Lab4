@@ -13,7 +13,8 @@ const LEADERBOARD = preload("res://online/Leaderboard.tscn")
 	#Exported Variables
 	#@export_group("Group")
 	#@export_subgroup("Subgroup")
-
+@export var username_label : Label
+@export var highscore_label : Label
 	#Onready Variables
 @onready var home_layer = $Home
 @onready var play_layer = $Play
@@ -33,7 +34,8 @@ func _ready():
 
 func _process(_delta):
 	#Runs per frame
-	pass
+	username_label.text = AirtableManager.saveRes.username
+	highscore_label.text = str(AirtableManager.saveRes.highscore)
 #endregion
 
 #region Signal methods

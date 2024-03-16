@@ -22,7 +22,7 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_pcx1d"]
 font_size = 32
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("username_label", "highscore_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +30,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hh7e3")
+username_label = NodePath("Home/HBoxContainer/Online/Label")
+highscore_label = NodePath("Play/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

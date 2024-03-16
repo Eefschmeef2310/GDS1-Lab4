@@ -100,27 +100,44 @@ func NewUser(username):
 		waitState = "NewUser"
 		print(waitState)
 
-func GameComplete(score : int, playtime : float):
-	saveRes.gamesPlayed += 1
+func ChampionshipGameComplete(score : int, playtime : float, gamesPlayed:int ,hits : int, damage : int, opponentsDefeated : int):
+	saveRes.gamesPlayed += gamesPlayed
+	saveRes.allGamesPlayed += gamesPlayed
 	saveRes.playtime += playtime
+	saveRes.hits += hits
+	saveRes.damage += damage
+	saveRes.opponentsDefeated += opponentsDefeated
 	if (score > saveRes.highscore):
 		saveRes.highscore = score
 	if(saveRes.version == GAME_VERSION): #dont save or upload if player has rollback their save
 		Save()
-		UploadData(saveRes.userID, saveRes.username, saveRes.highscore, saveRes.gamesPlayed, saveRes.playtime, saveRes.version)
+		UploadData()
 	else:
 		print("OLD VERSION - DID NOT SAVE OR UPLOAD")
 
-func UploadData(userID : String, username : String, highscore : int, gamesPlayed : int, playtime : float, version : int):
+func CasualGameComplete(playtime : float):
+	saveRes.allGamesPlayed += 1
+	saveRes.playtime += playtime
+	if(saveRes.version == GAME_VERSION): #dont save or upload if player has rollback their save
+		Save()
+		UploadData()
+	else:
+		print("OLD VERSION - DID NOT SAVE OR UPLOAD")
+
+func UploadData():
 	print("updating a record")
-	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores/" + str(userID)
+	var url = "https://api.airtable.com/v0/app5HRnhFLMJ0h5WD/Highscores/" + str(saveRes.userID)
 	var data = {
 	  "fields": {
-		"Username" : String(username),
-		"Highscore": int(highscore), 
-		"Games Played": int(gamesPlayed),
-		"Total seconds played": float(playtime),
-		"Game Version": int(version)
+		"Username" : String(saveRes.username),
+		"Highscore": int(saveRes.highscore), 
+		"Games Played": int(saveRes.gamesPlayed),
+		"Total seconds played": float(saveRes.playtime),
+		"Game Version": int(saveRes.version),
+		"Hits": int(saveRes.hits),
+		"Damage": int(saveRes.damage),
+		"Opponents Defeated": int(saveRes.opponentsDefeated),
+		"All Games Played": int(saveRes.allGamesPlayed)
 	  }
 	}
 	var error = request(url, headers, HTTPClient.METHOD_PATCH, JSON.stringify(data))
@@ -150,7 +167,7 @@ func Load():
 	
 	if specialUpload:
 		Save()
-		UploadData(saveRes.userID, saveRes.username, saveRes.highscore, saveRes.gamesPlayed, saveRes.playtime, saveRes.version)
+		UploadData()
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	print("response: " + str(_response_code))
