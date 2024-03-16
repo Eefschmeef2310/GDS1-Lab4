@@ -6,6 +6,14 @@ extends VBoxContainer
 #Signals
 
 #Enums
+enum SelectionPhase {
+	P1,
+	P2,
+	DONE
+}
+var phase: SelectionPhase = SelectionPhase.P1
+var blue_fighter: FighterData
+var red_fighter: FighterData
 
 #Constants
 
@@ -14,6 +22,12 @@ extends VBoxContainer
 #@export_subgroup("Subgroup")
 
 #Onready Variables
+@onready var blue_portrait = $"../Portraits/BluePortrait"
+@onready var red_portrait = $"../Portraits/RedPortrait"
+@onready var round_label = $"../RoundLabel"
+@onready var round_subtitle = $"../RoundSubtitle"
+@onready var back_phase_button = $BackPhaseButton
+@onready var play_button = $"../PlayButton"
 
 #Other Variables (please try to separate and organise!)
 
@@ -25,14 +39,55 @@ func _ready():
 	pass
 
 func _process(delta):
-	#Runs per frame
-	pass
+	if visible:
+		match phase:
+			SelectionPhase.P1:
+				blue_portrait.modulate.a = 0.75
+				red_portrait.modulate.a = 0
+				back_phase_button.hide()
+				play_button.hide()
+			SelectionPhase.P2:
+				blue_portrait.modulate.a = 1
+				red_portrait.modulate.a = 0.75
+				back_phase_button.show()
+				play_button.hide()
+			SelectionPhase.DONE:
+				blue_portrait.modulate.a = 1
+				red_portrait.modulate.a = 1
+				back_phase_button.show()
+				play_button.show()
 #endregion
 
 #region Signal methods
 
 func _on_fighter_select_hover_fighter(data):
-	owner.set_blue_data(data)
+	match phase:
+		SelectionPhase.P1:
+			owner.set_blue_data(data)
+		SelectionPhase.P2:
+			owner.set_red_data(data)
+		SelectionPhase.DONE:
+			pass
+
+func _on_fighter_select_select_fighter(data):
+	match phase:
+		SelectionPhase.P1:
+			blue_fighter = data
+			phase = SelectionPhase.P2
+		SelectionPhase.P2:
+			red_fighter = data
+			phase = SelectionPhase.DONE
+		SelectionPhase.DONE:
+			pass
+
+func _on_back_phase_button_pressed():
+	match phase:
+		SelectionPhase.P1:
+			pass
+		SelectionPhase.P2:
+			phase = SelectionPhase.P1
+		SelectionPhase.DONE:
+			phase = SelectionPhase.P2
 
 #endregion
 

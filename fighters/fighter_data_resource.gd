@@ -29,6 +29,8 @@ class_name FighterData
 # @export var punch_reach: float = 1.0
 
 @export_group("Ai_Stuff")
-@export var tick_speed: float = 0.5
-@export var aggressive_chance_scale: float = 1
-@export var hover_distance: float = 250
+@export var tick_speed: float = 0.5 #Basically Reaction Speed
+@export var aggressive_chance_scale: float = 1 #Chance it will go into "attack state" when in "pressure state"
+@export var hover_distance: float = 250 #Tether distance from other player when in "pressure state"
+@export var max_consec_punches: int = 2 #Max proper punches in a row before going into "retreat"
+@export var can_prep_punch: bool = false #If true, I will make sure I am using the right fist to punch (Set mike to true)
