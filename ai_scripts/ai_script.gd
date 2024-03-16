@@ -57,7 +57,9 @@ func _process(_delta):
 #region Signal methods
 func _on_attacked_revenge(power: float):
 	punch_script.input_punch()
-	if randi() % 100 <= 49: current_state = States.Attack
+	if randi() % 100 <= 49: 
+		current_state = States.Attack
+		tick_timer = 0
 #endregion
 
 #region Other methods (please try to separate and organise!)
@@ -66,7 +68,7 @@ func pressure_state(_delta):
 
 	var pos_aim = other_player.global_position + (Vector2(-owner.movement_speed, 0) if owner.rotation == 0 else Vector2(owner.movement_speed, 0))
 	target_direction = pos_aim - owner.global_position
-	if(target_direction.length() < 50 && (randi() % 100) < 100*owner.tick_speed*owner.aggressive_chance_scale):
+	if(target_direction.length() < 100 && (randi() % 100) < 100*owner.tick_speed*owner.aggressive_chance_scale):
 		current_state = States.Attack
 		print("attack")
 	tick_timer = owner.tick_speed
@@ -75,12 +77,15 @@ func attack_state():
 	#Go in and attack the player while you can still attack
 	if tick_timer > 0: return
 	
-	var punch_pos = Vector2(-150, -50)
+	var punch_pos = Vector2(-160, -50)
 	if(!punch_script.is_right_arm): punch_pos.y *= -1
 	if(!owner.rotation == 0): punch_pos *= -1
-	target_direction = other_player.global_position + punch_pos - owner.global_position
 	
-	if(target_direction.length() < owner.movement_speed * owner.punch_speed_seconds && punch_script.can_punch() && punch_counter < punch_counter_max):
+	var direction_to_other = other_player.global_position - owner.global_position
+	target_direction = direction_to_other + punch_pos
+	
+	if((target_direction.length() <= owner.movement_speed * owner.punch_speed_seconds || direction_to_other.length() <= 140) \
+	&& punch_script.can_punch() && punch_counter < punch_counter_max):
 		punch_script.input_punch()
 		punch_counter += 1
 		tick_timer = owner.punch_speed_seconds
