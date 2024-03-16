@@ -23,6 +23,7 @@ buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
 AirtableManager="*res://online/AirtableManager.gd"
 FullscreenManager="*res://player/fullscreen_manager.gd"
+SoundSaveManager="*res://sound_save_system/sound_save_manager.gd"
 
 [display]
 
@@ -40,6 +41,7 @@ folder_colors={
 "res://punch_bases/": "blue",
 "res://scenes/": "orange",
 "res://shaders/": "green",
+"res://sound_save_system/": "teal",
 "res://sounds/": "teal"
 }
 
