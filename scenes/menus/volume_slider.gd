@@ -28,8 +28,8 @@ func _ready():
 
 #region Signal methods
 func _on_value_changed(_value):
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	#store to sound settings
 	match(bus_name):
 		"Master":
