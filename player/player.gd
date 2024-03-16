@@ -40,6 +40,8 @@ const InputScripts: Dictionary = {
 @export var tick_speed: float = 0.5
 @export var aggressive_chance_scale: float = 1
 @export var hover_distance: float = 200
+@export var max_consec_punches: int = 2
+@export var can_prep_punch: bool = false
 
 #Onready Variables
 
@@ -81,6 +83,8 @@ func load_resource(data: FighterData, use_alternate := false):
 	tick_speed = data.tick_speed
 	aggressive_chance_scale = data.aggressive_chance_scale
 	hover_distance = data.hover_distance
+	max_consec_punches = data.max_consec_punches
+	can_prep_punch = data.can_prep_punch
 	
 	# Sprites
 	$Body.texture = data.sprite_body
