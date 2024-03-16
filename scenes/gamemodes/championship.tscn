@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpvibep0desuj"]
+[gd_scene load_steps=6 format=3 uid="uid://cpvibep0desuj"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
 [ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_unrwm"]
+[ext_resource type="Script" path="res://scenes/menus/championship_win.gd" id="3_55fm4"]
 [ext_resource type="Texture2D" uid="uid://cvm26r8yda8q0" path="res://scenes/ui/ui_sprites/VICTORY.png" id="3_diyvh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo6lf"]
@@ -18,6 +19,7 @@ script = ExtResource("1_8xust")
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
 visible = false
+script = ExtResource("3_55fm4")
 
 [node name="ColorRect" type="ColorRect" parent="ChampionshipWin"]
 visible = false
@@ -39,7 +41,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_right = 300
 
-[node name="RoundLabel" type="Label" parent="ChampionshipWin/VBoxContainer/MarginContainer2"]
+[node name="Title" type="Label" parent="ChampionshipWin/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.231373)
 theme_override_font_sizes/font_size = 100
@@ -63,42 +65,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="Stats" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="RoundSubtitle" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="Hits" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
-text = "FINAL SCORE: 00000000"
+text = "Hits landed: X"
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="Damage" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
-text = "your hits: X"
+text = "Hits taken: x"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
-text = "enemy hits: x"
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="ClearTime" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
 text = "clear time: X"
+vertical_alignment = 1
+
+[node name="FinalScore" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
+text = "FINAL SCORE: 00000000"
 vertical_alignment = 1
 
 [node name="Art" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]

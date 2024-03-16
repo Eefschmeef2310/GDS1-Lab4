@@ -101,5 +101,15 @@ func start_next_round():
 	
 	else:
 		championship_win.show()
+		championship_win.hits.text = "Hits Landed: " + str(hits)
+		championship_win.damage.text = "Hits Taken: " + str(damage)
+		championship_win.clear_time.text = "Clear Time: " + get_timer_string_from_seconds(clear_time)
+		championship_win.final_score.text = "Final Score: " + str(total_score)
+
+func get_timer_string_from_seconds(time_elapsed := 0.0):
+	var minutes := time_elapsed / 60
+	var seconds := fmod(time_elapsed, 60)
+	var time_string := "%02d:%02d" % [minutes, seconds]
+	return time_string
 
 #endregion

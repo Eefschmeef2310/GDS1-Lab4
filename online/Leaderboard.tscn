@@ -3,7 +3,13 @@
 [ext_resource type="Script" path="res://online/LeaderboardManager.gd" id="1_1u4nm"]
 [ext_resource type="PackedScene" uid="uid://dqfj8xh7q8wk1" path="res://online/leaderboard_entry.tscn" id="1_ak0xm"]
 [ext_resource type="Script" path="res://online/Leaderboard.gd" id="1_glkhq"]
-[ext_resource type="Texture2D" uid="uid://ednacg3t8wy3" path="res://online/menus_border_x2.png" id="2_dwss6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxgi8"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_jsh63"]
 font_size = 98
@@ -22,13 +28,9 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="TextureRect" type="NinePatchRect" parent="BG"]
+[node name="Panel" type="Panel" parent="BG"]
 layout_mode = 2
-texture = ExtResource("2_dwss6")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxgi8")
 
 [node name="BG2" type="MarginContainer" parent="."]
 anchors_preset = 15
