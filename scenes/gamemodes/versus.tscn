@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://1fy1qkp633cw"]
+[gd_scene load_steps=4 format=3 uid="uid://1fy1qkp633cw"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/versus.gd" id="1_7lt8v"]
 [ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_c070w"]
+[ext_resource type="PackedScene" uid="uid://dfmtdykgsb484" path="res://scenes/ui/pause_ui.tscn" id="3_4jo77"]
 
 [node name="Versus" type="Node2D"]
 script = ExtResource("1_7lt8v")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_c070w")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_4jo77")]
 
 [connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]

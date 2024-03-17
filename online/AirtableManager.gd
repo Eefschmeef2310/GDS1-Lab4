@@ -30,7 +30,7 @@ var offlineModeActive = false
 var firstRun : bool =false
 
 var debugNewSave = true #set to false to force a new username to be picked
-var GAME_VERSION = 1 #increment this for leaderboard resets!
+var GAME_VERSION = 2 #increment this for leaderboard resets!
 
 signal response(string)
 signal noUserSet

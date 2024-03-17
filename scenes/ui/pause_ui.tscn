@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dfmtdykgsb484"]
+
+[node name="PauseUI" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 249.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 38
+text = "ESC to Pause"

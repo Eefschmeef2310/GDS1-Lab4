@@ -18,9 +18,9 @@ func _enter_tree():
 		saved_settings = SoundSettings.new()
 		
 	#Set volumes
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), saved_settings.master)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), saved_settings.music)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), saved_settings.sfx)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(saved_settings.master))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(saved_settings.music))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(saved_settings.sfx))
 #endregion
 
 #region Other methods (please try to separate and organise!)
