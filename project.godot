@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Boxing"
+config/name="Super Boxing"
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/SteamTingrayGradient.png"
+config/icon="res://assets/jack/icon.png"
 
 [audio]
 
@@ -23,9 +24,12 @@ buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 
 AirtableManager="*res://online/AirtableManager.gd"
 FullscreenManager="*res://player/fullscreen_manager.gd"
+SoundSaveManager="*res://sound_save_system/sound_save_manager.gd"
 
 [display]
 
+window/size/mode=4
+window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 
 [file_customization]
@@ -40,6 +44,7 @@ folder_colors={
 "res://punch_bases/": "blue",
 "res://scenes/": "orange",
 "res://shaders/": "green",
+"res://sound_save_system/": "teal",
 "res://sounds/": "teal"
 }
 
@@ -124,3 +129,4 @@ fullscreen={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+anti_aliasing/quality/msaa_2d=3

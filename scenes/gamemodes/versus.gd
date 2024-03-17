@@ -14,7 +14,10 @@ extends Node2D
 #@export_subgroup("Subgroup")
 
 #Onready Variables
-@onready var battle = $Battle
+@onready var prematch_screen = $PrematchScreen
+@onready var default_fighter = preload("res://fighters/jack.tres")
+@onready var battle_scene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
+@onready var battle: Battle
 
 #Other Variables (please try to separate and organise!)
 
@@ -22,13 +25,7 @@ extends Node2D
 
 #region Godot methods
 func _ready():
-	battle.base_level.get_blue_player().set_as_player("p1_")
-	battle.base_level.get_red_player().set_as_player("p2_")
-	
-	var p1 = load("res://fighters/dummy.tres")
-	var p2 = load("res://fighters/dummy.tres")
-	
-	battle.set_fighter_data(p1, "p1_", p2, "p2_")
+	prematch_screen.set_character_select("Versus")
 
 func _process(_delta):
 	#Runs per frame
@@ -36,6 +33,24 @@ func _process(_delta):
 #endregion
 
 #region Signal methods
+
+func _on_prematch_screen_continue_pressed():
+	prematch_screen.hide()
+	battle = battle_scene.instantiate()
+	battle.game_ended.connect(_on_battle_game_ended)
+	add_child(battle)
+	
+	var p1 = prematch_screen.get_selected_blue_fighter()
+	if !p1:
+		p1 = default_fighter
+	var p2 = prematch_screen.get_selected_red_fighter()
+	if !p2:
+		p2 = default_fighter
+	
+	battle.set_fighter_data(p1, "p1_", p2, "p2_")
+
+func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
+	AirtableManager.CasualGameComplete(timer)
 
 #endregion
 

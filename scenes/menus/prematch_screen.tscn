@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=27 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://c54swkvm7jx5d" path="res://fighters/mike.tres" id="9_y613c"]
 [ext_resource type="Resource" uid="uid://bvfhc8y7qb4td" path="res://fighters/willie.tres" id="10_foc4t"]
 [ext_resource type="Resource" uid="uid://csq8s1alv5b4x" path="res://fighters/john.tres" id="11_81fpm"]
+[ext_resource type="Resource" uid="uid://65p3foffb52t" path="res://fighters/dummy.tres" id="13_o8lld"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
@@ -22,6 +23,7 @@ shader_parameter/angle = -1.555
 shader_parameter/time_scale = 0.3125
 shader_parameter/gradientStep = 0.115
 shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
 shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
 
@@ -31,6 +33,7 @@ shader_parameter/angle = 1.48
 shader_parameter/time_scale = 0.3125
 shader_parameter/gradientStep = 0.2
 shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/brighterColor = Color(1, 0.65098, 0.101961, 1)
 shader_parameter/darkerColor = Color(1, 0, 0.14902, 1)
 
@@ -244,13 +247,12 @@ offset_top = 96.0
 offset_right = 187.0
 offset_bottom = 225.0
 grow_horizontal = 2
-text = "CURRENT SCORE: 00000000"
+text = "CURRENT SCORE: 00000"
 label_settings = SubResource("LabelSettings_mgjst")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VS" type="Label" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -268,15 +270,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CharacterSelect" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 300)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -166.0
+offset_top = -118.0
+offset_right = 166.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -312,6 +316,16 @@ fighter = ExtResource("10_foc4t")
 layout_mode = 2
 fighter = ExtResource("11_81fpm")
 
+[node name="FighterSelect6" parent="CharacterSelect/Row2" instance=ExtResource("6_ymiex")]
+layout_mode = 2
+fighter = ExtResource("13_o8lld")
+
+[node name="BackPhaseButton" type="Button" parent="CharacterSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 476.5
 offset_top = 561.0
@@ -336,8 +350,16 @@ bus = &"Music"
 script = ExtResource("7_2v2la")
 
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect2" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect2" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row/FighterSelect3" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row/FighterSelect3" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect6" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect6" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="pressed" from="CharacterSelect/BackPhaseButton" to="CharacterSelect" method="_on_back_phase_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

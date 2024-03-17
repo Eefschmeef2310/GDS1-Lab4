@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj0gvhuebqnh"
+path="res://.godot/imported/Crowd Boo - Sound Effect HD.mp3-b49a0b774a4d72db39b3924a3cb8fd30.mp3str"
+
+[deps]
+
+source_file="res://sounds/sfx/Crowd Boo - Sound Effect HD.mp3"
+dest_files=["res://.godot/imported/Crowd Boo - Sound Effect HD.mp3-b49a0b774a4d72db39b3924a3cb8fd30.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

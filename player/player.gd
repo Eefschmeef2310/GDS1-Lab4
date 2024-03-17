@@ -40,6 +40,11 @@ const InputScripts: Dictionary = {
 @export var tick_speed: float = 0.5
 @export var aggressive_chance_scale: float = 1
 @export var hover_distance: float = 200
+@export var max_consec_punches: int = 2
+@export var can_prep_punch: bool = false
+
+@export_group("UI")
+@export var controls_ui : Node
 
 #Onready Variables
 
@@ -81,6 +86,8 @@ func load_resource(data: FighterData, use_alternate := false):
 	tick_speed = data.tick_speed
 	aggressive_chance_scale = data.aggressive_chance_scale
 	hover_distance = data.hover_distance
+	max_consec_punches = data.max_consec_punches
+	can_prep_punch = data.can_prep_punch
 	
 	# Sprites
 	$Body.texture = data.sprite_body
@@ -103,6 +110,8 @@ func set_as_player(prefix: String):
 	punches_node.set_script(InputScripts.player.punch)
 	punches_node.input_prefix = prefix
 	ai_node.set_script(null)
+	if controls_ui:
+		controls_ui.show()
 
 func set_as_dummy():
 	movement_node.set_script(null)

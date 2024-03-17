@@ -50,3 +50,8 @@ func set_fighter(data: FighterData):
 
 func _on_mouse_entered():
 	hover_fighter.emit(fighter)
+
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		select_fighter.emit(fighter)

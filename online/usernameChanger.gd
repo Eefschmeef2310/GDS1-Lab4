@@ -1,3 +1,6 @@
+## THIS IS THE USERNAME CHANGER SCRIPT
+# written by Tom
+
 extends Control
 @onready var username_feild = $VBoxContainer/UsernameFeild
 @onready var submit_button = $VBoxContainer/SubmitButton
