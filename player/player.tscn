@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=33 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -15,8 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://c85mnkvsmyp4q" path="res://sounds/sfx/free-crowd-cheering-sounds-02-strong-cheering-rhythmic-cheering-116190.mp3" id="11_wjnar"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_susnp"]
-radius = 85.0
-height = 275.0
+radius = 30.0
+height = 396.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vy71f"]
+size = Vector2(139, 396)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evyw4"]
 radius = 55.0
@@ -398,8 +401,12 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_w5c5t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(35, -2)
+position = Vector2(90, -2)
 shape = SubResource("CapsuleShape2D_susnp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(19.5, -2)
+shape = SubResource("RectangleShape2D_vy71f")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwu7d")
