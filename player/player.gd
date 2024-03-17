@@ -43,6 +43,9 @@ const InputScripts: Dictionary = {
 @export var max_consec_punches: int = 2
 @export var can_prep_punch: bool = false
 
+@export_group("UI")
+@export var controls_ui : Node
+
 #Onready Variables
 
 #Other Variables (please try to separate and organise!)
@@ -107,6 +110,7 @@ func set_as_player(prefix: String):
 	punches_node.set_script(InputScripts.player.punch)
 	punches_node.input_prefix = prefix
 	ai_node.set_script(null)
+	controls_ui.show()
 
 func set_as_dummy():
 	movement_node.set_script(null)

@@ -55,6 +55,7 @@ func start_countdown():
 	$CountdownSound.play()
 	
 	await get_tree().create_timer(0.8, false, false, false).timeout
+	countdown_sub.hide()
 	countdown_label.text = "FIGHT!"
 	blue_player.toggle_movement(true)
 	red_player.toggle_movement(true)
@@ -63,7 +64,6 @@ func start_countdown():
 	countdown_complete.emit()
 	
 	await get_tree().create_timer(0.75, false, false, false).timeout
-	countdown_sub.hide()
 	countdown_label.text = ""
 
 func start_slowmo():

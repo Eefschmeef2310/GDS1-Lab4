@@ -155,6 +155,7 @@ position = Vector2(912, 515)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("13_rg54b")
 script = ExtResource("13_8odym")
+print = null
 
 [node name="CountdownUI" type="CanvasLayer" parent="."]
 
