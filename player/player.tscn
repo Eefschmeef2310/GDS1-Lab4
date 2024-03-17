@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://ai_scripts/ai_script.gd" id="10_cljjq"]
 [ext_resource type="AudioStream" uid="uid://b3e0ycihb2urx" path="res://sounds/sfx/fast-simple-chop-5-6270.mp3" id="10_rou3g"]
 [ext_resource type="AudioStream" uid="uid://bb7cmwnvhgy0" path="res://sounds/sfx/punch-boxing-02wav-14897 (1).mp3" id="10_tg7i7"]
-[ext_resource type="AudioStream" path="res://sounds/sfx/free-crowd-cheering-sounds-04-strong-cheering-ii-short-116191.mp3" id="11_pqcay"]
-[ext_resource type="AudioStream" path="res://sounds/sfx/free-crowd-cheering-sounds-02-strong-cheering-rhythmic-cheering-116190.mp3" id="11_wjnar"]
+[ext_resource type="AudioStream" uid="uid://df4ap6qwqe7wx" path="res://sounds/sfx/free-crowd-cheering-sounds-04-strong-cheering-ii-short-116191.mp3" id="11_pqcay"]
+[ext_resource type="AudioStream" uid="uid://c85mnkvsmyp4q" path="res://sounds/sfx/free-crowd-cheering-sounds-02-strong-cheering-rhythmic-cheering-116190.mp3" id="11_wjnar"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_susnp"]
 radius = 85.0
