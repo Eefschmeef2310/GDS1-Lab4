@@ -38,7 +38,6 @@ func _on_prematch_screen_continue_pressed():
 	prematch_screen.hide()
 	base_level = base_level_scene.instantiate()
 	$Anchor.add_child(base_level)
-	$Label.show()
 	base_level.get_blue_player().set_as_player("p1_")
 	base_level.get_red_player().set_as_dummy()
 	base_level.get_blue_player().load_resource(prematch_screen.get_selected_blue_fighter())
