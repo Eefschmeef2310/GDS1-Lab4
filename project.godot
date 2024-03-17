@@ -28,7 +28,8 @@ SoundSaveManager="*res://sound_save_system/sound_save_manager.gd"
 
 [display]
 
-window/size/mode=4
+window/size/mode=3
+window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 
 [file_customization]

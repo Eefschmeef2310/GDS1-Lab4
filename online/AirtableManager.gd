@@ -29,7 +29,7 @@ var idOfLastCheck : String = ""
 var offlineModeActive = false
 var firstRun : bool =false
 
-var debugNewSave = false #set to true to force a new username to be picked
+var debugNewSave = true #set to false to force a new username to be picked
 var GAME_VERSION = 1 #increment this for leaderboard resets!
 
 signal response(string)
@@ -41,7 +41,7 @@ signal NewUserResponse(newID : String)
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	request_completed.connect(_on_request_completed)
-	if (FileAccess.file_exists(savePath)||debugNewSave):
+	if (FileAccess.file_exists(savePath) and debugNewSave):
 		Load()
 		get_tree().change_scene_to_file(saveLoaderScene)
 	else:
@@ -88,7 +88,11 @@ func NewUser(username):
 		"Highscore": 0, 
 		"Games Played": 0,
 		"Total seconds played": 0.0,
-		"Game Version" : GAME_VERSION
+		"Game Version" : GAME_VERSION#,
+		#"Hits": 0,
+		#"Damage": 0,
+		#"Opponents Defeated": 0,
+		#"All Games Played": 0
 	  }
 	}]}
 	var error = request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(data))
