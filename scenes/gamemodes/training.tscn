@@ -11,19 +11,6 @@ script = ExtResource("1_ymt6m")
 
 [node name="Anchor" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 456.0
-offset_top = 24.0
-offset_right = 692.0
-offset_bottom = 74.0
-grow_horizontal = 2
-text = "PAUSE TO EXIT"
-horizontal_alignment = 1
-
 [node name="PauseUI" parent="." instance=ExtResource("3_vg08h")]
 
 [connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
