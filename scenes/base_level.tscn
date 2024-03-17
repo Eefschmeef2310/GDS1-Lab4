@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=27 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Script" path="res://scenes/base_level.gd" id="1_sdqvl"]
@@ -265,7 +265,7 @@ script = ExtResource("9_6l2jr")
 
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
 [connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
-[connection signal="timeout" from="HideControlsTimer" to="ControlsP1" method="_on_hide_controls_timer_timeout"]
 [connection signal="timeout" from="HideControlsTimer" to="ControlsP2" method="_on_hide_controls_timer_timeout"]
+[connection signal="timeout" from="HideControlsTimer" to="ControlsP1" method="_on_hide_controls_timer_timeout"]
 
 [editable path="Blue Player"]
