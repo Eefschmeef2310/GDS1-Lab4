@@ -4,6 +4,7 @@ class_name SoundSettings
 
 #region Variables
 	#Exported Variables
+#Linear from 0 to 1
 @export var master : float = 0.5
 @export var music : float = 0.5
 @export var sfx : float = 0.5
