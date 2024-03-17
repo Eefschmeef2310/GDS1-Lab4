@@ -35,7 +35,6 @@ colors = PackedColorArray(0.611765, 0.262745, 0.188235, 1, 0.686275, 0.490196, 0
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
-visible = false
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
 visible = false

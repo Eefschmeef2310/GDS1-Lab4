@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vbfioqyrxy0v"]
+[gd_scene load_steps=16 format=3 uid="uid://vbfioqyrxy0v"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_hh7e3"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_dud0y"]
@@ -12,10 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cp65plxx4ffbj" path="res://assets/mike/portrait.png" id="8_v14cj"]
 [ext_resource type="Script" path="res://scenes/menus/play_screen.gd" id="8_x7hvo"]
 [ext_resource type="Texture2D" uid="uid://crutmaixij35j" path="res://assets/willie/portrait.png" id="9_mq8w5"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_743dm"]
-line_spacing = -48.0
-font_size = 140
 
 [sub_resource type="Animation" id="Animation_cvxbi"]
 resource_name = "default"
@@ -137,9 +133,11 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.266667)
+theme_override_constants/line_spacing = -48
+theme_override_font_sizes/font_size = 140
 text = "SUPER
 BOXING"
-label_settings = SubResource("LabelSettings_743dm")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Home"]
