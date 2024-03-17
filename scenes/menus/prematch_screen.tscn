@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cf66cyin68fj6"]
+[gd_scene load_steps=27 format=3 uid="uid://cf66cyin68fj6"]
 
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="1_npwro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="2_0jxdu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://c54swkvm7jx5d" path="res://fighters/mike.tres" id="9_y613c"]
 [ext_resource type="Resource" uid="uid://bvfhc8y7qb4td" path="res://fighters/willie.tres" id="10_foc4t"]
 [ext_resource type="Resource" uid="uid://csq8s1alv5b4x" path="res://fighters/john.tres" id="11_81fpm"]
+[ext_resource type="Resource" uid="uid://65p3foffb52t" path="res://fighters/dummy.tres" id="13_o8lld"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
 shader = ExtResource("2_0jxdu")
@@ -315,6 +316,10 @@ fighter = ExtResource("10_foc4t")
 layout_mode = 2
 fighter = ExtResource("11_81fpm")
 
+[node name="FighterSelect6" parent="CharacterSelect/Row2" instance=ExtResource("6_ymiex")]
+layout_mode = 2
+fighter = ExtResource("13_o8lld")
+
 [node name="BackPhaseButton" type="Button" parent="CharacterSelect"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -354,5 +359,7 @@ script = ExtResource("7_2v2la")
 [connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect4" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
 [connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect5" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="CharacterSelect/Row2/FighterSelect6" to="CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="CharacterSelect/Row2/FighterSelect6" to="CharacterSelect" method="_on_fighter_select_select_fighter"]
 [connection signal="pressed" from="CharacterSelect/BackPhaseButton" to="CharacterSelect" method="_on_back_phase_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
