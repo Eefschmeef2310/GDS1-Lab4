@@ -43,6 +43,7 @@ var clear_time: float
 
 #region Godot methods
 func _ready():
+	championship_win.hide()
 	start_next_round()
 
 func _process(_delta):
