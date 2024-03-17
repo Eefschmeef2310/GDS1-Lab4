@@ -61,7 +61,7 @@ func _on_prematch_screen_continue_pressed():
 func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
 	hits += blue_score
 	damage += red_score
-	clear_time += timer
+	clear_time += (60 - timer)
 	total_score = champ_score
 	if red_score >= blue_score or current_round == Opponents.size() - 1:
 		print("Submitting championship set.")
