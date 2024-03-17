@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://e5usrk5gs4lv"]
+[gd_scene load_steps=8 format=3 uid="uid://e5usrk5gs4lv"]
 
 [ext_resource type="Script" path="res://scenes/menus/credits.gd" id="1_g1f3f"]
 [ext_resource type="Texture2D" uid="uid://c4u72iwdl8vo8" path="res://assets/ring.png" id="2_x6kwd"]
 [ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="3_wgc40"]
 [ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="4_uxfas"]
+[ext_resource type="Texture2D" uid="uid://dsb6y8wcefeeq" path="res://assets/SteamTingrayGradient.png" id="5_1w338"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nykw5"]
+bg_color = Color(0, 0, 0, 0.682353)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_0mtmn"]
 font_size = 48
@@ -57,6 +65,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.258824)
 theme_override_font_sizes/font_size = 100
 text = "Credits"
 horizontal_alignment = 1
@@ -64,114 +73,166 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 75
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 27
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nykw5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 27
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Developers" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -25
+theme_override_constants/margin_right = -50
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_1w338")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Developers" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "DEVELOPERS"
 label_settings = SubResource("LabelSettings_0mtmn")
 horizontal_alignment = 1
 
-[node name="Label12" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label12" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Xander Akkari"
 horizontal_alignment = 1
 
-[node name="Label13" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label13" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Ethan Lucas"
 horizontal_alignment = 1
 
-[node name="Label15" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label15" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Lauren Szmandiuk"
 horizontal_alignment = 1
 
-[node name="Label16" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label16" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Tom Howarth"
 horizontal_alignment = 1
 
-[node name="Label14" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label14" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
 text = "Alex Valacos"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "FONTS"
 label_settings = SubResource("LabelSettings_0mtmn")
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "Ballso On The Rampage - Pizzadude, DaFont
     https://www.dafont.com/balls-on-the-rampag.font"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "SOUNDS"
 label_settings = SubResource("LabelSettings_0mtmn")
 
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Boxing Bell Signals - Pixabay
+    https://pixabay.com/sound-effects/boxing-bell-signals-6115/"
 
-[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Arcade countdown - Pixabay
+    https://pixabay.com/sound-effects/arcade-countdown-7007/"
 
-[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "crowd cheering - pixabay
+    https://pixabay.com/sound-effects/crowd-cheering-6334/"
 
-[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Fast simple chop 5 - pixabay
+    https://pixabay.com/sound-effects/fast-simple-chop-5-6270/"
 
-[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Free Crowd Cheering 2 - GregorQuendel, pixabay
+    https://pixabay.com/sound-effects/free-crowd-cheering-sounds-02-strong-cheering-rhythmic-cheering-116190/"
+autowrap_mode = 1
 
-[node name="Label9" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label9" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Free crowd cheering 4 - gregorquendel, pixabay
+    https://pixabay.com/sound-effects/free-crowd-cheering-sounds-04-strong-cheering-ii-short-116191/"
+autowrap_mode = 1
 
-[node name="Label10" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Label10" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Dummy"
+theme_override_font_sizes/font_size = 25
+text = "Punch-boxing-02.wav - pixabay
+    https://pixabay.com/sound-effects/punch-boxing-02wav-14897/"
+
+[node name="Label11" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "swoosh - universfield, pixabay
+    https://pixabay.com/sound-effects/swoosh-142322/"
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

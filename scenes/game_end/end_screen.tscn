@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://xqfxp3bk3bcr"]
+[gd_scene load_steps=4 format=3 uid="uid://xqfxp3bk3bcr"]
 
 [ext_resource type="Script" path="res://scenes/game_end/end_screen.gd" id="1_lio8s"]
 [ext_resource type="FontFile" uid="uid://bpgjiaq7etuui" path="res://scenes/ui/BallsoOnTheRampage.ttf" id="2_7sblk"]
+[ext_resource type="AudioStream" uid="uid://dj0gvhuebqnh" path="res://sounds/sfx/Crowd Boo - Sound Effect HD.mp3" id="3_bj23v"]
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
@@ -133,6 +134,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 38
 text = "quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bj23v")
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ButtonContainer/OtherBtn" to="." method="_on_versus_btn_pressed"]

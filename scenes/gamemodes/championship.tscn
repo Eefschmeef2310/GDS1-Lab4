@@ -1,10 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpvibep0desuj"]
+[gd_scene load_steps=9 format=3 uid="uid://cpvibep0desuj"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
 [ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_unrwm"]
 [ext_resource type="Script" path="res://scenes/menus/championship_win.gd" id="3_55fm4"]
 [ext_resource type="Texture2D" uid="uid://cvm26r8yda8q0" path="res://scenes/ui/ui_sprites/VICTORY.png" id="3_diyvh"]
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="4_2xu6t"]
 [ext_resource type="AudioStream" uid="uid://c3endjx6cyr7x" path="res://sounds/music/boxing win.ogg" id="5_04kt8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su6r7"]
+shader = ExtResource("4_2xu6t")
+shader_parameter/angle = null
+shader_parameter/time_scale = 0.3125
+shader_parameter/gradientStep = 0.2
+shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/brighterColor = Color(0.988235, 0.666667, 0, 1)
+shader_parameter/darkerColor = Color(0.917647, 0, 0.0705882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo6lf"]
 bg_color = Color(0, 0, 0, 0.682353)
@@ -17,18 +28,18 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_8xust")
 
 [node name="PrematchScreen" parent="." instance=ExtResource("2_unrwm")]
+visible = false
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("3_55fm4")
 
 [node name="ColorRect" type="ColorRect" parent="ChampionshipWin"]
+material = SubResource("ShaderMaterial_su6r7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.745098, 0.466667, 0.168627, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ChampionshipWin"]
 offset_right = 1152.0
@@ -53,12 +64,15 @@ layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Panel" type="Panel" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(450, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 400)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mo6lf")
 
-[node name="MarginContainer" type="MarginContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,11 +82,11 @@ grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="Stats" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer"]
+[node name="Stats" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Hits" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="Hits" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -80,7 +94,7 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
 text = "Hits landed: X"
 vertical_alignment = 1
 
-[node name="Damage" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="Damage" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -88,7 +102,7 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
 text = "Hits taken: x"
 vertical_alignment = 1
 
-[node name="ClearTime" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="ClearTime" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -96,7 +110,7 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
 text = "clear time: X"
 vertical_alignment = 1
 
-[node name="FinalScore" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Panel/MarginContainer/Stats"]
+[node name="FinalScore" type="Label" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -104,28 +118,23 @@ theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.152941)
 text = "FINAL SCORE: 00000000"
 vertical_alignment = 1
 
+[node name="FinishButton" type="Button" parent="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "menu"
+
 [node name="Art" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art"]
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 460)
 layout_mode = 2
 texture = ExtResource("3_diyvh")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="ChampionshipWin/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_right = 300
-
-[node name="FinishButton" type="Button" parent="ChampionshipWin/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "menu"
-
 [node name="WinStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_04kt8")
 
 [connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
-[connection signal="pressed" from="ChampionshipWin/VBoxContainer/MarginContainer/FinishButton" to="." method="_on_finish_button_pressed"]
+[connection signal="pressed" from="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/FinishButton" to="." method="_on_finish_button_pressed"]

@@ -4,6 +4,7 @@ uniform float angle;
 uniform float time_scale = 0.3125;
 uniform float gradientStep = 0.2;
 uniform float fire_height : hint_range(0.5, 1.5, 0.01) = 1.;
+uniform vec4 background_color : source_color = vec4(0.,0.,0.,1.);
 uniform vec4 brighterColor :source_color = vec4(1.0, 0.65, 0.1, 0.25);
 uniform vec4 darkerColor : source_color = vec4(1.0, 0.0, 0.15, 0.0625);
 
@@ -74,5 +75,5 @@ void fragment() {
     
     color = mix(color, middleColor, darkerColorStep - middleColorStep);
     color = mix(vec4(0.0), color, firstStep);
-	COLOR = mix(vec4(0., 0., 0., 1.), color, color.a);
+	COLOR = mix(background_color, color, firstStep);
 }
