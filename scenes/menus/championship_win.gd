@@ -18,6 +18,8 @@ extends CanvasLayer
 @onready var damage = $VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats/Damage
 @onready var clear_time = $VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats/ClearTime
 @onready var final_score = $VBoxContainer/HBoxContainer/VBoxContainer/Panel/MarginContainer/Stats/FinalScore
+@onready var particles = $VBoxContainer/HBoxContainer/Art/TextureRect2/Particles
+
 
 #Other Variables (please try to separate and organise!)
 

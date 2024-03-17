@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpvibep0desuj"]
+[gd_scene load_steps=12 format=3 uid="uid://cpvibep0desuj"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
 [ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_unrwm"]
 [ext_resource type="Script" path="res://scenes/menus/championship_win.gd" id="3_55fm4"]
-[ext_resource type="Texture2D" uid="uid://cvm26r8yda8q0" path="res://scenes/ui/ui_sprites/VICTORY.png" id="3_diyvh"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="4_2xu6t"]
 [ext_resource type="AudioStream" uid="uid://c3endjx6cyr7x" path="res://sounds/music/boxing win.ogg" id="5_04kt8"]
+[ext_resource type="Texture2D" uid="uid://c8r3d0sc42231" path="res://assets/VICTORY-bg.png" id="5_d3ptn"]
+[ext_resource type="Texture2D" uid="uid://f8oqmb4thvd7" path="res://assets/VICTORY-guy.png" id="6_dmesr"]
+[ext_resource type="Texture2D" uid="uid://hggjs1026ck0" path="res://assets/sparkle.png" id="6_oj60w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_su6r7"]
 shader = ExtResource("4_2xu6t")
@@ -24,6 +26,11 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="Gradient" id="Gradient_s2vn1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.518116)
+colors = PackedColorArray(0.611765, 0.262745, 0.188235, 1, 0.686275, 0.490196, 0.207843, 1)
+
 [node name="Championship" type="Node2D"]
 script = ExtResource("1_8xust")
 
@@ -31,16 +38,24 @@ script = ExtResource("1_8xust")
 visible = false
 
 [node name="ChampionshipWin" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("3_55fm4")
 
 [node name="ColorRect" type="ColorRect" parent="ChampionshipWin"]
+visible = false
 material = SubResource("ShaderMaterial_su6r7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ChampionshipWin"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.113725, 0.156863, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ChampionshipWin"]
 offset_right = 1152.0
@@ -124,13 +139,43 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "menu"
 
-[node name="Art" type="VBoxContainer" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]
+[node name="Art" type="Control" parent="ChampionshipWin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art"]
+[node name="TextureRect2" type="TextureRect" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art"]
+clip_children = 2
 custom_minimum_size = Vector2(0, 460)
 layout_mode = 2
-texture = ExtResource("3_diyvh")
+offset_right = 430.0
+offset_bottom = 460.0
+texture = ExtResource("5_d3ptn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Particles" type="CPUParticles2D" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art/TextureRect2"]
+position = Vector2(221, 472)
+amount = 100
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource("6_oj60w")
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+linear_accel_max = 44.94
+scale_amount_max = 1.5
+color_initial_ramp = SubResource("Gradient_s2vn1")
+
+[node name="TextureRect3" type="TextureRect" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art"]
+custom_minimum_size = Vector2(0, 460)
+layout_mode = 2
+offset_right = 430.0
+offset_bottom = 460.0
+texture = ExtResource("6_dmesr")
 expand_mode = 3
 stretch_mode = 5
 

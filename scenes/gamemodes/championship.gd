@@ -105,6 +105,7 @@ func start_next_round():
 		championship_win.damage.text = "Hits Taken: " + str(damage)
 		championship_win.clear_time.text = "Clear Time: " + get_timer_string_from_seconds(clear_time)
 		championship_win.final_score.text = "Final Score: " + str(total_score)
+		championship_win.particles.emitting = true
 		$WinStream.play()
 
 func get_timer_string_from_seconds(time_elapsed := 0.0):
