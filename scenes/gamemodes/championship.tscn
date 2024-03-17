@@ -155,6 +155,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Particles" type="CPUParticles2D" parent="ChampionshipWin/VBoxContainer/HBoxContainer/Art/TextureRect2"]
+texture_filter = 1
 position = Vector2(221, 472)
 amount = 100
 lifetime = 8.0

@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_6l2jr"]
 [ext_resource type="AudioStream" uid="uid://b18iui8s73741" path="res://sounds/music/boxing fight.ogg" id="9_dk2ew"]
 [ext_resource type="AudioStream" uid="uid://ce2hqsvkspvoa" path="res://sounds/sfx/arcade-countdown-7007.mp3" id="10_10wf8"]
-[ext_resource type="Texture2D" uid="uid://hggjs1026ck0" path="res://assets/sparkle.png" id="10_fsi3a"]
+[ext_resource type="Texture2D" uid="uid://buv0w6ycmp8vx" path="res://assets/sparkle2.png" id="10_lc031"]
 [ext_resource type="AudioStream" uid="uid://b1ua56alnlpdm" path="res://sounds/sfx/2 rings.mp3" id="11_360ge"]
 [ext_resource type="AudioStream" uid="uid://cayrrn641b80g" path="res://sounds/sfx/3 rings.mp3" id="12_6frh1"]
 [ext_resource type="Texture2D" uid="uid://bp1vjdxyv7gc4" path="res://scenes/ui/ui_sprites/controlsp1.png" id="12_sdo8w"]
@@ -131,18 +131,17 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_hc60e")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CrowdLeft"]
+texture_filter = 1
 scale = Vector2(1.11111, 1.11111)
 amount = 3
 lifetime = 3.0
 randomness = 0.5
-texture = ExtResource("10_fsi3a")
+texture = ExtResource("10_lc031")
 emission_shape = 3
 emission_rect_extents = Vector2(90, 270)
 gravity = Vector2(0, 0)
 angular_velocity_max = 60.0
 angle_max = 360.0
-scale_amount_min = 5.0
-scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_dl0cv")
 color_ramp = SubResource("Gradient_ocpc1")
 
@@ -152,18 +151,17 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_36442")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CrowdRight"]
+texture_filter = 1
 scale = Vector2(1.11111, 1.11111)
 amount = 3
 lifetime = 3.0
 randomness = 1.0
-texture = ExtResource("10_fsi3a")
+texture = ExtResource("10_lc031")
 emission_shape = 3
 emission_rect_extents = Vector2(90, 270)
 gravity = Vector2(0, 0)
 angular_velocity_max = 60.0
 angle_max = 360.0
-scale_amount_min = 5.0
-scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_dl0cv")
 color_ramp = SubResource("Gradient_ocpc1")
 
