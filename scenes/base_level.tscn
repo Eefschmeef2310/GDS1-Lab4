@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cn5ca3ycbsm2p"]
+[gd_scene load_steps=24 format=3 uid="uid://cn5ca3ycbsm2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="1_pf8nb"]
 [ext_resource type="Script" path="res://scenes/base_level.gd" id="1_sdqvl"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="9_6l2jr"]
 [ext_resource type="AudioStream" uid="uid://b18iui8s73741" path="res://sounds/music/boxing fight.ogg" id="9_dk2ew"]
 [ext_resource type="AudioStream" uid="uid://ce2hqsvkspvoa" path="res://sounds/sfx/arcade-countdown-7007.mp3" id="10_10wf8"]
+[ext_resource type="Texture2D" uid="uid://hggjs1026ck0" path="res://assets/sparkle.png" id="10_fsi3a"]
 [ext_resource type="AudioStream" uid="uid://b1ua56alnlpdm" path="res://sounds/sfx/2 rings.mp3" id="11_360ge"]
 [ext_resource type="AudioStream" uid="uid://cayrrn641b80g" path="res://sounds/sfx/3 rings.mp3" id="12_6frh1"]
 
@@ -22,6 +23,14 @@ noise_type = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
 size = Vector2(630, 45)
+
+[sub_resource type="Curve" id="Curve_dl0cv"]
+_data = [Vector2(0, 1), 0.0, -3.17538, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ocpc1"]
+offsets = PackedFloat32Array(0, 0.21519)
+colors = PackedColorArray(1, 1, 1, 0.662745, 1, 1, 1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lo8ry"]
 font_size = 48
@@ -118,10 +127,42 @@ position = Vector2(113, 349)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_hc60e")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CrowdLeft"]
+scale = Vector2(1.11111, 1.11111)
+amount = 3
+lifetime = 3.0
+randomness = 0.5
+texture = ExtResource("10_fsi3a")
+emission_shape = 3
+emission_rect_extents = Vector2(90, 270)
+gravity = Vector2(0, 0)
+angular_velocity_max = 60.0
+angle_max = 360.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_dl0cv")
+color_ramp = SubResource("Gradient_ocpc1")
+
 [node name="CrowdRight" type="Sprite2D" parent="."]
 position = Vector2(1040, 349)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_36442")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CrowdRight"]
+scale = Vector2(1.11111, 1.11111)
+amount = 3
+lifetime = 3.0
+randomness = 1.0
+texture = ExtResource("10_fsi3a")
+emission_shape = 3
+emission_rect_extents = Vector2(90, 270)
+gravity = Vector2(0, 0)
+angular_velocity_max = 60.0
+angle_max = 360.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_dl0cv")
+color_ramp = SubResource("Gradient_ocpc1")
 
 [node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
 z_index = 1

@@ -22,6 +22,7 @@ shader_parameter/angle = -1.555
 shader_parameter/time_scale = 0.3125
 shader_parameter/gradientStep = 0.115
 shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
 shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
 
@@ -31,6 +32,7 @@ shader_parameter/angle = 1.48
 shader_parameter/time_scale = 0.3125
 shader_parameter/gradientStep = 0.2
 shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/brighterColor = Color(1, 0.65098, 0.101961, 1)
 shader_parameter/darkerColor = Color(1, 0, 0.14902, 1)
 

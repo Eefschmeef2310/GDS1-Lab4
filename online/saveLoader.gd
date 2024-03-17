@@ -24,7 +24,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		create_new_button.visible = true
 		offline_mode.visible = true
 	else:
-		#load save data from server response 
+		#load save data from server response
 		AirtableManager.saveRes.username = str(json.fields.get("Username"))
 		AirtableManager.saveRes.highscore = int(json.fields.get("Highscore"))
 		AirtableManager.saveRes.gamesPlayed = int(json.fields.get("Games Played"))

@@ -38,6 +38,7 @@ func _on_game_end(b_score:int, r_score:int, time:int, c_score:int):
 	elif r_score > b_score:
 		if is_championship:
 			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = "Game over!"
+			$AudioStreamPlayer.play()
 		else:
 			$ColorRect/MarginContainer/VBoxContainer/Winner.text  = red_name + " wins!"
 		$ColorRect/MarginContainer/VBoxContainer/Winner.set("theme_override_colors/font_color", red_color)
