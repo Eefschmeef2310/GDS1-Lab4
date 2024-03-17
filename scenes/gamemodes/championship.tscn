@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpvibep0desuj"]
+[gd_scene load_steps=13 format=3 uid="uid://cpvibep0desuj"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/championship.gd" id="1_8xust"]
 [ext_resource type="PackedScene" uid="uid://cf66cyin68fj6" path="res://scenes/menus/prematch_screen.tscn" id="2_unrwm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8r3d0sc42231" path="res://assets/VICTORY-bg.png" id="5_d3ptn"]
 [ext_resource type="Texture2D" uid="uid://f8oqmb4thvd7" path="res://assets/VICTORY-guy.png" id="6_dmesr"]
 [ext_resource type="Texture2D" uid="uid://hggjs1026ck0" path="res://assets/sparkle.png" id="6_oj60w"]
+[ext_resource type="PackedScene" uid="uid://dfmtdykgsb484" path="res://scenes/ui/pause_ui.tscn" id="9_w88h1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_su6r7"]
 shader = ExtResource("4_2xu6t")
@@ -182,6 +183,8 @@ stretch_mode = 5
 
 [node name="WinStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_04kt8")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_w88h1")]
 
 [connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
 [connection signal="pressed" from="ChampionshipWin/VBoxContainer/HBoxContainer/VBoxContainer/FinishButton" to="." method="_on_finish_button_pressed"]

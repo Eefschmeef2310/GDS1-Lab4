@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4a3n0u6kbu82"]
+[gd_scene load_steps=9 format=3 uid="uid://4a3n0u6kbu82"]
 
 [ext_resource type="Script" path="res://scenes/menus/options.gd" id="1_n84ok"]
 [ext_resource type="Script" path="res://scenes/menus/volume_slider.gd" id="2_7hoxj"]
@@ -8,6 +8,13 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_f32yo"]
 font_size = 116
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs3wb"]
+bg_color = Color(0, 0, 0, 0.243137)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0g26"]
 font_size = 48
@@ -65,20 +72,31 @@ text = "OPTIONS"
 label_settings = SubResource("LabelSettings_f32yo")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 275.42)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fs3wb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 2
+offset_top = 60.0
+offset_right = 752.0
+offset_bottom = 295.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Master"
 label_settings = SubResource("LabelSettings_j0g26")
 horizontal_alignment = 1
 
-[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -86,13 +104,13 @@ value = 0.5
 script = ExtResource("2_7hoxj")
 bus_name = "Master"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Music"
 label_settings = SubResource("LabelSettings_j0g26")
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -100,13 +118,13 @@ value = 0.5
 script = ExtResource("2_7hoxj")
 bus_name = "Music"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 text = "SFX"
 label_settings = SubResource("LabelSettings_j0g26")
 horizontal_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Panel/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
