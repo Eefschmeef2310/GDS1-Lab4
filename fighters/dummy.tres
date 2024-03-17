@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=5 format=3 uid="uid://65p3foffb52t"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://65p3foffb52t"]
 
+[ext_resource type="Texture2D" uid="uid://buo5ek64plokf" path="res://assets/6.png" id="1_seysg"]
 [ext_resource type="Script" path="res://fighters/fighter_data_resource.gd" id="1_t3gl4"]
+[ext_resource type="Texture2D" uid="uid://dugpnpej1xyln" path="res://assets/dummyicon.png" id="1_vst8e"]
 [ext_resource type="Texture2D" uid="uid://conbajqnff32f" path="res://assets/arm.png" id="2_l83jy"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="3_0hmca"]
 [ext_resource type="Texture2D" uid="uid://dymtb3ckobc8e" path="res://assets/hand.png" id="4_w8ghr"]
@@ -12,6 +14,8 @@ middle_name = "Dummy"
 last_name = "Daniels"
 description = "A training dummy.
 Will take your hits... gladly?"
+portrait = ExtResource("1_seysg")
+icon = ExtResource("1_vst8e")
 battle_color = Color(0.721569, 0.721569, 0.721569, 1)
 alt_battle_color = Color(0.133333, 0.133333, 0.133333, 1)
 main_color = Color(0.721569, 0.721569, 0.721569, 1)
@@ -21,8 +25,8 @@ sprite_arm = ExtResource("2_l83jy")
 sprite_hand = ExtResource("4_w8ghr")
 movement_speed = 25.0
 punch_attack_speed = 0.1
-punch_retract_speed = 0.25
-punch_knockback = 200.0
+punch_retract_speed = 0.5
+punch_knockback = 2000.0
 punch_frequency = 0.25
 tick_speed = 0.5
 aggressive_chance_scale = 1.0
