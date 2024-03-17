@@ -12,3 +12,7 @@ func _process(delta):
 		print(val)
 	self_modulate = Color.WHITE.lerp(fade_col, val)
 	
+
+
+func _on_hide_controls_timer_timeout():
+	hide()

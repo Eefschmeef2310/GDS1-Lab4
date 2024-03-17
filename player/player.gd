@@ -110,7 +110,8 @@ func set_as_player(prefix: String):
 	punches_node.set_script(InputScripts.player.punch)
 	punches_node.input_prefix = prefix
 	ai_node.set_script(null)
-	controls_ui.show()
+	if controls_ui:
+		controls_ui.show()
 
 func set_as_dummy():
 	movement_node.set_script(null)

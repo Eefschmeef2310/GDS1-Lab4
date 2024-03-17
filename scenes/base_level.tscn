@@ -126,16 +126,18 @@ position = Vector2(1040, 349)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_36442")
 
-[node name="Red Player" parent="." instance=ExtResource("6_i6nhd")]
+[node name="Red Player" parent="." node_paths=PackedStringArray("controls_ui") instance=ExtResource("6_i6nhd")]
 z_index = 1
 position = Vector2(768, 515)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
+controls_ui = NodePath("../ControlsP2")
 
-[node name="Blue Player" parent="." instance=ExtResource("6_i6nhd")]
+[node name="Blue Player" parent="." node_paths=PackedStringArray("controls_ui") instance=ExtResource("6_i6nhd")]
 z_index = 1
 position = Vector2(380, 194)
 scale = Vector2(0.5, 0.5)
+controls_ui = NodePath("../ControlsP1")
 
 [node name="Glove" parent="Blue Player/Body/LArm/LHand" index="0"]
 self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
@@ -143,18 +145,25 @@ self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 [node name="Glove" parent="Blue Player/Body/RArm/RHand" index="0"]
 self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
 
+[node name="ControlsP2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(912, 515)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_rg54b")
+script = ExtResource("13_8odym")
+
 [node name="ControlsP1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(236, 194)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("12_sdo8w")
 script = ExtResource("13_8odym")
 print = true
 
-[node name="ControlsP2" type="Sprite2D" parent="."]
-position = Vector2(912, 515)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("13_rg54b")
-script = ExtResource("13_8odym")
+[node name="HideControlsTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="CountdownUI" type="CanvasLayer" parent="."]
 
@@ -215,5 +224,7 @@ script = ExtResource("9_6l2jr")
 
 [connection signal="hit" from="Red Player" to="." method="_on_red_player_hit"]
 [connection signal="hit" from="Blue Player" to="." method="_on_blue_player_hit"]
+[connection signal="timeout" from="HideControlsTimer" to="ControlsP1" method="_on_hide_controls_timer_timeout"]
+[connection signal="timeout" from="HideControlsTimer" to="ControlsP2" method="_on_hide_controls_timer_timeout"]
 
 [editable path="Blue Player"]
