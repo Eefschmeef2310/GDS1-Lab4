@@ -43,6 +43,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Player 1"
 label_settings = SubResource("LabelSettings_wvxe1")
+clip_text = true
+text_overrun_behavior = 1
 
 [node name="Score" type="Label" parent="Columns"]
 layout_mode = 2
