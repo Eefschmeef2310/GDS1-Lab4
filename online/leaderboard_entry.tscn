@@ -1,6 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqfj8xh7q8wk1"]
+[gd_scene load_steps=6 format=3 uid="uid://dqfj8xh7q8wk1"]
 
 [ext_resource type="Script" path="res://online/leaderboard_entry.gd" id="1_7mpdf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm7gv"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+bg_color = Color(0, 0, 0, 0.294118)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_52wf5"]
 font_size = 32
@@ -15,13 +24,14 @@ content_margin_right = 8.0
 custom_minimum_size = Vector2(0, 28)
 offset_right = 127.0
 offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qm7gv")
 script = ExtResource("1_7mpdf")
 
 [node name="Columns" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Position" type="Label" parent="Columns"]
-custom_minimum_size = Vector2(25.93, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "1"
