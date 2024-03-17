@@ -89,7 +89,7 @@ func attack_state():
 	
 	#if ((direction_to_other.x * direction_to_other.y > 0 && !punch_script.is_right_arm) || (direction_to_other.x * direction_to_other.y < 0 && punch_script.is_right_arm)):
 		#punch_script.input_punch()
-	if((target_direction.length() <= owner.movement_speed * owner.punch_speed_seconds + 20 || direction_to_other.length() <= 140) \
+	if((target_direction.length() <= owner.movement_speed * owner.punch_speed_seconds|| direction_to_other.length() <= 140) \
 	&& punch_script.can_punch() && punch_counter < owner.max_consec_punches):
 		punch_script.input_punch()
 		punch_counter += 1
