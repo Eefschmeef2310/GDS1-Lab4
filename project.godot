@@ -25,6 +25,7 @@ buses/default_bus_layout="res://defaults/default_bus_layout.tres"
 AirtableManager="*res://online/AirtableManager.gd"
 FullscreenManager="*res://player/fullscreen_manager.gd"
 SoundSaveManager="*res://sound_save_system/sound_save_manager.gd"
+GlobalSteam="*res://steamworks/steam.tscn"
 
 [display]
 
@@ -45,7 +46,8 @@ folder_colors={
 "res://scenes/": "orange",
 "res://shaders/": "green",
 "res://sound_save_system/": "teal",
-"res://sounds/": "teal"
+"res://sounds/": "teal",
+"res://steamworks/": "purple"
 }
 
 [gui]

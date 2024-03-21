@@ -119,7 +119,6 @@ rotation = 1.5708
 texture = ExtResource("7_6ggtk")
 
 [node name="Home" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="Home"]
 anchors_preset = 8
@@ -137,7 +136,7 @@ size_flags_vertical = 0
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.266667)
 theme_override_constants/line_spacing = -48
 theme_override_font_sizes/font_size = 140
-text = "SUPER
+text = "STEAM
 BOXING"
 horizontal_alignment = 1
 
@@ -171,6 +170,7 @@ autowrap_mode = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
+disabled = true
 text = "Leaderboard"
 text_overrun_behavior = 1
 
@@ -178,6 +178,7 @@ text_overrun_behavior = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
+disabled = true
 text = "Change Name"
 text_overrun_behavior = 1
 
@@ -185,6 +186,7 @@ text_overrun_behavior = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
+disabled = true
 text = "Logout"
 text_overrun_behavior = 1
 
@@ -212,6 +214,7 @@ text = "Exit
 "
 
 [node name="Play" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("8_x7hvo")
 
 [node name="TextureAnimators" type="AnimationPlayer" parent="Play"]

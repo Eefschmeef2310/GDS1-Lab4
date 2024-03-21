@@ -43,7 +43,8 @@ func _ready():
 	request_completed.connect(_on_request_completed)
 	if (FileAccess.file_exists(savePath) and debugNewSave):
 		Load()
-		get_tree().change_scene_to_file(saveLoaderScene)
+		#get_tree().change_scene_to_file(saveLoaderScene)
+		get_tree().change_scene_to_file(menuSceme)
 	else:
 		#create a new save file
 		saveRes = SaveDataRes.new()

@@ -34,7 +34,8 @@ func _ready():
 
 func _process(_delta):
 	#Runs per frame
-	username_label.text = AirtableManager.saveRes.username
+	#username_label.text = AirtableManager.saveRes.username
+	username_label.text = Steam.getPersonaName()
 	highscore_label.text = "High Score: " + str(AirtableManager.saveRes.highscore)
 #endregion
 
