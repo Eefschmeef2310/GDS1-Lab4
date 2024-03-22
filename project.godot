@@ -29,7 +29,7 @@ GlobalSteam="*res://steamworks/steam.tscn"
 
 [display]
 
-window/size/mode=4
+window/size/mode=3
 window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 
@@ -44,6 +44,7 @@ folder_colors={
 "res://player/": "green",
 "res://punch_bases/": "blue",
 "res://scenes/": "orange",
+"res://scenes/menus/onlineMode/": "purple",
 "res://shaders/": "green",
 "res://sound_save_system/": "teal",
 "res://sounds/": "teal",

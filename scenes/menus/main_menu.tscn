@@ -119,6 +119,7 @@ rotation = 1.5708
 texture = ExtResource("7_6ggtk")
 
 [node name="Home" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Home"]
 anchors_preset = 8
@@ -214,7 +215,6 @@ text = "Exit
 "
 
 [node name="Play" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("8_x7hvo")
 
 [node name="TextureAnimators" type="AnimationPlayer" parent="Play"]
@@ -295,6 +295,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Versus (2P)"
 
+[node name="Online" type="Button" parent="Play/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Online Versus (2P)"
+
 [node name="Training" type="Button" parent="Play/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -329,5 +334,6 @@ bus = &"Music"
 [connection signal="pressed" from="Home/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Play/VBoxContainer/Championship" to="." method="_on_championship_pressed"]
 [connection signal="pressed" from="Play/VBoxContainer/Versus" to="." method="_on_versus_pressed"]
+[connection signal="pressed" from="Play/VBoxContainer/Online" to="." method="_on_online_pressed"]
 [connection signal="pressed" from="Play/VBoxContainer/Training" to="." method="_on_training_pressed"]
 [connection signal="pressed" from="Play/VBoxContainer/PlayBack" to="." method="_on_play_back_pressed"]

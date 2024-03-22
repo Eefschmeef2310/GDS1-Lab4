@@ -99,5 +99,11 @@ func get_selected_blue_fighter():
 
 func get_selected_red_fighter():
 	return character_select.red_fighter
+	
+#func fighter_data_to_name(data: FighterData) -> String:
+	#return data.first_name
+#
+#func name_to_fighter_data(first_name: String) -> FighterData:
+	#return 
 
 #endregion

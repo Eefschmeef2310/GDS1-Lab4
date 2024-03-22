@@ -1,0 +1,375 @@
+[gd_scene load_steps=29 format=3 uid="uid://btd3lggpcld71"]
+
+[ext_resource type="Script" path="res://scenes/gamemodes/onlineVersus.gd" id="1_7m5c5"]
+[ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="2_0evr3"]
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="3_6frix"]
+[ext_resource type="PackedScene" uid="uid://dfmtdykgsb484" path="res://scenes/ui/pause_ui.tscn" id="3_yshq4"]
+[ext_resource type="Texture2D" uid="uid://ifv7d6ijolyw" path="res://icon.svg" id="4_uy4yn"]
+[ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="5_iya6g"]
+[ext_resource type="FontFile" uid="uid://p2bxrl4nvpmi" path="res://scenes/ui/Anton-Regular.ttf" id="6_uide2"]
+[ext_resource type="Script" path="res://scenes/menus/character_select.gd" id="7_axtbe"]
+[ext_resource type="PackedScene" uid="uid://cp7hpho6waa64" path="res://scenes/menus/fighter_select.tscn" id="8_aksxk"]
+[ext_resource type="Resource" uid="uid://dr5rjx4uw63bx" path="res://fighters/jack.tres" id="9_ybl81"]
+[ext_resource type="Resource" uid="uid://cbubvqygnooqu" path="res://fighters/todd.tres" id="10_kw5ix"]
+[ext_resource type="Resource" uid="uid://c54swkvm7jx5d" path="res://fighters/mike.tres" id="11_31nsd"]
+[ext_resource type="Resource" uid="uid://bvfhc8y7qb4td" path="res://fighters/willie.tres" id="12_m00j3"]
+[ext_resource type="Resource" uid="uid://csq8s1alv5b4x" path="res://fighters/john.tres" id="13_pg6fh"]
+[ext_resource type="Resource" uid="uid://65p3foffb52t" path="res://fighters/dummy.tres" id="14_ryaoy"]
+[ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="15_5vqy2"]
+[ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="16_x6i0f"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="17_f3d4i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxmf"]
+shader = ExtResource("3_6frix")
+shader_parameter/angle = -1.555
+shader_parameter/time_scale = 0.3125
+shader_parameter/gradientStep = 0.115
+shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/brighterColor = Color(0, 0.0092368, 0.785124, 1)
+shader_parameter/darkerColor = Color(0.564706, 0.537255, 0.941176, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6omc"]
+shader = ExtResource("3_6frix")
+shader_parameter/angle = 1.48
+shader_parameter/time_scale = 0.3125
+shader_parameter/gradientStep = 0.2
+shader_parameter/fire_height = 1.0
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/brighterColor = Color(1, 0.65098, 0.101961, 1)
+shader_parameter/darkerColor = Color(1, 0, 0.14902, 1)
+
+[sub_resource type="Animation" id="Animation_vfgmk"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BluePortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-600, 0), Vector2(-50, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0dpr"]
+_data = {
+"default": SubResource("Animation_vfgmk")
+}
+
+[sub_resource type="Animation" id="Animation_r1mdo"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedPortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(600, 0), Vector2(50, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ccohn"]
+_data = {
+"default": SubResource("Animation_r1mdo")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_bp080"]
+line_spacing = -8.0
+font_size = 52
+outline_size = 1
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwlog"]
+line_spacing = 0.0
+font = ExtResource("6_uide2")
+font_size = 20
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgjst"]
+font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
+font_size = 98
+
+[node name="Versus" type="Node2D"]
+script = ExtResource("1_7m5c5")
+
+[node name="PrematchScreen" type="CanvasLayer" parent="."]
+script = ExtResource("2_0evr3")
+
+[node name="Background" type="HBoxContainer" parent="PrematchScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_right = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="BlueFlames" type="TextureRect" parent="PrematchScreen/Background"]
+material = SubResource("ShaderMaterial_jcxmf")
+layout_mode = 2
+texture = ExtResource("4_uy4yn")
+expand_mode = 2
+
+[node name="RedFlames" type="TextureRect" parent="PrematchScreen/Background"]
+material = SubResource("ShaderMaterial_x6omc")
+layout_mode = 2
+texture = ExtResource("4_uy4yn")
+expand_mode = 2
+
+[node name="Portraits" type="Control" parent="PrematchScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BluePortrait" type="TextureRect" parent="PrematchScreen/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_right = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iya6g")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="RedPortrait" type="TextureRect" parent="PrematchScreen/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iya6g")
+expand_mode = 2
+stretch_mode = 6
+flip_h = true
+
+[node name="BluePlayer" type="AnimationPlayer" parent="PrematchScreen/Portraits"]
+libraries = {
+"": SubResource("AnimationLibrary_n0dpr")
+}
+
+[node name="RedPlayer" type="AnimationPlayer" parent="PrematchScreen/Portraits"]
+libraries = {
+"": SubResource("AnimationLibrary_ccohn")
+}
+
+[node name="BlueDetails" type="VBoxContainer" parent="PrematchScreen"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -171.0
+offset_right = 532.0
+offset_bottom = -32.0
+grow_vertical = 0
+alignment = 2
+
+[node name="Name" type="Label" parent="PrematchScreen/BlueDetails"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Jack \"Lightning\" Johnson"
+label_settings = SubResource("LabelSettings_bp080")
+autowrap_mode = 2
+
+[node name="Details" type="Label" parent="PrematchScreen/BlueDetails"]
+layout_mode = 2
+text = "Risen from the slums to fight for a better life.
+Jack of all trades, but not to be underestimated."
+label_settings = SubResource("LabelSettings_qwlog")
+
+[node name="RedDetails" type="VBoxContainer" parent="PrematchScreen"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -532.0
+offset_top = -171.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Name" type="Label" parent="PrematchScreen/RedDetails"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "John \"Thunder\" Jackson"
+label_settings = SubResource("LabelSettings_bp080")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Details" type="Label" parent="PrematchScreen/RedDetails"]
+layout_mode = 2
+text = "Jack's inner demons brought to form.
+Powerful enough to destroy all of New Box City."
+label_settings = SubResource("LabelSettings_qwlog")
+horizontal_alignment = 2
+
+[node name="RoundLabel" type="Label" parent="PrematchScreen"]
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 32.0
+offset_right = 506.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.529412)
+theme_override_font_sizes/font_size = 128
+text = "Round 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundSubtitle" type="Label" parent="PrematchScreen"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_top = 96.0
+offset_right = 187.0
+offset_bottom = 225.0
+grow_horizontal = 2
+text = "CURRENT SCORE: 00000"
+label_settings = SubResource("LabelSettings_mgjst")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VS" type="Label" parent="PrematchScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -64.5
+offset_right = 171.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "VS"
+label_settings = SubResource("LabelSettings_1a32f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterSelect" type="VBoxContainer" parent="PrematchScreen"]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -118.0
+offset_right = 166.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+script = ExtResource("7_axtbe")
+
+[node name="Row" type="HBoxContainer" parent="PrematchScreen/CharacterSelect"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="FighterSelect" parent="PrematchScreen/CharacterSelect/Row" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("9_ybl81")
+
+[node name="FighterSelect2" parent="PrematchScreen/CharacterSelect/Row" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("10_kw5ix")
+
+[node name="FighterSelect3" parent="PrematchScreen/CharacterSelect/Row" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("11_31nsd")
+
+[node name="Row2" type="HBoxContainer" parent="PrematchScreen/CharacterSelect"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="FighterSelect4" parent="PrematchScreen/CharacterSelect/Row2" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("12_m00j3")
+
+[node name="FighterSelect5" parent="PrematchScreen/CharacterSelect/Row2" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("13_pg6fh")
+
+[node name="FighterSelect6" parent="PrematchScreen/CharacterSelect/Row2" instance=ExtResource("8_aksxk")]
+layout_mode = 2
+fighter = ExtResource("14_ryaoy")
+
+[node name="BackPhaseButton" type="Button" parent="PrematchScreen/CharacterSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[node name="PlayButton" type="Button" parent="PrematchScreen"]
+offset_left = 476.5
+offset_top = 561.0
+offset_right = 675.5
+offset_bottom = 616.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Let's go!"
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="PrematchScreen"]
+stream = ExtResource("15_5vqy2")
+volume_db = -15.0
+autoplay = true
+bus = &"SFX"
+
+[node name="PrematchMusic" type="AudioStreamPlayer" parent="PrematchScreen"]
+stream = ExtResource("16_x6i0f")
+bus = &"Music"
+
+[node name="Pause" type="Node" parent="PrematchScreen"]
+script = ExtResource("17_f3d4i")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_yshq4")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
+[connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect2" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect2" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect3" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect3" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect4" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect4" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect5" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect5" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect6" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
+[connection signal="select_fighter" from="PrematchScreen/CharacterSelect/Row2/FighterSelect6" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_select_fighter"]
+[connection signal="pressed" from="PrematchScreen/CharacterSelect/BackPhaseButton" to="PrematchScreen/CharacterSelect" method="_on_back_phase_button_pressed"]
+[connection signal="pressed" from="PrematchScreen/PlayButton" to="PrematchScreen" method="_on_play_button_pressed"]

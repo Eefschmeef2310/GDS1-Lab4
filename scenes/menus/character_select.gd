@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name character_select
 #class_name
 #Authored by Xander. Please consult for any modifications or major feature requests.
 
@@ -11,9 +12,10 @@ enum SelectionPhase {
 	P2,
 	DONE
 }
-var phase: SelectionPhase = SelectionPhase.P1
+@export var phase: SelectionPhase = SelectionPhase.P1
 var blue_fighter: FighterData
 var red_fighter: FighterData
+
 var null_data = preload("res://fighters/null.tres")
 
 #Constants

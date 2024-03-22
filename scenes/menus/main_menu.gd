@@ -78,3 +78,7 @@ func _on_logout_pressed():
 #region Other methods (please try to separate and organise!)
 
 #endregion
+
+
+func _on_online_pressed():
+	get_tree().change_scene_to_file("res://scenes/menus/onlineMode/serverBrowser.tscn")

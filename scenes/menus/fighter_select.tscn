@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci4fog8oidafs"]
+[gd_scene load_steps=5 format=3 uid="uid://cp7hpho6waa64"]
 
 [ext_resource type="Script" path="res://scenes/menus/fighter_select.gd" id="1_4u110"]
 [ext_resource type="Texture2D" uid="uid://pymq710manlq" path="res://assets/jack/icon.png" id="1_8g1bj"]

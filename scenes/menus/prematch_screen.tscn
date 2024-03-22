@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmcd0erw7wlfw" path="res://assets/jack/portrait.png" id="4_cp0w4"]
 [ext_resource type="Script" path="res://scenes/menus/character_select.gd" id="6_bb0cf"]
 [ext_resource type="AudioStream" uid="uid://cqf434utvn5tl" path="res://sounds/sfx/swoosh-universfield.mp3" id="6_fh82x"]
-[ext_resource type="PackedScene" uid="uid://ci4fog8oidafs" path="res://scenes/menus/fighter_select.tscn" id="6_ymiex"]
+[ext_resource type="PackedScene" uid="uid://cp7hpho6waa64" path="res://scenes/menus/fighter_select.tscn" id="6_ymiex"]
 [ext_resource type="Script" path="res://player/pause_manager.gd" id="7_2v2la"]
 [ext_resource type="AudioStream" uid="uid://ed1xmydodgg5" path="res://sounds/music/boxing prematch.ogg" id="7_mxtb8"]
 [ext_resource type="Resource" uid="uid://cbubvqygnooqu" path="res://fighters/todd.tres" id="7_ogt6n"]
