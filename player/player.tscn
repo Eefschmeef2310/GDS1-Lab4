@@ -402,12 +402,18 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("AnimationPlayers/LeftArm:current_animation")
+properties/2/path = NodePath("Body/LArm:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("AnimationPlayers/RightArm:current_animation")
+properties/3/path = NodePath("Body/LArm/LHand:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath("Body/RArm:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Body/RArm/RHand:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
