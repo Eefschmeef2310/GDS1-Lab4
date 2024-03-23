@@ -11,7 +11,7 @@ class_name MovementScript
 
 	#Other Variables (please try to separate and organise!)
 var direction: Vector2
-var knockback_velocity: float
+@export var knockback_velocity: float
 
 var can_input: bool = true
 #endregion

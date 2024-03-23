@@ -12,7 +12,7 @@ var trauma_pwr := 3 #Trauma exponent. Use [2,3]
 
 func _ready():
 	noise.seed = randi()
-	print(noise.seed)
+	#print(noise.seed)
 
 func add_trauma(amount : float):
 	zoom = Vector2(1.02, 1.02)
