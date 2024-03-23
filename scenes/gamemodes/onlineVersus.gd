@@ -77,14 +77,24 @@ func _on_prematch_screen_continue_pressed():
 func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
 	AirtableManager.CasualGameComplete(timer)
 
-func setFighterDisplay(player : int, fighter : FighterData):
-	print(str(player)+fighter.first_name)
+func setFighterDisplay(player : int, fighterName : String):
+	print(str(player)+fighterName)
 	if player == 1:
-		prematch_screen.set_blue_data(fighter)
+		prematch_screen.set_blue_data(name_to_fighter_path(fighterName))
 	else:
-		prematch_screen.set_red_data(fighter)
+		prematch_screen.set_red_data(name_to_fighter_path(fighterName))
 	pass
 
+func name_to_fighter_path(first_name: String) -> String:
+	match first_name:
+		"Dan": return "res://fighters/dummy.tres"
+		"Jack": return "res://fighters/jack.tres"
+		"John": return "res://fighters/jack.tres"
+		"Mike": return "res://fighters/mike.tres"
+		"Todd": return "res://fighters/todd.tres"
+		"Willie": return "res://fighters/willie.tres"
+		_: return "res://fighters/dummy.tres"
+			
 #endregion
 
 #region Other methods (please try to separate and organise!)
