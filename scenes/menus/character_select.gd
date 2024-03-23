@@ -67,9 +67,9 @@ func _process(delta):
 func _on_fighter_select_hover_fighter(data):
 	match phase:
 		SelectionPhase.P1:
-			owner.set_blue_data(data)
+			$"..".set_blue_data(data)
 		SelectionPhase.P2:
-			owner.set_red_data(data)
+			$"..".set_red_data(data)
 		SelectionPhase.DONE:
 			pass
 
@@ -79,7 +79,7 @@ func _on_fighter_select_select_fighter(data):
 			blue_fighter = data
 			phase = SelectionPhase.P2 if !is_training else SelectionPhase.DONE
 			if !is_training:
-				owner.set_red_data(data)
+				$"..".set_red_data(data)
 			$"../Swoosh".play()
 		SelectionPhase.P2:
 			red_fighter = data
@@ -96,7 +96,7 @@ func _on_back_phase_button_pressed():
 			phase = SelectionPhase.P1
 			if !is_training:
 				print("setting null data")
-				owner.set_red_data(null_data)
+				$"..".set_red_data(null_data)
 		SelectionPhase.DONE:
 			phase = SelectionPhase.P2  if !is_training else SelectionPhase.P1
 
