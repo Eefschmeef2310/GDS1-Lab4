@@ -23,6 +23,8 @@ extends Node2D
 @export_group("syncronised variables")
 var p1_selected_fighter_path : String = "res://fighters/null.tres"
 var p2_selected_fighter_path : String = "res://fighters/null.tres"
+@export_group("node references")
+var character_selector : VBoxContainer
 
 #endregion
 
@@ -31,7 +33,17 @@ func _ready():
 	prematch_screen.set_character_select("Versus")
 
 func _process(_delta):
-	#Runs per frame
+	#if i am the server, show the fighters until i pick one then hide them and shwo them to p2 (client) 
+	if multiplayer.is_server(): # (p1)
+		if(character_selector.phase == character_selector.SelectionPhase.P1):
+			character_selector.show()
+		if(character_selector.phase == character_selector.SelectionPhase.P2):
+			character_selector.hide()
+	else: # is client (p2)
+		if(character_selector.phase == character_selector.SelectionPhase.P1):
+			character_selector.hide()
+		if(character_selector.phase == character_selector.SelectionPhase.P2):
+			character_selector.show()
 	pass
 #endregion
 

@@ -100,10 +100,18 @@ func get_selected_blue_fighter():
 func get_selected_red_fighter():
 	return character_select.red_fighter
 	
-#func fighter_data_to_name(data: FighterData) -> String:
-	#return data.first_name
-#
-#func name_to_fighter_data(first_name: String) -> FighterData:
-	#return 
+func fighter_data_to_name(data: FighterData) -> String:
+	return data.first_name
+
+func name_to_fighter_path(first_name: String) -> String:
+	match first_name:
+		"Dan": return "res://fighters/dummy.tres"
+		"Jack": return "res://fighters/jack.tres"
+		"John": return "res://fighters/jack.tres"
+		"Mike": return "res://fighters/mike.tres"
+		"Todd": return "res://fighters/todd.tres"
+		"Willie": return "res://fighters/willie.tres"
+		_: return "res://fighters/dummy.tres"
+			
 
 #endregion

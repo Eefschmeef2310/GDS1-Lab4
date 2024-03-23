@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://btd3lggpcld71"]
+[gd_scene load_steps=30 format=3 uid="uid://btd3lggpcld71"]
 
 [ext_resource type="Script" path="res://scenes/gamemodes/onlineVersus.gd" id="1_7m5c5"]
 [ext_resource type="Script" path="res://scenes/menus/prematch_screen.gd" id="2_0evr3"]
@@ -100,6 +100,11 @@ font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_1a32f"]
 font_size = 98
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xvm8w"]
+properties/0/path = NodePath("PrematchScreen/CharacterSelect:phase")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Versus" type="Node2D"]
 script = ExtResource("1_7m5c5")
@@ -357,6 +362,7 @@ script = ExtResource("17_f3d4i")
 [node name="CanvasLayer" parent="." instance=ExtResource("3_yshq4")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xvm8w")
 
 [connection signal="continue_pressed" from="PrematchScreen" to="." method="_on_prematch_screen_continue_pressed"]
 [connection signal="hover_fighter" from="PrematchScreen/CharacterSelect/Row/FighterSelect" to="PrematchScreen/CharacterSelect" method="_on_fighter_select_hover_fighter"]
