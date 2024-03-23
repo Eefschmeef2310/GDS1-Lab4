@@ -85,6 +85,7 @@ func setFighterDisplay(player : int, fighterName : String):
 	else:
 		prematch_screen.set_red_data(load(name_to_fighter_path(fighterName)))
 		character_selector.phase = character_selector.SelectionPhase.DONE
+		$PrematchScreen/PlayButton.show()
 	pass
 
 func name_to_fighter_path(first_name: String) -> String:
