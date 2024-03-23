@@ -25,5 +25,12 @@ func fighterSelected(player : int, fighterName : String):
 	print("Player " + str(player) + " picked: " + fighterName)
 	fighter_selected.emit(player, fighterName)
 
+
 func ConnectionClosed():
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
+
+@rpc("authority")
+func EndConnection():
+	#get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
+	multiplayer.multiplayer_peer = null
+
