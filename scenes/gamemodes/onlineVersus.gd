@@ -24,7 +24,7 @@ extends Node2D
 var p1_selected_fighter_path : String = "res://fighters/null.tres"
 var p2_selected_fighter_path : String = "res://fighters/null.tres"
 @export_group("node references")
-var character_selector : VBoxContainer
+@export var character_selector : VBoxContainer
 
 #endregion
 

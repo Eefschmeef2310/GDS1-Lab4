@@ -106,8 +106,9 @@ properties/0/path = NodePath("PrematchScreen/CharacterSelect:phase")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="Versus" type="Node2D"]
+[node name="Versus" type="Node2D" node_paths=PackedStringArray("character_selector")]
 script = ExtResource("1_7m5c5")
+character_selector = NodePath("PrematchScreen/CharacterSelect")
 
 [node name="PrematchScreen" type="CanvasLayer" parent="."]
 script = ExtResource("2_0evr3")
