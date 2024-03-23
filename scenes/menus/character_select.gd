@@ -76,6 +76,7 @@ func _on_fighter_select_hover_fighter(data):
 func _on_fighter_select_select_fighter(data):
 	match phase:
 		SelectionPhase.P1:
+			$"..".set_blue_data(data)
 			blue_fighter = data
 			phase = SelectionPhase.P2 if !is_training else SelectionPhase.DONE
 			if !is_training:
@@ -84,6 +85,7 @@ func _on_fighter_select_select_fighter(data):
 				GlobalSteam.rpc("fighterSelected", 1, data.first_name)
 			$"../Swoosh".play()
 		SelectionPhase.P2:
+			$"..".set_red_data(data)
 			red_fighter = data
 			$"../Swoosh".play()
 			GlobalSteam.rpc("talk", "player 2 picked: " + data.first_name)
