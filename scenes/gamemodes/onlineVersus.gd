@@ -64,7 +64,7 @@ func _process(_delta):
 func _on_prematch_screen_continue_pressed():
 	online_coninue_button_pressed.rpc()
 
-@rpc("authority")
+@rpc
 func online_coninue_button_pressed():
 	prematch_screen.hide()
 	battle = battle_scene.instantiate()
