@@ -289,6 +289,7 @@ one_shot = true
 [node name="EndScreen" parent="." instance=ExtResource("4_jwi3f")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+process_mode = 4
 replication_config = SubResource("SceneReplicationConfig_tbjk3")
 
 [connection signal="game_ended" from="." to="EndScreen" method="_on_game_end"]
