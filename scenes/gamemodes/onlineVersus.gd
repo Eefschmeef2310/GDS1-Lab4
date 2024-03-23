@@ -21,8 +21,8 @@ extends Node2D
 
 #Other Variables (please try to separate and organise!)
 @export_group("syncronised variables")
-var p1_selected_fighter_path : String = "res://fighters/null.tres"
-var p2_selected_fighter_path : String = "res://fighters/null.tres"
+#var p1_selected_fighter_path : String = "res://fighters/null.tres"
+#var p2_selected_fighter_path : String = "res://fighters/null.tres"
 #var p1_picked : bool = false
 #var p2_picked : bool = false
 @export_group("node references")
@@ -60,7 +60,12 @@ func _process(_delta):
 
 #region Signal methods
 
+
 func _on_prematch_screen_continue_pressed():
+	online_coninue_button_pressed.rpc()
+
+@rpc("authority")
+func online_coninue_button_pressed():
 	prematch_screen.hide()
 	battle = battle_scene.instantiate()
 	battle.game_ended.connect(_on_battle_game_ended)
@@ -82,9 +87,11 @@ func setFighterDisplay(player : int, fighterName : String):
 	print(str(player)+fighterName)
 	if player == 1:
 		prematch_screen.set_blue_data(load(name_to_fighter_path(fighterName)))
+		character_selector.blue_fighter = load(name_to_fighter_path(fighterName))
 	else:
 		prematch_screen.set_red_data(load(name_to_fighter_path(fighterName)))
 		character_selector.phase = character_selector.SelectionPhase.DONE
+		character_selector.red_fighter = load(name_to_fighter_path(fighterName))
 		$PrematchScreen/PlayButton.show()
 	pass
 
