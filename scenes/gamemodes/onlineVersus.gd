@@ -110,6 +110,20 @@ func name_to_fighter_path(first_name: String) -> String:
 			
 #endregion
 
+#@rpc("any_peer")
+#func changeScore(color : String, score:int) -> int: #returns result of score fter change
+	#if color == "Red":
+		#battle.red_score += score
+		#return battle.red_score
+	#else:
+		#battle.blue_score += score
+		#return battle.blue_score
+#
+#@rpc("call_local")
+#func setScores(redScore : int, blueScore : int):
+	#battle.red_score = redScore
+	#battle.blue_score = blueScore
+
 #region Other methods (please try to separate and organise!)
 
 #endregion

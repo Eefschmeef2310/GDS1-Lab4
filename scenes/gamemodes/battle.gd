@@ -50,12 +50,20 @@ func _process(_delta):
 #region Signal methods
 
 func _on_base_level_blue_player_hit():
+	blueHit().rpc()
+
+@rpc("any_peer")
+func blueHit():
 	if !game_over:
 		red_score += 1
 		score_changed.emit(blue_score, red_score)
 		check_game_end()
 
 func _on_base_level_red_player_hit():
+	redHit().rpc()
+
+@rpc("any_peer")
+func redHit():
 	if !game_over:
 		blue_score += 1
 		score_changed.emit(blue_score, red_score)
