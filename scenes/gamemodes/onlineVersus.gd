@@ -80,9 +80,9 @@ func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_sco
 func setFighterDisplay(player : int, fighterName : String):
 	print(str(player)+fighterName)
 	if player == 1:
-		prematch_screen.set_blue_data(name_to_fighter_path(fighterName))
+		prematch_screen.set_blue_data(load(name_to_fighter_path(fighterName)))
 	else:
-		prematch_screen.set_red_data(name_to_fighter_path(fighterName))
+		prematch_screen.set_red_data(load(name_to_fighter_path(fighterName)))
 	pass
 
 func name_to_fighter_path(first_name: String) -> String:
