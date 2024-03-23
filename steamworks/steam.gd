@@ -16,11 +16,11 @@ func _ready():
 func _process(delta):
 	Steam.run_callbacks()
 
-@rpc("any_peer")
+@rpc("any_peer","call_local")
 func talk(message : String):
 	print("Talk: " + message)
 	
-@rpc("any_peer")
+@rpc("any_peer","call_local")
 func fighterSelected(player : int, fighterName : String):
 	print("Player " + str(player) + " picked: " + fighterName)
 	fighter_selected.emit(player, fighterName)
