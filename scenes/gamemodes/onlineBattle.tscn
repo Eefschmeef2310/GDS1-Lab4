@@ -1,0 +1,308 @@
+[gd_scene load_steps=31 format=3 uid="uid://0bmcd4uusc54"]
+
+[ext_resource type="Script" path="res://scenes/gamemodes/battle.gd" id="1_m33e3"]
+[ext_resource type="Script" path="res://scenes/base_level.gd" id="2_tlvkn"]
+[ext_resource type="PackedScene" uid="uid://8lasdew10kc0" path="res://scenes/ui/ui.tscn" id="3_53qty"]
+[ext_resource type="Texture2D" uid="uid://b1bex4uyp6fw0" path="res://assets/background.png" id="3_rdef6"]
+[ext_resource type="Script" path="res://scenes/battle_camera.gd" id="4_dilf7"]
+[ext_resource type="PackedScene" uid="uid://xqfxp3bk3bcr" path="res://scenes/game_end/end_screen.tscn" id="4_jwi3f"]
+[ext_resource type="Texture2D" uid="uid://b0dn6i8jyj3fm" path="res://assets/ring_shadow.png" id="5_r4t1a"]
+[ext_resource type="Texture2D" uid="uid://db5y3ipgjx0ja" path="res://assets/ring_floor2.png" id="6_cmtrb"]
+[ext_resource type="Texture2D" uid="uid://cd645n1v6lmp3" path="res://assets/ring_post_left.png" id="7_h8dde"]
+[ext_resource type="Texture2D" uid="uid://brfcnbemiyjkw" path="res://assets/ring_post_right.png" id="8_dtkyg"]
+[ext_resource type="Texture2D" uid="uid://bn7u3xvo4rslw" path="res://assets/ring_outline.png" id="9_hsjr3"]
+[ext_resource type="Texture2D" uid="uid://t568mg8ro4h7" path="res://assets/crowd_left.png" id="10_ku6qs"]
+[ext_resource type="Texture2D" uid="uid://buv0w6ycmp8vx" path="res://assets/sparkle2.png" id="11_3twjy"]
+[ext_resource type="Texture2D" uid="uid://c5l5gv1ptw3tt" path="res://assets/crowd_right.png" id="12_pjd13"]
+[ext_resource type="PackedScene" uid="uid://dhltmqvlc20k7" path="res://player/player.tscn" id="13_4u76p"]
+[ext_resource type="Texture2D" uid="uid://fgexejlsiqw7" path="res://scenes/ui/ui_sprites/controlsp2.png" id="14_xup7s"]
+[ext_resource type="Script" path="res://scenes/flashing_sprite.gd" id="15_750wm"]
+[ext_resource type="Texture2D" uid="uid://bp1vjdxyv7gc4" path="res://scenes/ui/ui_sprites/controlsp1.png" id="16_ndrq3"]
+[ext_resource type="AudioStream" uid="uid://b18iui8s73741" path="res://sounds/music/boxing fight.ogg" id="17_nctne"]
+[ext_resource type="AudioStream" uid="uid://ce2hqsvkspvoa" path="res://sounds/sfx/arcade-countdown-7007.mp3" id="18_arsok"]
+[ext_resource type="AudioStream" uid="uid://b1ua56alnlpdm" path="res://sounds/sfx/2 rings.mp3" id="19_fgblm"]
+[ext_resource type="AudioStream" uid="uid://cayrrn641b80g" path="res://sounds/sfx/3 rings.mp3" id="20_jc3sp"]
+[ext_resource type="Script" path="res://player/pause_manager.gd" id="21_e36r2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vckb6"]
+noise_type = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56rhn"]
+size = Vector2(630, 45)
+
+[sub_resource type="Curve" id="Curve_dl0cv"]
+_data = [Vector2(0, 1), 0.0, -3.17538, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ocpc1"]
+offsets = PackedFloat32Array(0, 0.21519)
+colors = PackedColorArray(1, 1, 1, 0.662745, 1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lo8ry"]
+font_size = 48
+outline_size = 12
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw0m2"]
+font_size = 128
+outline_size = 18
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tbjk3"]
+properties/0/path = NodePath("MatchTimer:wait_time")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:blue_score")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:red_score")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_m33e3")
+
+[node name="BaseLevel" type="Node2D" parent="."]
+script = ExtResource("2_tlvkn")
+
+[node name="ColorRect" type="ColorRect" parent="BaseLevel"]
+offset_left = -440.0
+offset_top = -640.0
+offset_right = 1560.0
+offset_bottom = 1360.0
+color = Color(0.0823529, 0.113725, 0.156863, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="BaseLevel"]
+color = Color(0.882353, 0.882353, 0.882353, 1)
+
+[node name="Background" type="Sprite2D" parent="BaseLevel"]
+self_modulate = Color(0.0823529, 0.113725, 0.156863, 1)
+texture = ExtResource("3_rdef6")
+centered = false
+
+[node name="Camera" type="Camera2D" parent="BaseLevel"]
+position = Vector2(576, 324)
+zoom = Vector2(0.75, 0.75)
+script = ExtResource("4_dilf7")
+decay = 1.0
+max_offset = Vector2(75, 25)
+noise = SubResource("FastNoiseLite_vckb6")
+
+[node name="Ring" type="StaticBody2D" parent="BaseLevel"]
+position = Vector2(574, 355)
+
+[node name="PointLight2D" type="PointLight2D" parent="BaseLevel/Ring"]
+position = Vector2(-1, -3)
+scale = Vector2(0.52, 0.52)
+energy = 0.5
+texture = ExtResource("5_r4t1a")
+texture_scale = 2.0
+
+[node name="Floor" type="Sprite2D" parent="BaseLevel/Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("6_cmtrb")
+
+[node name="BluePost" type="Sprite2D" parent="BaseLevel/Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("7_h8dde")
+
+[node name="RedPost" type="Sprite2D" parent="BaseLevel/Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("8_dtkyg")
+
+[node name="Outline" type="Sprite2D" parent="BaseLevel/Ring"]
+position = Vector2(0, -1)
+rotation = 1.5708
+texture = ExtResource("9_hsjr3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseLevel/Ring"]
+visible = false
+position = Vector2(0, -260)
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BaseLevel/Ring"]
+visible = false
+position = Vector2(260, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BaseLevel/Ring"]
+visible = false
+position = Vector2(-260, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BaseLevel/Ring"]
+visible = false
+position = Vector2(0, 260)
+shape = SubResource("RectangleShape2D_56rhn")
+debug_color = Color(0.996078, 0, 0, 0.188235)
+
+[node name="CrowdLeft" type="Sprite2D" parent="BaseLevel"]
+position = Vector2(113, 349)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_ku6qs")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BaseLevel/CrowdLeft"]
+texture_filter = 1
+scale = Vector2(1.11111, 1.11111)
+amount = 3
+lifetime = 3.0
+randomness = 0.5
+texture = ExtResource("11_3twjy")
+emission_shape = 3
+emission_rect_extents = Vector2(90, 270)
+gravity = Vector2(0, 0)
+angular_velocity_max = 60.0
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_dl0cv")
+color_ramp = SubResource("Gradient_ocpc1")
+
+[node name="CrowdRight" type="Sprite2D" parent="BaseLevel"]
+position = Vector2(1040, 349)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_pjd13")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BaseLevel/CrowdRight"]
+texture_filter = 1
+scale = Vector2(1.11111, 1.11111)
+amount = 3
+lifetime = 3.0
+randomness = 1.0
+texture = ExtResource("11_3twjy")
+emission_shape = 3
+emission_rect_extents = Vector2(90, 270)
+gravity = Vector2(0, 0)
+angular_velocity_max = 60.0
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_dl0cv")
+color_ramp = SubResource("Gradient_ocpc1")
+
+[node name="Red Player" parent="BaseLevel" node_paths=PackedStringArray("controls_ui") instance=ExtResource("13_4u76p")]
+z_index = 1
+position = Vector2(768, 515)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+controls_ui = NodePath("../ControlsP2")
+
+[node name="Blue Player" parent="BaseLevel" node_paths=PackedStringArray("controls_ui") instance=ExtResource("13_4u76p")]
+z_index = 1
+position = Vector2(380, 194)
+scale = Vector2(0.5, 0.5)
+controls_ui = NodePath("../ControlsP1")
+
+[node name="Glove" parent="BaseLevel/Blue Player/Body/LArm/LHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="Glove" parent="BaseLevel/Blue Player/Body/RArm/RHand" index="0"]
+self_modulate = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="ControlsP2" type="Sprite2D" parent="BaseLevel"]
+visible = false
+position = Vector2(912, 515)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_xup7s")
+script = ExtResource("15_750wm")
+
+[node name="ControlsP1" type="Sprite2D" parent="BaseLevel"]
+visible = false
+position = Vector2(236, 194)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("16_ndrq3")
+script = ExtResource("15_750wm")
+print = true
+
+[node name="HideControlsTimer" type="Timer" parent="BaseLevel"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CountdownUI" type="CanvasLayer" parent="BaseLevel"]
+
+[node name="Sub" type="Label" parent="BaseLevel/CountdownUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -96.5
+offset_right = 95.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FIRST TO 21"
+label_settings = SubResource("LabelSettings_lo8ry")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BaseLevel/CountdownUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -26.5
+offset_right = 124.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_gw0m2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="BaseLevel"]
+stream = ExtResource("17_nctne")
+bus = &"Music"
+
+[node name="CountdownSound" type="AudioStreamPlayer" parent="BaseLevel"]
+stream = ExtResource("18_arsok")
+bus = &"SFX"
+
+[node name="StartSound" type="AudioStreamPlayer" parent="BaseLevel"]
+stream = ExtResource("19_fgblm")
+bus = &"SFX"
+
+[node name="EndSound" type="AudioStreamPlayer" parent="BaseLevel"]
+process_mode = 3
+stream = ExtResource("20_jc3sp")
+bus = &"SFX"
+
+[node name="Pause" type="Node" parent="BaseLevel"]
+script = ExtResource("21_e36r2")
+
+[node name="Ui" parent="." instance=ExtResource("3_53qty")]
+
+[node name="MatchTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="EndScreen" parent="." instance=ExtResource("4_jwi3f")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_tbjk3")
+
+[connection signal="game_ended" from="." to="EndScreen" method="_on_game_end"]
+[connection signal="hide_ui" from="." to="Ui" method="_on_game_end"]
+[connection signal="score_changed" from="." to="Ui" method="_on_gamemode_score_changed"]
+[connection signal="timer_changed" from="." to="Ui" method="_on_gamemode_timer_changed"]
+[connection signal="blue_player_hit" from="BaseLevel" to="." method="_on_base_level_blue_player_hit"]
+[connection signal="red_player_hit" from="BaseLevel" to="." method="_on_base_level_red_player_hit"]
+[connection signal="hit" from="BaseLevel/Red Player" to="BaseLevel" method="_on_red_player_hit"]
+[connection signal="hit" from="BaseLevel/Blue Player" to="BaseLevel" method="_on_blue_player_hit"]
+[connection signal="timeout" from="BaseLevel/HideControlsTimer" to="BaseLevel/ControlsP2" method="_on_hide_controls_timer_timeout"]
+[connection signal="timeout" from="BaseLevel/HideControlsTimer" to="BaseLevel/ControlsP1" method="_on_hide_controls_timer_timeout"]
+[connection signal="timeout" from="MatchTimer" to="." method="check_game_end"]
+[connection signal="continue_pressed" from="EndScreen" to="." method="_on_end_screen_continue_pressed"]
+
+[editable path="BaseLevel/Red Player"]
+[editable path="BaseLevel/Blue Player"]

@@ -1,7 +1,5 @@
-## not actually in use
-
 extends Node2D
-class_name Battle2
+class_name Battle
 #Authored by Xander. Please consult for any modifications or major feature requests.
 
 #region Variables
