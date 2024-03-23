@@ -288,11 +288,13 @@ alignment = 1
 custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "Championship"
 
 [node name="Versus" type="Button" parent="Play/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "Versus (2P)"
 
 [node name="Online" type="Button" parent="Play/VBoxContainer"]
@@ -303,6 +305,7 @@ text = "Online Versus (2P)"
 [node name="Training" type="Button" parent="Play/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "Training (1P)"
 
 [node name="PlayBack" type="Button" parent="Play/VBoxContainer"]

@@ -59,6 +59,7 @@ func _on_game_end(b_score:int, r_score:int, time:int, c_score:int):
 
 func _on_menu_btn_pressed():
 	get_tree().paused = false
+	GlobalSteam.EndConnection.rpc()
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 func _on_versus_btn_pressed():

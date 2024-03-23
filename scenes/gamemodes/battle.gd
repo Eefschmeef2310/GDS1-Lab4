@@ -91,7 +91,7 @@ func check_game_end():
 		await base_level.slowmo_complete
 		hide_ui.emit()
 		game_ended.emit(blue_score, red_score, match_timer.time_left, championship_score)
-		GlobalSteam.EndConnection.rpc()
+		
 
 func set_fighter_data(blue: FighterData, blue_type: String, red: FighterData, red_type: String):
 	match blue_type:
