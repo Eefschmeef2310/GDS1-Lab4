@@ -35,6 +35,7 @@ func _ready():
 	prematch_screen.set_character_select("Versus")
 	character_selector.hide()
 	GlobalSteam.fighter_selected.connect(setFighterDisplay)
+	$PrematchScreen/PlayButton.hide()
 
 func _process(_delta):
 	
@@ -101,7 +102,7 @@ func name_to_fighter_path(first_name: String) -> String:
 	match first_name:
 		"Dan": return "res://fighters/dummy.tres"
 		"Jack": return "res://fighters/jack.tres"
-		"John": return "res://fighters/jack.tres"
+		"John": return "res://fighters/john.tres"
 		"Mike": return "res://fighters/mike.tres"
 		"Todd": return "res://fighters/todd.tres"
 		"Willie": return "res://fighters/willie.tres"
