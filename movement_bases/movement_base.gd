@@ -30,10 +30,16 @@ func _physics_process(_delta):
 
 func _on_character_hit(knockback_power):
 	print("ouch2")
-	can_input = false
+	rpc("ouchPunchHurty", knockback_power)
+	
+
+@rpc("any_peer")
+func ouchPunchHurty(knockback_power):
+	#can_input = false
+	print("ouch3")
 	knockback_velocity = knockback_power
-	await get_tree().create_timer(0.3).timeout
-	can_input = true
+	#await get_tree().create_timer(0.3).timeout
+	#can_input = true
 #endregion
 
 #region Other methods
