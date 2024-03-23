@@ -76,7 +76,7 @@ func join_lobby(id):
 func _on_lobby_created(connect, id):
 	if connect:
 		lobby_id = id
-		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName()+"'s Lobby"))
+		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName()+"'s Lobby " + Time.get_time_string_from_system()))
 		Steam.setLobbyJoinable(lobby_id, true)
 		print(lobby_id)
 		
