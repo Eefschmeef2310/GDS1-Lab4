@@ -79,7 +79,7 @@ func _on_fighter_select_select_fighter(data):
 			blue_fighter = data
 			phase = SelectionPhase.P2 if !is_training else SelectionPhase.DONE
 			if !is_training:
-				$"..".set_red_data(data)
+				#$"..".set_red_data(data) # what was this for????
 				GlobalSteam.rpc("talk", "player 1 picked: " + data.first_name)
 				GlobalSteam.rpc("fighterSelected", 1, data.first_name)
 			$"../Swoosh".play()
