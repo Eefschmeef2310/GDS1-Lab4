@@ -81,13 +81,13 @@ func _on_fighter_select_select_fighter(data):
 			if !is_training:
 				$"..".set_red_data(data)
 				GlobalSteam.rpc("talk", "player 1 picked: " + data.first_name)
-				GlobalSteam.rpc("fighterSelected", 1, data)
+				GlobalSteam.rpc("fighterSelected", 1, data.first_name)
 			$"../Swoosh".play()
 		SelectionPhase.P2:
 			red_fighter = data
 			$"../Swoosh".play()
 			GlobalSteam.rpc("talk", "player 2 picked: " + data.first_name)
-			GlobalSteam.rpc("fighterSelected", 2, data)
+			GlobalSteam.rpc("fighterSelected", 2, data.first_name)
 			phase = SelectionPhase.DONE
 		SelectionPhase.DONE:
 			pass

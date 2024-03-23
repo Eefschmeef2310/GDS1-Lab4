@@ -1,6 +1,6 @@
 extends Node
 
-signal fighter_selected(player : int, fighter : FighterData)
+signal fighter_selected(player : int, fighterName : String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +20,6 @@ func talk(message : String):
 	print("Talk: " + message)
 	
 @rpc("any_peer")
-func fighterSelected(player : int, fighter : FighterData):
-	print("Player " + str(player) + " picked: " + fighter.first_name)
-	fighter_selected.emit(player, fighter)
+func fighterSelected(player : int, fighterName : String):
+	print("Player " + str(player) + " picked: " + fighterName)
+	fighter_selected.emit(player, fighterName)
