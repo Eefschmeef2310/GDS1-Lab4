@@ -50,7 +50,7 @@ func _process(_delta):
 #region Signal methods
 
 func _on_base_level_blue_player_hit():
-	blueHit().rpc()
+	blueHit.rpc()
 
 @rpc("any_peer")
 func blueHit():
@@ -60,7 +60,7 @@ func blueHit():
 		check_game_end()
 
 func _on_base_level_red_player_hit():
-	redHit().rpc()
+	redHit.rpc()
 
 @rpc("any_peer")
 func redHit():
