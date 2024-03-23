@@ -16,6 +16,7 @@ signal red_player_hit
 #region Godot methods
 func _ready():
 	#Runs when all children have entered the tree
+	blue_player.set_multiplayer_authority(2)
 	pass
 
 func _process(_delta):
