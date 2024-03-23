@@ -16,7 +16,7 @@ extends Node2D
 #Onready Variables
 @onready var prematch_screen = $PrematchScreen
 @onready var default_fighter = preload("res://fighters/jack.tres")
-@onready var battle_scene: PackedScene = preload("res://scenes/gamemodes/battle.tscn")
+@onready var battle_scene: PackedScene = preload("res://scenes/gamemodes/onlineBattle.tscn")
 @onready var battle: Battle
 
 #Other Variables (please try to separate and organise!)
