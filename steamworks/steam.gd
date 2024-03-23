@@ -4,8 +4,8 @@ signal fighter_selected(player : int, fighterName : String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	OS.set_environment("SteamAppID", str(2899410))
-	OS.set_environment("SteamGameID", str(2899410))
+	OS.set_environment("SteamAppID", str(480))
+	OS.set_environment("SteamGameID", str(480))
 	Steam.steamInitEx()
 	multiplayer.server_disconnected.connect(ConnectionClosed)
 	
