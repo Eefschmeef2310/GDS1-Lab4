@@ -16,10 +16,17 @@ signal red_player_hit
 #region Godot methods
 func _ready():
 	#Runs when all children have entered the tree
-	print("peer id?" + str(multiplayer.get_peers()[0]))
-	red_player.set_multiplayer_authority(multiplayer.get_peers()[0], true)
-	blue_player.set_multiplayer_authority(1, true)
+	if multiplayer.is_server():
+		print("peer id?" + str(multiplayer.get_peers()[0]))
+		var player2id = multiplayer.get_peers()[0]
+		setAuthorities(player2id).rpc()
 	pass
+
+@rpc("call_local")
+func setAuthorities(id : int):
+	
+	red_player.set_multiplayer_authority(id, true)
+	blue_player.set_multiplayer_authority(1, true)
 
 func _process(_delta):
 	#Runs per frame
