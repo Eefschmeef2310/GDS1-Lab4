@@ -19,7 +19,8 @@ func _ready():
 	if multiplayer.is_server():
 		print("peer id?" + str(multiplayer.get_peers()[0]))
 		var player2id = multiplayer.get_peers()[0]
-		setAuthorities(player2id).rpc()
+		rpc("setAuthorities", player2id)
+		#setAuthorities(player2id).rpc()
 	pass
 
 @rpc("call_local")
