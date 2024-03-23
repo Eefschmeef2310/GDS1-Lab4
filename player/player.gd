@@ -67,6 +67,7 @@ func _process(_delta):
 #region Signal methods
 
 func _on_head_hurtbox_area_entered(area):
+	print("ouch1")
 	if $"AudioPlayers/Hit" : $"AudioPlayers/Hit".play()
 	if $"AudioPlayers/CrowdCheer" : $"AudioPlayers/CrowdCheer".play()
 	hit.emit(area.owner.knockback_power)

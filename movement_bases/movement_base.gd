@@ -29,6 +29,7 @@ func _physics_process(_delta):
 	owner.move_and_slide()
 
 func _on_character_hit(knockback_power):
+	print("ouch2")
 	can_input = false
 	knockback_velocity = knockback_power
 	await get_tree().create_timer(0.3).timeout
