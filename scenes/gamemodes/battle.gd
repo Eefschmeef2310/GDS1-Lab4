@@ -52,7 +52,7 @@ func _process(_delta):
 func _on_base_level_blue_player_hit():
 	blueHit.rpc()
 
-@rpc("any_peer")
+@rpc("any_peer", "call_local")
 func blueHit():
 	if !game_over:
 		red_score += 1
@@ -62,7 +62,7 @@ func blueHit():
 func _on_base_level_red_player_hit():
 	redHit.rpc()
 
-@rpc("any_peer")
+@rpc("any_peer", "call_local")
 func redHit():
 	if !game_over:
 		blue_score += 1
