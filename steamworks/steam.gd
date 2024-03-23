@@ -14,3 +14,6 @@ func _ready():
 func _process(delta):
 	Steam.run_callbacks()
 
+@rpc("any_peer")
+func talk(message : String):
+	print("Talk: " + message)
