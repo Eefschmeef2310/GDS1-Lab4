@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 fighters/null.tres
+fighters/null.tres
