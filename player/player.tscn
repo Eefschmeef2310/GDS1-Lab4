@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dhltmqvlc20k7"]
+[gd_scene load_steps=34 format=3 uid="uid://dhltmqvlc20k7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_w5c5t"]
 [ext_resource type="Texture2D" uid="uid://dph8y3qesrc4i" path="res://assets/body.png" id="1_wwu7d"]
@@ -395,6 +395,14 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("11_pqcay")
 stream_1/weight = 1.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rjui8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -518,6 +526,9 @@ process_mode = 3
 stream = SubResource("AudioStreamRandomizer_6tc01")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rjui8")
 
 [connection signal="hit" from="." to="Scripts/Movement" method="_on_character_hit"]
 [connection signal="hit" from="." to="Scripts/AI" method="_on_attacked_revenge"]
