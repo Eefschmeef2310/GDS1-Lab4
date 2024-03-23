@@ -34,6 +34,7 @@ var p2_selected_fighter_path : String = "res://fighters/null.tres"
 func _ready():
 	prematch_screen.set_character_select("Versus")
 	character_selector.hide()
+	GlobalSteam.fighter_selected.connect(setFighterDisplay)
 
 func _process(_delta):
 	
@@ -76,6 +77,13 @@ func _on_prematch_screen_continue_pressed():
 func _on_battle_game_ended(blue_score: int, red_score: int, timer:int, champ_score:int):
 	AirtableManager.CasualGameComplete(timer)
 
+func setFighterDisplay(player : int, fighter : FighterData):
+	print(str(player)+fighter.first_name)
+	if player == 1:
+		prematch_screen.set_blue_data(fighter)
+	else:
+		prematch_screen.set_red_data(fighter)
+	pass
 
 #endregion
 
