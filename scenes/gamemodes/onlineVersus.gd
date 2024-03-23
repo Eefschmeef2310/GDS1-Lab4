@@ -47,13 +47,14 @@ func _process(_delta):
 	if multiplayer.is_server(): # (p1)
 		if(character_selector.phase == character_selector.SelectionPhase.P1 and multiplayer.get_peers().size() > 0):
 			character_selector.show()
-		if(character_selector.phase == character_selector.SelectionPhase.P2):
+		else:
 			character_selector.hide()
 	else: # is client (p2)
-		if(character_selector.phase == character_selector.SelectionPhase.P1):
-			character_selector.hide()
+		
 		if(character_selector.phase == character_selector.SelectionPhase.P2):
 			character_selector.show()
+		else:
+			character_selector.hide()
 	pass
 #endregion
 
@@ -83,6 +84,7 @@ func setFighterDisplay(player : int, fighterName : String):
 		prematch_screen.set_blue_data(load(name_to_fighter_path(fighterName)))
 	else:
 		prematch_screen.set_red_data(load(name_to_fighter_path(fighterName)))
+		character_selector.phase = character_selector.SelectionPhase.DONE
 	pass
 
 func name_to_fighter_path(first_name: String) -> String:
